@@ -9,6 +9,7 @@
 Notes:
 - Rule: do not put any headers in the .c files to avoid conflict
 - Rule: add the date before each commit?
+- At the end of the project, DO NOT PUSH the tools&notes section
 
 To-do to add:
 - Create a team in the intra
