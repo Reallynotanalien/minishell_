@@ -7,7 +7,8 @@
 - Added the base minishell.h file (to be modified and even separated between multiple .h for exec, parsing and builtins)
 
 Notes:
-- Do not put any headers in the .c files to avoid conflict
+- Rule: do not put any headers in the .c files to avoid conflict
+- Rule: add the date before each commit?
 
 To-do to add:
 - Create a team in the intra
