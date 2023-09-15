@@ -1,0 +1,19 @@
+09-15
+- Created a new git repository
+- Added the README template
+- Created the folders for organisation
+- Created the note files
+- Added the base Makefile (to be modified by Élodie)
+- Added the base minishell.h file (to be modified and even separated between multiple .h for exec, parsing and builtins)
+
+Notes:
+- Do not put any headers in the .c files to avoid conflict
+
+To-do to add:
+- Create a team in the intra
+- Tokenisation 
+- Separate the .h between multiple ones for each part of the project
+- Signals function
+
+Questions:
+- Whose Libft do we take?
