@@ -26,6 +26,7 @@ Questions:
 	- Study readline and take notes to discuss tomorrow
 	- Correct Élodie's pipex
 - Approved Élodie's pull requests
+- Added the notes of the day
 
 Notes: 
 
