@@ -19,3 +19,16 @@ To-do to add:
 
 Questions:
 - Whose Libft do we take?
+
+09-18
+- Meeting to discuss the next steps, to do today:
+	- Add notes to the files
+	- Study readline and take notes to discuss tomorrow
+	- Correct Élodie's pipex
+- Approved Élodie's pull requests
+
+Notes: 
+
+To-do to add:
+
+Questions:
