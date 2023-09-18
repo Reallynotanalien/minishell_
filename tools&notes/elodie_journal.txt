@@ -1,0 +1,12 @@
+18/09
+Worked on pull requests
+Correct pipex
+Continue Allowed functions file
+
+To do next :
+Allowed functions file (descriptions)
+Study and understand readline 
+Study GIT
+Correct pipex
+
+To discuss (questions, ideas...): 
