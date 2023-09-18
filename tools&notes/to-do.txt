@@ -1,0 +1,5 @@
+Static struct function to initiate, set to 0 and keep the main variables. (+ Add struct to .h)
+Exit + clean function (Cleans struct, prints message if necessary and exits)
+Printf flag (for debugging)
+Error flag (To catch errors before execution)
+Here doc 
