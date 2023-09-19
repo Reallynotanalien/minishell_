@@ -46,7 +46,7 @@ Used to replace the the current line of text being edited in the readline buffer
 Used with rl_redisplay.
 Undo history refers to a feature which allows users to undo their previous edits or actions while editing a line.
 
--rl_redisplay-
+-rl_redisplay-	
 
 -add_history-
 -wait3- 

@@ -10,3 +10,24 @@ Study GIT
 Correct pipex
 
 To discuss (questions, ideas...): 
+
+09-19
+
+Done :
+Had pipex corrected
+Corrected CPP01
+Bouée de sauvetage
+
+To do next :
+Functions file
+
+To discuss :
+Begin with execution ? (easier for parsing)
+Codes d'erreur, return status
+
+if token starts with '/' '.', do not look through PATH. 
+Otherwise search through path (then access to see if it is an executable or not.) 
+If access does not find anything, check character in front to see if it is supposed to be a file
+
+Parse environment, formattage (unexistant infile, pipe leading nowhere, unclosed "....), error in execve 
+Make sure what we are doing is asked for, avoid unnecessary work
