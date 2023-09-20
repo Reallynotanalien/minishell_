@@ -32,6 +32,12 @@ Questions:
 - Separated the .h between multiple files
 
 Notes: 
+Video: 228 Writing Custom Shell or CLI via Readline Library in C or PHP
+- We could use scanf to get input from the terminal, but we would not be able to get the history. The readline library does that for us.
+- Install if not installed:
+	sudo apt-get install libreadline6 libreadline6-dev 
+	(might differ since it could have been updated)
+- include readline/readline.h && readline/history.h
 
 To-do to add:
 

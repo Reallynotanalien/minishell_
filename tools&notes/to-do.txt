@@ -5,18 +5,14 @@ TO-DO
 - Printf flag (for debugging)
 - Error flag (To catch errors before execution)
 - Here doc 
-- To check file
-- To test file
 - Test Excel file audit to choose which test are the most relevant and add them to the test file
-- Create a team in the intra
 - Tokenisation (to be separated in smaller tasks)
 - Linked list functions
-- Separate all the .h to have one for each part of the project and one main one
 - Signals function
 - Choose which Libft we are taking
 - Command history (add history, redisplay, replace)
 - Decide on what the main struct will be for the execution
-- Add minishell into the .gitignore file
+- Add DS_Store to the .gitignore file
 - Add tests to the Makefile
 
 TO-LEARN \ CLARIFY
@@ -35,5 +31,10 @@ TO-LEARN \ CLARIFY
 IN PROGRESS
 - Functions description and research file (Élodie)
 - Readline documentation (Élodie and Katherine)
+- To check file (Katherine)
+- To test file (Katherine)
 
 DONE
+- Add minishell into the .gitignore file (Élodie)
+- Create a team in the intra (Katherine)
+- Separate all the .h to have one for each part of the project and one main one (Katherine)
