@@ -10,7 +10,7 @@
 /*FUNCTIONS*/
 
 //parsing.c
-void	parsing(char *line, t_dlist *tokens);
+//void	parsing(char *line, t_dlist *tokens);
 
 //signals.c
 void	signals(void);

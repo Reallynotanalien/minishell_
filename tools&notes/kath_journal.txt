@@ -39,6 +39,24 @@ Video: 228 Writing Custom Shell or CLI via Readline Library in C or PHP
 	(might differ since it could have been updated)
 - include readline/readline.h && readline/history.h
 
+09-20
+
+Notes:
+- Add clear history si on veux clear
+
 To-do to add:
+- Deal with the history (avec les touches haut et bas, redisplay et replace) ---- juste remplacer quand on fait tab?
+- Gérer les absolute path (EXEC/GATHER INFORMATION)
+- Gérer les charactères délimiteurs
+- Gérer les // $$ 
+- Dans la tokenisation, gérer les ````
+- Ajouter le sujet dans les fichiers
+- Gérer les executables et ce qui vient après
 
 Questions:
+- Find out how to hide readline leaks?
+- How to organize structure
+
+Tomorrow:
+- Prioriser la to-do
+- Kath today: n
