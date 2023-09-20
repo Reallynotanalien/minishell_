@@ -28,6 +28,9 @@ Questions:
 - Approved Élodie's pull requests
 - Added the notes of the day
 
+09-19
+- Separated the .h between multiple files
+
 Notes: 
 
 To-do to add:
