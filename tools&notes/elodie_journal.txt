@@ -31,3 +31,12 @@ If access does not find anything, check character in front to see if it is suppo
 
 Parse environment, formattage (unexistant infile, pipe leading nowhere, unclosed "....), error in execve 
 Make sure what we are doing is asked for, avoid unnecessary work
+
+09-21
+
+Done :
+
+To do next :
+
+To discuss :
+To do - Make a file to gather the project's requirements. (To help determine what is to be done and what isn't)
