@@ -70,7 +70,8 @@ Notes:
 	Week 1 (this week) - Main loop (readline)
 	Week 2 - Signals 
 	Week 3 - Tokenisation (learn about how tokenisation work and how it's used, decide on how to do the struct)
-	Week 4 - Main parsing (here_doc, errors, etc.)
+	Week 4 - Main parsing (here_doc, errors, environment correct, etc.)
 	Week 5 - Execution (absolute path && builtins)
 	Week 6 - Builtins 
 	Week 7 - Tests tests tests!!
+- Something I can do today: create the printf flag and a printf function (if flag is on then print) with defined sentences and put them in different places in the code so we already have a base to test.

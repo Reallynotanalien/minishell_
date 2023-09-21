@@ -8,14 +8,17 @@ int	main(void)
 
 	//tokens = malloc(sizeof(t_dlist));
 	//signals();
+	//mini parsing
 	while (1)
 	{
 		line = readline("minishell$> ");
 		if (line && *line)
 		{
 			//mettre add history après l'exec? pck si la commande est pas trouvée avec bash il la montre pas dans l'historique
-			add_history(line);
 			//parsing(line, tokens);
+			//exec
+			add_history(line);
+			//free tokens
 		}
 		if (!line)
 			break ;

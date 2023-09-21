@@ -1,40 +1,72 @@
 TO-DO
 
-- Static struct function to initiate, set to 0 and keep the main variables. (+ Add struct to .h)
-- Exit + clean function (Cleans struct, prints message if necessary and exits)
-- Printf flag (for debugging)
-- Error flag (To catch errors before execution)
-- Here doc 
-- Test Excel file audit to choose which test are the most relevant and add them to the test file
-- Tokenisation (to be separated in smaller tasks)
-- Linked list functions
-- Signals function
-- Choose which Libft we are taking
-- Command history (add history, redisplay, replace)
-- Decide on what the main struct will be for the execution
-- Add DS_Store to the .gitignore file
-- Add tests to the Makefile
+Week 1 (this week) - Main loop (readline)
+- Printf flag (for debugging) (Katherine)
+- Classement des fonctions autorisées + descriptions (Élodie)
+- Command history (add history, redisplay (might not need it), replace) tester si ça marche (Katherine)
+- Add DS_Store to the .gitignore file (Élodie)
+- Transcrire le sujet + détails (Élodie)
 
-TO-LEARN \ CLARIFY
 - Readline editing capabilities?
 - How to deal with NULL return from readline
 - How to deal with a non-accessible readline
 - How to use git properly
+- .gitignore (E -> K)
+- Main project loop (K -> E)
+
+Week 2 - Signals && Gestion d'erreurs
+- Research signals
+- Decide on error management strategy
+- Signals function
+- Exit + clean function (Cleans struct, prints message if necessary and exits)
+- Error flag (To catch errors before execution)
+- Test Excel file audit to choose which test are the most relevant and add them to the test file
+- Add tests to the Makefile
+- Create test file (Élodie)
 
 - Debbuger (E -> K)
-- Heredoc (K -> E)
-- Static struct (E -> K)
-- .gitignore (E -> K)
 - Testing Makefile (E -> K)
-- Main project loop (K -> E)
+
+Week 3 - Tokenisation (learn about how tokenisation work and how it's used, decide on how to do the struct)
+- Research tokens
+- Decide on the way we want to separate the tokens
+- Parse the tokens (vérifier si absolute path, vérifier si fichier existe, si executable, les droits, etc. et mettre le flag approprié)
+- Static struct function to initiate, set to 0 and keep the main variables. (+ Add struct to .h)
+- Linked list functions
+
+- Static struct (E -> K)
+
+Week 4 - Main parsing (here_doc, errors, environment correct, etc.)
+- Here doc 
+- Redirection-pipe dans le vide 
+- Guillemets non fermés
+
+- Heredoc (K -> E)
+
+Week 5 - Execution (absolute path && builtins)
+- Absolute path
+- Builtins
+- Normale (pipe dup etc. genre pipex)
+- Redirection des input/ouput
+
+Week 6 - Builtins 
+- env
+- cd 
+- echo
+- pwd
+- export
+- unset
+- exit
+
+Week 7 - Tests tests tests!!
 
 IN PROGRESS
 - Functions description and research file (Élodie)
 - Readline documentation (Élodie and Katherine)
-- To check file (Katherine)
 - To test file (Katherine)
 
 DONE
 - Add minishell into the .gitignore file (Élodie)
 - Create a team in the intra (Katherine)
 - Separate all the .h to have one for each part of the project and one main one (Katherine)
+- To check file (Katherine)
