@@ -60,3 +60,17 @@ Questions:
 
 Tomorrow:
 - Prioriser la to-do
+
+09-21
+-
+
+Notes:
+- Shower thoughts:
+	Separate the project into chunks that we can go through together one by one by separating them into tasks, those chunks can be the weekly focus
+	Week 1 (this week) - Main loop (readline)
+	Week 2 - Signals 
+	Week 3 - Tokenisation (learn about how tokenisation work and how it's used, decide on how to do the struct)
+	Week 4 - Main parsing (here_doc, errors, etc.)
+	Week 5 - Execution (absolute path && builtins)
+	Week 6 - Builtins 
+	Week 7 - Tests tests tests!!

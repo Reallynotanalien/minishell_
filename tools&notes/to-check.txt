@@ -1,0 +1,5 @@
+
+To check after everything is pushed and we are ready for correction
+- Norminette
+- Make sure tools&notes is not in the repository
+- Test one last time
