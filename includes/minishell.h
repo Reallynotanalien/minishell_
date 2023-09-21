@@ -35,7 +35,7 @@
 
 /*----------parsing----------*/
 //parsing.c
-void	parsing(char *line, t_dlist *tokens);
+void	parsing(void);
 //signals.c
 void	signals(void);
 
