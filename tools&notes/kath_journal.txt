@@ -62,7 +62,12 @@ Tomorrow:
 - Prioriser la to-do
 
 09-21
--
+- Meeting of the day to prioritize to-do list 
+- Solved the compilation problem to make sure the prompt is working (added stdio.h before the lib in the .h file)
+- Added the print_progress function and put it in strategic places in the code to help find potential errors. This will be deleted at the end of the project.
+	The flag can be turned on or off manually by changing the code, so I want to find a way to make it so that it can be changed outside of the code (while compiling probably).
+	Also I find that it bloats the code a bit, it will be deleted at the end but still. If I find a way to make it cleaner I will xD.
+- Tested the main loop to make sure the prompt is working and the history too.
 
 Notes:
 - Shower thoughts:
@@ -75,3 +80,4 @@ Notes:
 	Week 6 - Builtins 
 	Week 7 - Tests tests tests!!
 - Something I can do today: create the printf flag and a printf function (if flag is on then print) with defined sentences and put them in different places in the code so we already have a base to test.
+---- The printf flag should be added to the main static struct so we can access it everywhere. -----

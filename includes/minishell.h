@@ -2,12 +2,14 @@
 # define MINISHELL_H
 
 /*INCLUDES*/
+# include <stdio.h>
 # include "libft/libft.h"
 # include "./readline/history.h"
 # include "./readline/readline.h"
 # include "builtins.h"
 # include "exec.h"
 # include "parsing.h"
+# include "printer.h"
 # include <fcntl.h>
 # include <sys/wait.h>
 # include <sys/signal.h>
@@ -31,13 +33,8 @@
 
 /*FUNCTIONS*/
 
-/*----------builtins----------*/
-
-/*----------parsing----------*/
-//parsing.c
-void	parsing(void);
-//signals.c
-void	signals(void);
+//utils.c
+void	print_progress(int printer, char *message);
 
 
 #endif
