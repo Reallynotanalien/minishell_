@@ -7,6 +7,7 @@ SRCS =	./srcs/minishell.c \
 		./srcs/parsing/parsing.c \
 		./srcs/parsing/signals.c \
 		./srcs/exec/exec.c \
+		./srcs/utils.c \
 
 #colours ------------------------------------------
 B_BLUE='\033[1;34m'
@@ -23,13 +24,12 @@ OBJS = $(SRCS:.c=.o)
 CC = gcc
 CFLAGS = -g -Wall -Wextra -Werror
 RM = rm -fr
-LIBS = ./includes/Libft/libft.a ./includes/dlist/dlist.a ./includes/readline/libreadline.a ./includes/readline/libhistory.a -lreadline -lcurses
+LIBS = ./includes/libft/libft.a ./includes/readline/libreadline.a ./includes/readline/libhistory.a -lreadline -lcurses
 
 $(NAME): $(OBJS)
-	@$(MAKE) -C ./includes/Libft
-	@$(MAKE) lib -C ./includes/dlist
-	@cd ./includes/readline && ./configure
-	@$(MAKE) everything -C ./includes/readline
+	@$(MAKE) -C ./includes/libft
+	# @cd ./includes/readline && ./configure
+	# @$(MAKE) everything -C ./includes/readline
 	@$(CC) $(CFLAGS) $(OBJS) -o $(NAME) $(LIBS)
 	@echo "$(YELLOW)⚡️$(NAME) ⚡️$(B_GREEN)has been created $(COLOUR_END)!"
 	

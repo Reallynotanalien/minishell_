@@ -1,9 +1,7 @@
 TO-DO
 
 Week 1 (this week) - Main loop (readline)
-- Printf flag (for debugging) (Katherine)
 - Classement des fonctions autorisées + descriptions (Élodie)
-- Command history (add history, redisplay (might not need it), replace) tester si ça marche (Katherine)
 - Add DS_Store to the .gitignore file (Élodie)
 - Transcrire le sujet + détails (Élodie)
 
@@ -64,9 +62,11 @@ IN PROGRESS
 - Functions description and research file (Élodie)
 - Readline documentation (Élodie and Katherine)
 - To test file (Katherine)
+- Printf flag (for debugging) (Katherine) - Just needs to optimize it
 
 DONE
 - Add minishell into the .gitignore file (Élodie)
 - Create a team in the intra (Katherine)
 - Separate all the .h to have one for each part of the project and one main one (Katherine)
 - To check file (Katherine)
+- Command history (add history, redisplay (might not need it), replace) tester si ça marche (Katherine)
