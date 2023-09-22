@@ -1,9 +1,6 @@
 ----- New functions ------
 
--readline-  char *readline (const char *prompt);
-#include <stdio.h>
-#include <readline/readline.h>
-#include <readline/history.h>
+-readline-  char *readline (const char *prompt); #(main loop)#
 
 Reads a line from the terminal and return it, using
 'prompt' as a prompt*. The line returned is allocated with malloc(3) and has the
@@ -26,32 +23,76 @@ There are two search modes: incremental and non-incremental.
 
 readline offers editing capabilities while the user is entering the line.
 
-*Prompt :
+*Prompt : A string or character printed in the terminal to indicate that the program is ready to receive input.
+The input is usually written after the prompt. (Ex : "bash-3.2$" is a prompt)
 
--rl_clear_history-  void clear_history(void) (**or rl_clear_history)
+
+-rl_clear_history-  void clear_history(void) (**or rl_clear_history) #(main loop)#
 
 Clears the history stored by readline (add_history) in the history buffer.
 
--rl_on_new_line-  variable (flag)
+-rl_on_new_line-  variable (flag) #(Probably won't need it, main loop)#
 
 A flag used to determine if the GNU Readline library should act as if the cursor is on a new line.
 If the value is non-zero, readline will behave as if the cursor is at the beginning of a new line even if it isn't.
 Has to be set manually (rl_on_new_line = 1), which can be useful to customize the behavior of readline.
 
 
--rl_replace_line-  void  rl_replace_line(const char *text, int clear_undo)
+-rl_replace_line-  void  rl_replace_line(Probably won't need it, const char *text, int clear_undo) #(main loop)#
 
+Useful to customize further the usage of the prompt. 
 Used to replace the the current line of text being edited in the readline buffer with 'text'.
 'clear_undo' determines if the undo history should be cleared (1) or not (0) after replacement.
 Used with rl_redisplay.
 Undo history refers to a feature which allows users to undo their previous edits or actions while editing a line.
 
--rl_redisplay-	
+-rl_redisplay-	void rl_redisplay(void); #(Probably won't need it, main loop)#
 
--add_history-
--wait3- 
--wait4- 
--signal-
+Used to redraw or update (refresh) the input line*.
+Can be called after changes were made through user input or program actions.
+
+*input line : essentially the line of text that the user is typing or editing in response to the program's prompt.
+
+-add_history-	void add_history(const char *string); #(main loop)#
+
+Used to add a line ('string') to the command history*. 
+This way, the user can navigate their previous commands with the up and down arrows.
+
+*command history : A feature of the readline library which manages previous commands given by the user.
+
+-wait3-	pid_t wait3(int *status, int options, struct rusage *rusage); #(Execution)#
+
+Used to wait for the termination of child processes 
+and retrieve information about their exit status and resource utilization.
+
+>status (int)**: A pointer to an integer where the exit status of the terminated child process will be stored.
+>options (int): This argument allows you to specify various options for controlling the behavior of the wait3 function. (see man)
+>rusage (struct rusage)**: This is an optional pointer to a struct rusage object, 
+which is used to store resource utilization information about the terminated child process. 
+
+Return Value (pid_t): The function returns the process ID (PID) of the terminated child process on success. 
+It returns -1 on error, and errno is set to indicate the specific error.
+
+-wait4-	pid_t wait4(pid_t pid, int *status, int options, struct rusage *rusage); #(Execution)#
+
+Very similar to wait3, except :
+>pid (pid_t): This argument specifies the process ID (PID) of the child process for which you want to wait. 
+If pid is set to -1, wait4 behaves similarly to waitpid, waiting for any child process. 
+If pid is set to 0, it waits for any child in the same process group as the caller. 
+If pid is greater than 0, it waits for the child with the specified PID.
+
+-signal-	void (*signal(int signum, void (*handler)(int)))(int);	#(signals)#
+
+Sets up signal handlers. Whenever "signum" signal is received 
+(for exemple 'SIGINT' which corresponds to Ctrl+C), 'handler' function is called.
+
+The signal function returns a function pointer to the previous signal handler for the specified signal. 
+This allows you to save the previous handler, if needed.
+
+The handler function typically takes an integer argument, which is the signal number.
+The last int ((int)) indicates the data type of the return value of the signal function. In this case, 
+it specifies that the return value of signal is a pointer to a function that takes an int argument and returns void.
+
 -sigaction-
 -sigemptyset- 
 -sigaddset- 

@@ -2,9 +2,14 @@
 # define MINISHELL_H
 
 /*INCLUDES*/
+# include <stdio.h>
 # include "libft/libft.h"
 # include "./readline/history.h"
 # include "./readline/readline.h"
+# include "builtins.h"
+# include "exec.h"
+# include "parsing.h"
+# include "printer.h"
 # include <fcntl.h>
 # include <sys/wait.h>
 # include <sys/signal.h>
@@ -22,29 +27,14 @@
 # define NO 1
 
 /*ERROR MESSAGES*/
-# define FORK_ERROR "Error: fork did not work."
-# define PIPE_ERROR "Error: pipe did not work."
-# define PATH_ERROR "Error: path not found."
-# define COMMAND_ERROR "Error: command not found."
-# define ENV_ERROR "Error: PATH is not an environment variable."
-# define OPEN_ERROR "Error: file could not be opened."
 
 /*STRUCTS*/
 
 
 /*FUNCTIONS*/
 
-/*----------builtins----------*/
-
-/*----------exec----------*/
-//exec.c
-void	exec(void);
-
-/*----------parsing----------*/
-//parsing.c
-void	parsing(char *line, t_dlist *tokens);
-//signals.c
-void	signals(void);
+//utils.c
+void	print_progress(int printer, char *message);
 
 
 #endif
