@@ -50,7 +50,7 @@ To do next :
 - Classement des fonctions autorisées + descriptions
 - Transcrire le sujet + détails 
 
-09-23
+09-23/24
 
 Done :
 Function descriptions until isatty
@@ -64,6 +64,7 @@ To discuss :
 
 current working directory of a process affects the relative path
 Add #include <sys/types.h> #include <unistd.h> to .h (for stat function)
+When a string is returned by a function (ex : ttyname, strerror), it should be copied for storage and editing.
 
 Learn - 
 
@@ -77,4 +78,8 @@ Other :
 - struct stat (stat)
 - DIR structure (opendir)
 - struct dirent (readdir)
-
+- slot number (terminal)
+- ioctl operations
+- POSIX terminal I/O API
+- struct termios (tcsetattr)
+- termcap library (tgetent)
