@@ -27,15 +27,19 @@ readline offers editing capabilities while the user is entering the line.
 The input is usually written after the prompt. (Ex : "bash-3.2$" is a prompt)
 
 
+
 -rl_clear_history-  void clear_history(void) (**or rl_clear_history) #(main loop)#
 
 Clears the history stored by readline (add_history) in the history buffer.
+
+
 
 -rl_on_new_line-  variable (flag) #(Probably won't need it, main loop)#
 
 A flag used to determine if the GNU Readline library should act as if the cursor is on a new line.
 If the value is non-zero, readline will behave as if the cursor is at the beginning of a new line even if it isn't.
 Has to be set manually (rl_on_new_line = 1), which can be useful to customize the behavior of readline.
+
 
 
 -rl_replace_line-  void  rl_replace_line(Probably won't need it, const char *text, int clear_undo) #(main loop)#
@@ -46,6 +50,8 @@ Used to replace the the current line of text being edited in the readline buffer
 Used with rl_redisplay.
 Undo history refers to a feature which allows users to undo their previous edits or actions while editing a line.
 
+
+
 -rl_redisplay-	void rl_redisplay(void); #(Probably won't need it, main loop)#
 
 Used to redraw or update (refresh) the input line*.
@@ -53,12 +59,16 @@ Can be called after changes were made through user input or program actions.
 
 *input line : essentially the line of text that the user is typing or editing in response to the program's prompt.
 
+
+
 -add_history-	void add_history(const char *string); #(main loop)#
 
 Used to add a line ('string') to the command history*. 
 This way, the user can navigate their previous commands with the up and down arrows.
 
 *command history : A feature of the readline library which manages previous commands given by the user.
+
+
 
 -wait3-	pid_t wait3(int *status, int options, struct rusage *rusage); #(Execution)#
 
@@ -73,6 +83,8 @@ which is used to store resource utilization information about the terminated chi
 Return Value (pid_t): The function returns the process ID (PID) of the terminated child process on success. 
 It returns -1 on error, and errno is set to indicate the specific error.
 
+
+
 -wait4-	pid_t wait4(pid_t pid, int *status, int options, struct rusage *rusage); #(Execution)#
 
 Very similar to wait3, except :
@@ -81,9 +93,11 @@ If pid is set to -1, wait4 behaves similarly to waitpid, waiting for any child p
 If pid is set to 0, it waits for any child in the same process group as the caller. 
 If pid is greater than 0, it waits for the child with the specified PID.
 
+
+
 -signal-	void (*signal(int signum, void (*handler)(int)))(int);	#(signals)#
 
-Sets up signal handlers. Whenever "signum" signal is received 
+Sets up signal* handlers. Whenever "signum" signal is received 
 (for exemple 'SIGINT' which corresponds to Ctrl+C), 'handler' function is called.
 
 The signal function returns a function pointer to the previous signal handler for the specified signal. 
@@ -93,21 +107,149 @@ The handler function typically takes an integer argument, which is the signal nu
 The last int ((int)) indicates the data type of the return value of the signal function. In this case, 
 it specifies that the return value of signal is a pointer to a function that takes an int argument and returns void.
 
--sigaction-
--sigemptyset- 
--sigaddset- 
--kill- 
--getcwd- 
--chdir- 
--stat- 
--lstat- 
--fstat- 
--unlink-
--opendir- 
--readdir- 
--closedir-
--strerror- 
--isatty- 
+*Signals are a way for processes to communicate with each other or with the operating system. 
+They can be used for various purposes, such as handling errors, responding to user interrupts (e.g., Ctrl+C),
+and more.
+
+
+
+-sigaction-	int sigaction(int signum, const struct sigaction *act, struct sigaction *oldact); #(signals)#
+
+Same as signal, but gives more control over signal handling behabior.
+Can be used to specify which threads will handle a signal, for exemple. 
+
+>act : pointer to a struct sigaction that specifies the new action to be taken when the specified signal is received.
+(see man for more informations)
+>oldact : oldact: This is an optional pointer to a struct sigaction that can be used to retrieve 
+the previous action associated with the signal.
+
+
+
+-sigemptyset- int sigemptyset(sigset_t *set); #(signals)#
+
+sigemptyset function is used to initialize an empty signal set*.
+Used with sigaddset
+
+*signal set : data structures used to represent sets of signals that a process 
+is interested in or needs to manipulate.
+
+
+
+-sigaddset- int sigaddset(sigset_t *set, int signum); #(signals)#
+
+Adds a specific signal to a signal set.
+
+
+
+-kill- int kill(pid_t pid, int sig); #(execution, other)#
+
+Used to send signals to a specified process or process group. 
+It allows one process to send a signal to another process or group of processes, 
+which can be used for various purposes, such as process termination, communication, and synchronization.
+
+>pid: The process ID (PID) of the target process or process group to which the signal is sent.
+If pid ==...
+	greater than 0 : represents a specific process
+	0 : The signal is sent to all processed in the same process group as the calling process
+   -1 : The signal is sent to all processes for which the calling process has permissions to send signals
+	less than -1 : absolute value of pid represents a process group ID. Signal will be sent to all of it's members
+
+
+
+-getcwd-	char *getcwd(char *buf, size_t size); #(builtins)#
+
+Used to retrieve the current working directory of a process. 
+
+>buf : A pointer to a buffer where the cwd will be stored as a char *. If NULL, it will be allocated with malloc.
+>size : the size of buf
+
+Returns the adress of the buffer where the information is stored on sucess, or NULL on failure.
+
+
+
+-chdir-	int chdir(const char *path); #(builtins)#
+
+Used to change the current working directory of a process.
+
+Returns 0 on success or -1 and sets errno on failure.
+
+
+
+-stat-	int stat(const char *path, struct stat *buf); #(?)#
+
+Used to retrieve information about a file, such as its status or attributes. 
+It provides detailed information about a file, including its size, permissions, 
+timestamps (modification, access, and change times), and more.
+
+>path: The path to the file or directory for which to retrieve information
+>buf : A buffer to a struct stat where the information will be stored.
+
+Returns 0 on success or -1 and sets errno on failure.
+
+-lstat- int lstat(const char *path, struct stat *buf); #(?)#
+
+Basically the same as stat, except when it comes to handling symbolic links.
+If  used on a symbolic link, stat it gives information on the link's target 
+while lstat gives information on the link itself.
+
+
+
+-fstat-	int fstat(int fd, struct stat *buf); #(?)#
+
+Basically the same as stat (including symbolic link handling), except it uses an open file's fd.
+
+
+
+-unlink-	int unlink(const char *pathname); #(?)#
+
+Used to remove (delete) a file from the filesystem.
+It is permanently removed from the file system, and its disk space is freed.
+
+Returns 0 on success or -1 and sets errno on failure
+
+
+
+-opendir-	DIR *opendir(const char *dirname); #(?)#
+
+Used to open a directory for reading.
+Can be used to read the list of files and subdirectories.
+
+>dirname : the name of the directory to be opened.
+
+Returns a pointer to a DIR structure on success, which is used to represent the opened directory.
+Returns NULL on failure and sets errno.
+
+To be used with readdir and closedir. (Basically useless on it's own)
+
+
+
+-readdir-	struct dirent *readdir(DIR *dirp); #(?)#
+
+Used to read the contents of an opened directory.
+It reads the next directory entry for the specified directory (dirp).
+
+Returns a pointer to a struct dirent containing information about the entry.
+Returns NULL if there are no more entries to read or if an error occurs (and sets errno)
+
+
+
+-closedir-	int closedir(DIR *dirp); #(?)#
+
+Used to release the ressources allocated with opendir and ensure no more operations can be executed on the specified directory (dirp)
+
+Returns 0 on sucess and -1 on failure (sets errno).
+
+
+
+-strerror-	char *strerror(int errnum); #(Error management)#
+
+Takes an error code as an argument and returns a pointer to a null-terminated string that describes the error.
+Said string is NOT allocated using malloc, and therefore should not be freed.
+Returns NULL if the error code was not recognized.
+
+-isatty-	int isatty(int fd); #(parsing ?)#
+
+Used to determine if fd is connected to a terminal.
 -ttyname- 
 -ttyslot- 
 -ioctl-
