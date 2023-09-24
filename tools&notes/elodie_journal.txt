@@ -49,3 +49,32 @@ Done :
 To do next : 
 - Classement des fonctions autorisées + descriptions
 - Transcrire le sujet + détails 
+
+09-23
+
+Done :
+Function descriptions until isatty
+
+To do next :
+- Finish function descriptions
+- Transcrire le sujet
+
+
+To discuss :
+
+current working directory of a process affects the relative path
+Add #include <sys/types.h> #include <unistd.h> to .h (for stat function)
+
+Learn - 
+
+signals 
+- sigset_t object (sigemptyset)
+- signal set (sigemptyset)
+- struct sigaction (sigaction)
+
+Other :
+- Process group
+- struct stat (stat)
+- DIR structure (opendir)
+- struct dirent (readdir)
+
