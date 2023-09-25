@@ -81,3 +81,6 @@ Notes:
 	Week 7 - Tests tests tests!!
 - Something I can do today: create the printf flag and a printf function (if flag is on then print) with defined sentences and put them in different places in the code so we already have a base to test.
 ---- The printf flag should be added to the main static struct so we can access it everywhere. -----
+
+09-22
+- Research on signals (see notes in notebook)
