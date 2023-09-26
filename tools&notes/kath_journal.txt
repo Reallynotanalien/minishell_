@@ -92,6 +92,7 @@ Notes:
 09-26
 - Meeting of the day to discuss progress 
 - Updated the to-do file
+- Added the signals function and researched on how to handle Ctrl+D
 
 Notes:
 -Ctrl-D is just an arbitrary way of telling the OS to send the eof signal to a process that is reading from the keyboard.

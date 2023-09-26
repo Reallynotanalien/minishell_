@@ -3,7 +3,7 @@
 /*DESCRIPTION DE LA FONCTION*/
 void	interruption_handler(int signum)
 {
-
+	(void) signum;
 }
 
 /*If the SIGINT signal (Ctrl+C) is pressed, the interruption_handler
@@ -12,7 +12,6 @@ If the SIGQUIT signal (Ctrl+\) is pressed, nothing happens (it is
 ignored).*/
 void	signals(void)
 {
-	//SIGINT: Ctrl+C, à faire par Élodie
 	signal(SIGINT, interruption_handler);
 
 	//ÉLODIE TU PEUX SUPPRIMER LES NOTES JE VOULAIS JUSTE TE PARTAGER
@@ -30,7 +29,7 @@ void	signals(void)
 	//that the signal should be ignored.
 
 	//Donc la formulation ci-bas devrait être OK pour gérer 
-	//CTRL-\
+	//CTRL-"\"
 
 	signal(SIGQUIT, SIG_IGN);
 }
