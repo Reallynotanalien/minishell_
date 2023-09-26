@@ -1,19 +1,14 @@
 TO-DO
 
 Week 1 (this week) - Main loop (readline)
-- Classement des fonctions autorisées + descriptions (Élodie)
-- Add DS_Store to the .gitignore file (Élodie) - DONE
 - Transcrire le sujet + détails (Élodie)
 
-- Readline editing capabilities?
 - How to deal with NULL return from readline
 - How to deal with a non-accessible readline
-- How to use git properly
-- .gitignore (E -> K)
-- Main project loop (K -> E)
 
 Week 2 - Signals && Gestion d'erreurs
-- Research signals
+- Liste des signaux à gérer pour minishell (groups) CtrlC arrête un process mais pas minishell
+- Research signals (4 fonctions) (Élodie && Katherine)
 - Decide on error management strategy
 - Signals function
 - Exit + clean function (Cleans struct, prints message if necessary and exits)
@@ -70,3 +65,7 @@ DONE
 - Separate all the .h to have one for each part of the project and one main one (Katherine)
 - To check file (Katherine)
 - Command history (add history, redisplay (might not need it), replace) tester si ça marche (Katherine)
+- Classement des fonctions autorisées + descriptions (Élodie)
+- Add DS_Store to the .gitignore file (Élodie) - DONE
+- .gitignore (E -> K)
+- Main project loop (K -> E)

@@ -5,6 +5,9 @@
 
 
 /*VARIABLES*/
+# ifndef PRINTER
+#  define PRINTER NO
+# endif
 
 /*ERROR MESSAGES*/
 # define SIGNALS_OK "1: You have successfuly gone through the signals functions."
