@@ -84,3 +84,11 @@ Notes:
 
 09-22
 - Research on signals (see notes in notebook)
+
+09-25
+- Meeting of the day to decide focus of the week
+- Research on which signals are to be dealed with in minishell
+
+09-26
+- Meeting of the day to discuss progress 
+- Updated the to-do file
