@@ -31,9 +31,9 @@ This project was written in accordance to the Norm, as set of rules every 42 stu
 
 ## What we learned
 
-*
-*
-*
+* How to plan a project (How to separate the different modules between weekly goals, how to divide it between 2 people, etc).
+* How signals work
+* How to use the readline library
   
 #### Thank you so much for checking out our project! If you have any questions or comments regarding improvements we could make, do not hesitate to contact me (Reallynotanalien, links on my profile).
   
