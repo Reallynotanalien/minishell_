@@ -8,7 +8,7 @@ int	main(void)
 	
 	printf("%i\n", PRINTER);
 	//tokens = malloc(sizeof(t_dlist));
-	//signals();
+	signals();
 	print_progress(PRINTER, SIGNALS_OK);
 	//mini parsing
 	print_progress(PRINTER, GLOBAL_PARSING_OK);
