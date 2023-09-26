@@ -1,8 +1,8 @@
 # minishell <img src="https://m.media-amazon.com/images/I/61N7Yxv4L5L._AC_UF894,1000_QL80_.jpg" alt="Project note" width="50" height="37">
 
 <div align="center">
-<img src="https://m.media-amazon.com/images/I/61N7Yxv4L5L._AC_UF894,1000_QL80_.jpg" alt="Construction site" width="200" height="150">
-<p><em>Warning! This README is in construction and will be filled as we do the project!</em></p>
+<img src="https://media.tenor.com/cjY_wyJC94YAAAAM/mario-kart-unlucky.gif" width="200" height="150">
+<p><em>This gif here is very representative of how it felt doing this project.</em></p>
 </div>
 
 ## Table of contents
