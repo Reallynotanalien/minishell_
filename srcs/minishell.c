@@ -27,12 +27,10 @@ int	main(void)
 			add_history(line);
 			//free tokens
 		}
-		if (!line)
-			break ;
+		if (line == NULL)
+			exit_program(sh);
 		free(line);
 	}
-	rl_clear_history();
-	//free(tokens);
-	free(sh);
+	cleanup(sh);
 	return (0);
 }

@@ -12,6 +12,8 @@
 
 //errors.c
 void	parsing_error(t_shell *sh, char *error);
+void	cleanup(t_shell *sh);
+void	exit_program(t_shell *sh);
 
 //init.c
 void	init_struct(t_shell *sh);
