@@ -1,7 +1,6 @@
 
 #program ------------------------------------------
 NAME = minishell
-PRINTNAME = minishell_test
 
 #source directories
 SRCS =	./srcs/minishell.c \
@@ -36,9 +35,6 @@ $(NAME): $(OBJS)
 
 #rules ------------------------------------------
 all: $(NAME)
-
-print: $(PRINTNAME)
-	
 
 clean:
 	@$(MAKE) clean -C ./includes/Libft
