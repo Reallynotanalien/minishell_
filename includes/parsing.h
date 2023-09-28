@@ -9,8 +9,12 @@
 
 /*FUNCTIONS*/
 
+//errors.c
+void	parsing_error(t_shell *sh, char *error);
+
 //parsing.c
 //void	parsing(char *line, t_dlist *tokens);
+void	parsing(char *line, t_shell *sh);
 
 //signals.c
 void	signals(void);

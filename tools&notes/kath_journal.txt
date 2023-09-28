@@ -116,6 +116,7 @@ Instead, it is often handled by checking for EOF in your input stream.
 - Solved the git problem.
 - Added the libft properly.
 - Adjusted the signals function so it is clean.
+- Created error.c file and added it to the Makefile.
 
 To-do
 - Fonction message d'erreur

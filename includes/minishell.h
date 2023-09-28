@@ -29,7 +29,11 @@
 /*ERROR MESSAGES*/
 
 /*STRUCTS*/
-
+//This will be the main static struct, to be modified as we go!
+typedef struct shell
+{
+	int	error_flag;
+}				t_shell;
 
 /*FUNCTIONS*/
 

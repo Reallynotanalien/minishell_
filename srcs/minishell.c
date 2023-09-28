@@ -3,10 +3,12 @@
 int	main(void)
 {
 	//possiblement à modifier, selon la structure qu'on va utiliser
+	t_shell		*sh;
 	//t_dlist	*tokens;
 	char	*line;
 	
 	printf("%i\n", PRINTER);
+	sh = malloc(sizeof(t_shell));
 	//tokens = malloc(sizeof(t_dlist));
 	signals();
 	print_progress(PRINTER, SIGNALS_OK);
@@ -20,8 +22,10 @@ int	main(void)
 		{
 			//mettre add history après l'exec? pck si la commande est pas trouvée avec bash il la montre pas dans l'historique
 			//parsing(line, tokens);
+			parsing(line, sh);
 			print_progress(PRINTER, PARSING_OK);
-			//exec
+			if (sh->error_flag != ERROR)
+				printf("exec\n");
 			print_progress(PRINTER, EXEC_OK);
 			add_history(line);
 			print_progress(PRINTER, HISTORY_OK);
