@@ -1,8 +1,8 @@
 # minishell <img src="https://m.media-amazon.com/images/I/61N7Yxv4L5L._AC_UF894,1000_QL80_.jpg" alt="Project note" width="50" height="37">
 
 <div align="center">
-<img src="https://m.media-amazon.com/images/I/61N7Yxv4L5L._AC_UF894,1000_QL80_.jpg" alt="Construction site" width="200" height="150">
-<p><em>Warning! This README is in construction and will be filled as we do the project!</em></p>
+<img src="https://media.tenor.com/cjY_wyJC94YAAAAM/mario-kart-unlucky.gif" width="200" height="150">
+<p><em>This gif here is very representative of how it felt doing this project.</em></p>
 </div>
 
 ## Table of contents
@@ -31,9 +31,9 @@ This project was written in accordance to the Norm, as set of rules every 42 stu
 
 ## What we learned
 
-*
-*
-*
+* How to plan a project (How to separate the different modules between weekly goals, how to divide it between 2 people, etc).
+* How signals work
+* How to use the readline library
   
 #### Thank you so much for checking out our project! If you have any questions or comments regarding improvements we could make, do not hesitate to contact me (Reallynotanalien, links on my profile).
   
