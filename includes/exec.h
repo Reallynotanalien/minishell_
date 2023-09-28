@@ -2,6 +2,7 @@
 # define EXEC_H
 
 /*INCLUDES*/
+# include "minishell.h"
 
 /*ERROR MESSAGES*/
 # define FORK_ERROR "Error: fork did not work."
@@ -17,6 +18,6 @@
 /*FUNCTIONS*/
 
 //exec.c
-void	exec(void);
+void	exec(t_shell *sh);
 
 #endif

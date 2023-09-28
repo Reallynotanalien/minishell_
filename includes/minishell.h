@@ -7,8 +7,6 @@
 # include "./readline/history.h"
 # include "./readline/readline.h"
 # include "builtins.h"
-# include "exec.h"
-# include "parsing.h"
 # include "printer.h"
 # include <fcntl.h>
 # include <sys/wait.h>
@@ -29,6 +27,11 @@
 /*ERROR MESSAGES*/
 
 /*STRUCTS*/
+//This will be the main static struct, to be modified as we go!
+typedef struct shell
+{
+	int	error_flag;
+}				t_shell;
 
 
 /*FUNCTIONS*/

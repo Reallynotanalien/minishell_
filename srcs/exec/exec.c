@@ -1,6 +1,8 @@
 # include "../../includes/minishell.h"
+# include "../../includes/exec.h"
 
-void	exec(void)
+void	exec(t_shell *sh)
 {
-
+	printf("Execution happens here because error is set to %i\n",
+		sh->error_flag);
 }
