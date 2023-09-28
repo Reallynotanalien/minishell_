@@ -33,14 +33,6 @@ $(NAME): $(OBJS)
 	# @$(MAKE) everything -C ./includes/readline
 	@$(CC) $(CFLAGS) $(OBJS) -o $(NAME) $(LIBS)
 	@echo "$(YELLOW)⚡️$(NAME) ⚡️$(B_GREEN)has been created $(COLOUR_END)!"
-	
-$(PRINTNAME): $(OBJS)
-	$(CFLAGS) += -D PRINTER=0
-	@$(MAKE) -C ./includes/libft
-	# --@cd ./includes/readline && ./configure
-	# @$(MAKE) everything -C ./includes/readline
-	@$(CC) $(CFLAGS) $(OBJS) -o $(PRINTNAME) $(LIBS)
-	@echo "$(YELLOW)⚡️$(NAME) ⚡️$(B_GREEN)has been created $(COLOUR_END)!"
 
 #rules ------------------------------------------
 all: $(NAME)
