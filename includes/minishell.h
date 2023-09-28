@@ -7,8 +7,6 @@
 # include "./readline/history.h"
 # include "./readline/readline.h"
 # include "builtins.h"
-# include "exec.h"
-# include "parsing.h"
 # include "printer.h"
 # include <fcntl.h>
 # include <sys/wait.h>
@@ -34,6 +32,7 @@ typedef struct shell
 {
 	int	error_flag;
 }				t_shell;
+
 
 /*FUNCTIONS*/
 

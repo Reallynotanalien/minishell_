@@ -128,3 +128,8 @@ To-do
 Notes:
 - In bash, Ctrl+C just writes on a newline so it erases the C symbol
 - Also, Ctrl+D exits the program but it writes exit before getting out
+
+About signals:
+Yes, you've got the concept right. Signals are predefined events in your operating system that can interrupt 
+the normal execution of your program. When a signal occurs, it can indeed stop the normal execution of your program. 
+What the signal() function allows you to do is specify how your program should respond when a particular signal is received.

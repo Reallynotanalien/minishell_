@@ -2,6 +2,7 @@
 # define PARSING_H
 
 /*INCLUDES*/
+# include "minishell.h"
 
 /*ERROR MESSAGES*/
 
@@ -11,6 +12,9 @@
 
 //errors.c
 void	parsing_error(t_shell *sh, char *error);
+
+//init.c
+void	init_struct(t_shell *sh);
 
 //parsing.c
 //void	parsing(char *line, t_dlist *tokens);
