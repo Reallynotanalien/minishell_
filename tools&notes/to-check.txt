@@ -7,3 +7,4 @@ To check after everything is pushed and we are ready for correction
 - Make sure tools&notes is not in the repository
 - Test one last time
 - Delete all print_progress functions + printer.h + include in minishell.h 
+- Delete the added arg for the test Makefile
