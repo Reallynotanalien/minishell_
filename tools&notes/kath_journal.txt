@@ -138,3 +138,12 @@ What the signal() function allows you to do is specify how your program should r
 
 About Ctrl+d
 When readline returns NULL, it means Ctrl+D was pressed (EOF), and you can exit the loop. 
+
+09-29
+- Meeting of the day to discuss progress + tasks to take on for the weekend.
+- Solved the .h problem
+- Created the static struct function. 
+
+To-do
+- errno
+- tester les signaux et noter les tests + résultats
