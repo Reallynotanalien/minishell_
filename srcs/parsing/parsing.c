@@ -1,5 +1,4 @@
 # include "../../includes/minishell.h"
-# include "../../includes/parsing.h"
 
 void	parsing(char *line)
 {

@@ -3,9 +3,9 @@
 NAME = minishell
 
 #source directories
-SRCS =	./srcs/minishell.c \
+SRCS =	./srcs/init.c \
+		./srcs/minishell.c \
 		./srcs/parsing/error.c \
-		./srcs/parsing/init.c \
 		./srcs/parsing/parsing.c \
 		./srcs/parsing/signals.c \
 		./srcs/exec/exec.c \

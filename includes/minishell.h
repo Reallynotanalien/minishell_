@@ -6,6 +6,8 @@
 # include "libft/libft.h"
 # include "./readline/history.h"
 # include "./readline/readline.h"
+# include "exec.h"
+# include "parsing.h"
 # include "builtins.h"
 # include "printer.h"
 # include <fcntl.h>
@@ -35,6 +37,9 @@ typedef struct data
 
 
 /*FUNCTIONS*/
+
+//init.c
+void	init_data(t_data *data);
 
 //utils.c
 void	print_progress(int printer, char *message);
