@@ -83,3 +83,13 @@ Other :
 - POSIX terminal I/O API
 - struct termios (tcsetattr)
 - termcap library (tgetent)
+
+09-29
+
+Done :
+Created 'elodie' branch
+
+To do next :
+
+To discuss :
+Symbol beside lines to delete
