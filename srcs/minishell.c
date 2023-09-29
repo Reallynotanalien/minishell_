@@ -2,11 +2,10 @@
 #include "../includes/parsing.h"
 #include "../includes/exec.h"
 
-int	main(int argc, char **argv)//❌ (argc argv)
+int	main(void)
 {
 	//t_dlist	*tokens;
 	char	*line;
-	int		i;//❌
 	
 	//tokens = malloc(sizeof(t_dlist));
 	signals();
@@ -16,8 +15,6 @@ int	main(int argc, char **argv)//❌ (argc argv)
 		line = readline("minishell$> ");
 		if (line && *line)
 		{
-			//mettre add history après l'exec? pck si la commande est pas
-			//trouvée avec bash il la montre pas dans l'historique
 			parsing(line);
 			if (use_data()->error_flag != ERROR)
 				exec();

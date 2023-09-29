@@ -48,7 +48,6 @@ IN PROGRESS
 - To test file (Élodie)
 - Printf flag (for debugging) (Katherine) - Just needs to optimize it
 - Vidéo LLDB (Élodie)
-- Recherches sur les 4 fonctions en lien avec les signaux (Élodie && Katherine)
 - Exit + clean function (Cleans struct, prints message if necessary and exits) (Katherine)
 - Error flag (To catch errors before execution) (Katherine)
 - Add tests to the Makefile (Élodie)
@@ -70,3 +69,4 @@ DONE
 - Handler ou SIG_IGN CTRL\ (Katherine)
 - Decide on error management strategy
 - Transcrire le sujet + détails (Élodie)
+- Recherches sur les 4 fonctions en lien avec les signaux (Élodie && Katherine)

@@ -8,6 +8,7 @@ Meeting at 5pm : Questions time, explain code, add to to-do list
 
 - Rules -
 Commit regularly
-Free variables in the same function they were allocated in 
+Free variables in the same function they were allocated in
 (if not part of the main struct)
+When allocating memory for a variable in the struct, update the cleanup function to free it appropriately.
 Push before going back home
