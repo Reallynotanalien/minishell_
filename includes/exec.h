@@ -18,6 +18,6 @@
 /*FUNCTIONS*/
 
 //exec.c
-void	exec(t_shell *sh);
+void	exec();
 
 #endif

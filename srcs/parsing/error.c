@@ -1,20 +1,20 @@
 # include "../../includes/minishell.h"
 
-void	parsing_error(t_shell *sh, char *error)
+void	parsing_error(char *error)
 {
 	printf("ERROR: %s\n", error);
-	sh->error_flag = ERROR;
+	use_data()->error_flag = ERROR;
 }
 
-void	cleanup(t_shell *sh)
+void	cleanup()
 {
 	rl_clear_history();
-	free(sh);
+	free(use_data());
 }
 
-void	exit_program(t_shell *sh)
+void	exit_program()
 {
-	cleanup(sh);
+	cleanup();
 	//printf to be deleted later on
 	printf("Cleanup done!\n");
 	exit(1);
