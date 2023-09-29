@@ -15,8 +15,6 @@ int	main(void)
 		line = readline("minishell$> ");
 		if (line && *line)
 		{
-			//mettre add history après l'exec? pck si la commande est pas
-			//trouvée avec bash il la montre pas dans l'historique
 			parsing(line);
 			if (use_data()->error_flag != ERROR)
 				exec();
