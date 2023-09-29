@@ -1,10 +1,11 @@
 
 #program ------------------------------------------
 NAME = minishell
-PRINTNAME = minishell_test
 
 #source directories
 SRCS =	./srcs/minishell.c \
+		./srcs/parsing/error.c \
+		./srcs/parsing/init.c \
 		./srcs/parsing/parsing.c \
 		./srcs/parsing/signals.c \
 		./srcs/exec/exec.c \
@@ -33,20 +34,9 @@ $(NAME): $(OBJS)
 	# @$(MAKE) everything -C ./includes/readline
 	@$(CC) $(CFLAGS) $(OBJS) -o $(NAME) $(LIBS)
 	@echo "$(YELLOW)⚡️$(NAME) ⚡️$(B_GREEN)has been created $(COLOUR_END)!"
-	
-$(PRINTNAME): $(OBJS)
-	$(CFLAGS) += -D PRINTER=0
-	@$(MAKE) -C ./includes/libft
-	# --@cd ./includes/readline && ./configure
-	# @$(MAKE) everything -C ./includes/readline
-	@$(CC) $(CFLAGS) $(OBJS) -o $(PRINTNAME) $(LIBS)
-	@echo "$(YELLOW)⚡️$(NAME) ⚡️$(B_GREEN)has been created $(COLOUR_END)!"
 
 #rules ------------------------------------------
 all: $(NAME)
-
-print: $(PRINTNAME)
-	
 
 clean:
 	@$(MAKE) clean -C ./includes/Libft

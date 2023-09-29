@@ -5,12 +5,7 @@ Week 1 - 18 au 24 septembre - Main loop (readline)
 - How to deal with a non-accessible readline
 
 Week 2 - 25 septembre au 1er octobre - Signals && Gestion d'erreurs
-- Decide on error management strategy
-- Exit + clean function (Cleans struct, prints message if necessary and exits)
-- Error flag (To catch errors before execution)
 - Test Excel file audit to choose which test are the most relevant and add them to the test file
-- Add tests to the Makefile
-- Create test file (Élodie)
 
 - Debbuger (E -> K)
 - Testing Makefile (E -> K)
@@ -44,21 +39,20 @@ Week 6 - 23 au 29 octobre - Builtins
 - pwd
 - export
 - unset
-- exit
+- exit (CtrlD)
 
 Week 7 - 30 octobre au 4 novembre - Tests tests tests!!
 
 IN PROGRESS
-- Transcrire le sujet + détails (Élodie)
 - Functions description and research file (Élodie)
-- To test file (Katherine)
+- To test file (Élodie)
 - Printf flag (for debugging) (Katherine) - Just needs to optimize it
-- Signals function (Katherine)
-- Handler CtrlC (Élodie)
-- Handler CtrlD (Katherine)
-- Handler ou SIG_IGN CTRL\ (Élodie)
 - Vidéo LLDB (Élodie)
 - Recherches sur les 4 fonctions en lien avec les signaux (Élodie && Katherine)
+- Exit + clean function (Cleans struct, prints message if necessary and exits) (Katherine)
+- Error flag (To catch errors before execution) (Katherine)
+- Add tests to the Makefile (Élodie)
+- Create test file (Élodie)
 
 DONE
 - Add minishell into the .gitignore file (Élodie)
@@ -71,3 +65,8 @@ DONE
 - .gitignore (E -> K)
 - Main project loop (K -> E)
 - Readline documentation (Élodie and Katherine)
+- Signals function (Katherine)
+- Handler CtrlC (Katherine)
+- Handler ou SIG_IGN CTRL\ (Katherine)
+- Decide on error management strategy
+- Transcrire le sujet + détails (Élodie)

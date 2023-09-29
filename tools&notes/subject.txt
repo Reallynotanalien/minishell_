@@ -1,7 +1,5 @@
 Need to do :
 
-• Afficher un prompt en l’attente d’une nouvelle commande.
-• Posséder un historique fonctionnel.
 • Chercher et lancer le bon exécutable (en se basant sur la variable d’environnement
 PATH, ou sur un chemin relatif ou absolu).
 • Ne pas utiliser plus d’une variable globale. Réfléchissez-y car vous devrez justifier son utilisation.
@@ -23,11 +21,11 @@ est connectée à l’entrée de la commande suivante grâce à un pipe.
 qui doivent être substituées par leur contenu.
 • Gérer $? qui doit être substitué par le statut de sortie de la dernière pipeline
 exécutée au premier plan.
-• Gérer ctrl-C, ctrl-D et ctrl-\ qui doivent fonctionner comme dans bash.
+
 • En mode interactif :
-	◦ ctrl-C affiche un nouveau prompt sur une nouvelle ligne.
+
 	◦ ctrl-D quitte le shell.
-	◦ ctrl-\ ne fait rien.
+
 • Votre shell doit implémenter les builtins suivantes :
 	◦ echo et l’option -n
 	◦ cd uniquement avec un chemin relatif ou absolu
@@ -36,3 +34,10 @@ exécutée au premier plan.
 	◦ unset sans aucune option
 	◦ env sans aucune option ni argument
 	◦ exit sans aucune option
+
+DONE
+• Afficher un prompt en l’attente d’une nouvelle commande.
+• Posséder un historique fonctionnel.
+• Gérer ctrl-C, ctrl-D et ctrl-\ qui doivent fonctionner comme dans bash.
+	◦ ctrl-C affiche un nouveau prompt sur une nouvelle ligne.
+	◦ ctrl-\ ne fait rien.
