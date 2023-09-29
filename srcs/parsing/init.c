@@ -1,6 +1,6 @@
 # include "../../includes/minishell.h"
 
-void	init_struct(t_shell *sh)
+void	init_data(t_data *data)
 {
-	sh->error_flag = 0;
+	data->error_flag = 0;
 }

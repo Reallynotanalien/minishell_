@@ -11,16 +11,16 @@
 /*FUNCTIONS*/
 
 //errors.c
-void	parsing_error(t_shell *sh, char *error);
-void	cleanup(t_shell *sh);
-void	exit_program(t_shell *sh);
+void	parsing_error(char *error);
+void	cleanup();
+void	exit_program();
 
 //init.c
-void	init_struct(t_shell *sh);
+void	init_data(t_data *data);
 
 //parsing.c
 //void	parsing(char *line, t_dlist *tokens);
-void	parsing(char *line, t_shell *sh);
+void	parsing(char *line);
 
 //signals.c
 void	signals(void);

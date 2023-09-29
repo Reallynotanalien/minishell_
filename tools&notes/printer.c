@@ -5,12 +5,12 @@
 int	main(void)
 {
 	//possiblement à modifier, selon la structure qu'on va utiliser
-	t_shell		*sh;
+	t_data		*data;
 	//t_dlist	*tokens;
 	char	*line;
 	
 	printf("%i\n", PRINTER);
-	sh = malloc(sizeof(t_shell));
+	sh = malloc(sizeof(t_data));
 	//tokens = malloc(sizeof(t_dlist));
 	signals();
 	print_progress(PRINTER, SIGNALS_OK);
@@ -26,7 +26,7 @@ int	main(void)
 			//parsing(line, tokens);
 			parsing(line, sh);
 			print_progress(PRINTER, PARSING_OK);
-			if (sh->error_flag != ERROR)
+			if (data->error_flag != ERROR)
 				exec(sh);
 			print_progress(PRINTER, EXEC_OK);
 			add_history(line);

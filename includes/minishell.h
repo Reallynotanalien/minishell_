@@ -28,16 +28,17 @@
 
 /*STRUCTS*/
 //This will be the main static struct, to be modified as we go!
-typedef struct shell
+typedef struct data
 {
 	int	error_flag;
-}				t_shell;
+}				t_data;
 
 
 /*FUNCTIONS*/
 
 //utils.c
 void	print_progress(int printer, char *message);
+t_data	*use_data(void);
 
 
 #endif
