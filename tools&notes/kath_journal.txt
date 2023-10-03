@@ -147,3 +147,8 @@ When readline returns NULL, it means Ctrl+D was pressed (EOF), and you can exit 
 To-do
 - errno
 - tester les signaux et noter les tests + résultats
+
+10-03
+- Tested all of the signals
+- Solved the ^C problem with the setattributes functions
+- Deleted the printer files that were still there

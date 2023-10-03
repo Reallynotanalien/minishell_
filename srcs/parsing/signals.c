@@ -17,13 +17,16 @@ void	interruption_handler(int signum)
 	rl_redisplay();
 }
 
-/*If the SIGINT signal (Ctrl+C) is pressed, the interruption_handler
+/*Since we do not want the ^C characters to be echoed when we press Ctrl+C,
+the terminal's attributes are modified to mute this echo.
+If the SIGINT signal (Ctrl+C) is pressed, the interruption_handler
 takes care of it. 
 If the SIGQUIT signal (Ctrl+\) is pressed, nothing happens (it is
 ignored), avoiding the default behavior of quitting and generating
 a core dump.*/
 void	signals(void)
 {
+	disable_ctrlc();
 	signal(SIGINT, interruption_handler);
 	signal(SIGQUIT, SIG_IGN);
 }

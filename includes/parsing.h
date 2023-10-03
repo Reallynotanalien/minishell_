@@ -21,4 +21,8 @@ void	parsing(char *line);
 //signals.c
 void	signals(void);
 
+//term_attributes.c
+void	disable_ctrlc(void);
+void	restore_attributes(void);
+
 #endif

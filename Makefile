@@ -8,6 +8,7 @@ SRCS =	./srcs/init.c \
 		./srcs/parsing/error.c \
 		./srcs/parsing/parsing.c \
 		./srcs/parsing/signals.c \
+		./srcs/parsing/term_attributes.c \
 		./srcs/exec/exec.c \
 		./srcs/utils.c \
 

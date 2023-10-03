@@ -9,7 +9,6 @@
 # include "exec.h"
 # include "parsing.h"
 # include "builtins.h"
-# include "printer.h"
 # include <fcntl.h>
 # include <sys/wait.h>
 # include <sys/signal.h>
@@ -32,7 +31,9 @@
 //This will be the main static struct, to be modified as we go!
 typedef struct data
 {
-	int	error_flag;
+	int				error_flag;
+	struct termios	old_attributes;
+	struct termios	new_attributes;
 }				t_data;
 
 
