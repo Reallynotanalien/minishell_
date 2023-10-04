@@ -37,15 +37,12 @@ typedef struct data
 	struct termios	new_attributes;
 }				t_data;
 
-
 /*FUNCTIONS*/
 
 //init.c
 void	init_data(t_data *data);
 
 //utils.c
-void	print_progress(int printer, char *message);
 t_data	*use_data(void);
-
 
 #endif
