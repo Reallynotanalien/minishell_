@@ -26,6 +26,7 @@
 # define NO 1
 
 /*ERROR MESSAGES*/
+# define ARGC_ERROR "No argument should be sent appart from the program's name\n"
 
 /*STRUCTS*/
 //This will be the main static struct, to be modified as we go!

@@ -1,15 +1,13 @@
 # include "../../includes/minishell.h"
 
-void	main_parsing(int argc, char **argv, char **env)
+int	main_parsing(int argc, char **argv, char **env)
 {
 	if (argc != 1)
-	{
-		printf("No argument should be sent appart from the program's name\n");
-		exit(1);
-	}
+		return (printf(ARGC_ERROR), 0);
 	use_data()->new_env = env;
 	if (!argv)
 		printf("No argv\n");
+	return (1);
 }
 
 void	parsing(void)
