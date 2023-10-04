@@ -15,7 +15,7 @@ void	cleanup(void);
 void	exit_program(void);
 
 //parsing.c
-void	main_parsing(int argc, char **argv, char **env);
+int		main_parsing(int argc, char **argv, char **env);
 void	parsing(void);
 
 //signals.c

@@ -2,8 +2,9 @@
 
 int	main(int argc, char **argv, char **env)
 {
+	if (!main_parsing(argc, argv, env))
+		exit(1);
 	signals();
-	main_parsing(argc, argv, env);
 	while (1)
 	{
 		use_data()->line = readline("minishell$> ");

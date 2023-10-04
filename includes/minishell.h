@@ -26,11 +26,13 @@
 # define NO 1
 
 /*ERROR MESSAGES*/
+# define ARGC_ERROR "No argument should be sent appart from the program's name\n"
 
 /*STRUCTS*/
 //This will be the main static struct, to be modified as we go!
 typedef struct data
 {
+	char			**new_env;
 	char			*line;
 	int				error_flag;
 	struct termios	old_attributes;
