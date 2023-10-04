@@ -2,10 +2,12 @@
 
 void	main_parsing(int argc, char **argv, char **env)
 {
-	if (!env)
-		printf("No env wtfff\n");
-	if (!argc)
-		printf("No argc\n");
+	if (argc != 1)
+	{
+		printf("No argument should be sent appart from the program's name\n");
+		exit(1);
+	}
+	use_data()->new_env = env;
 	if (!argv)
 		printf("No argv\n");
 }

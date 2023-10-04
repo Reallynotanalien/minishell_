@@ -31,6 +31,7 @@
 //This will be the main static struct, to be modified as we go!
 typedef struct data
 {
+	char			**new_env;
 	char			*line;
 	int				error_flag;
 	struct termios	old_attributes;
