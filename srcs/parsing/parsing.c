@@ -1,8 +1,8 @@
 # include "../../includes/minishell.h"
 
-void	parsing(char *line)
+void	parsing()
 {
 	//This line below is just for testing. To be deleted later on.
-	if (!line)
+	if (!use_data()->line)
 		parsing_error("There was an error!!");
 }

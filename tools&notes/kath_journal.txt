@@ -152,3 +152,9 @@ To-do
 - Tested all of the signals
 - Solved the ^C problem with the setattributes functions
 - Deleted the printer files that were still there
+
+10-04
+- Mini meeting to discuss avancement
+- To-do:
+	- Put the line in the struct
+	- Main parsing

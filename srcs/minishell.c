@@ -1,29 +1,22 @@
 #include "../includes/minishell.h"
-#include "../includes/parsing.h"
-#include "../includes/exec.h"
 
 int	main(void)
 {
-	//t_dlist	*tokens;
-	char	*line;
-	
-	//tokens = malloc(sizeof(t_dlist));
 	signals();
-	//mini parsing
 	while (1)
 	{
-		line = readline("minishell$> ");
-		if (line && *line)
+		use_data()->line = readline("minishell$> ");
+		if (use_data()->line && *use_data()->line)
 		{
-			parsing(line);
+			parsing();
 			if (use_data()->error_flag != ERROR)
 				exec();
-			add_history(line);
+			add_history(use_data()->line);
 			//free tokens
 		}
-		if (line == NULL)
+		if (use_data()->line == NULL)
 			exit_program();
-		free(line);
+		free(use_data()->line);
 	}
 	cleanup();
 	return (0);
