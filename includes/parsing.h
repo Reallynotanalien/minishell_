@@ -15,7 +15,7 @@ void	cleanup(void);
 void	exit_program(void);
 
 //parsing.c
-//void	parsing(char *line, t_dlist *tokens);
+void	main_parsing(int argc, char **argv, char **env);
 void	parsing(void);
 
 //signals.c

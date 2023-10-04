@@ -1,8 +1,9 @@
 #include "../includes/minishell.h"
 
-int	main(void)
+int	main(int argc, char **argv, char **env)
 {
 	signals();
+	main_parsing(argc, argv, env);
 	while (1)
 	{
 		use_data()->line = readline("minishell$> ");
