@@ -88,8 +88,16 @@ Other :
 
 Done :
 Created 'elodie' branch
+Added protection in cleanup (created 'clean_data' function)
+
 
 To do next :
 
 To discuss :
 Symbol beside lines to delete
+
+10-04
+
+Done :
+Added token struct to .h
+Created single_quoted and double_quoted functions.

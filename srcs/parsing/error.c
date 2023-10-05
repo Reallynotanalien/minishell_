@@ -6,13 +6,19 @@ void	parsing_error(char *error)
 	use_data()->error_flag = ERROR;
 }
 
-void	cleanup()
+void	clean_data(void)
 {
-	rl_clear_history();
-	free(use_data());
+	if (use_data())
+		free (use_data());
 }
 
-void	exit_program()
+void	cleanup(void)
+{
+	rl_clear_history();
+	clean_data();
+}
+
+void	exit_program(void)
 {
 	cleanup();
 	//printf to be deleted later on
