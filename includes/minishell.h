@@ -35,12 +35,7 @@
 /*STRUCTS*/
 
 /*This struct represents the tokens used for each readline return.
-They are seperated in different types defined in VARIABLES. (If necessary, we'll see)
-Quotation :
-0 = the token is not between quotation marks.
-1 = the token is between single quotation marks.
-2 = the token is between double quotation marks.
-*/
+They are seperated in different types defined in VARIABLES.
 typedef struct s_token
 {
 	char			*token;
