@@ -11,6 +11,7 @@ SRCS =	./srcs/minishell.c \
 		./srcs/exec/exec.c \
 		./srcs/utils.c \
 		./srcs/tokens.c \
+		./srcs/parsing/token_parsing.c 
 
 #colours ------------------------------------------
 B_BLUE='\033[1;34m'
