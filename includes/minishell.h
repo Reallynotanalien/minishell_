@@ -6,8 +6,9 @@
 # include "libft/libft.h"
 # include "./readline/history.h"
 # include "./readline/readline.h"
+# include "exec.h"
+# include "parsing.h"
 # include "builtins.h"
-# include "printer.h"
 # include <fcntl.h>
 # include <sys/wait.h>
 # include <sys/signal.h>
@@ -29,6 +30,7 @@
 # define T_REDIR 4
 
 /*ERROR MESSAGES*/
+# define ARGC_ERROR "No argument should be sent appart from the program's name\n"
 
 /*STRUCTS*/
 
@@ -51,16 +53,20 @@ typedef struct s_data
 {
 	struct s_token	*token;
 	int				error_flag;
+	char			**new_env;
+	char			*line;
+	struct termios	old_attributes;
+	struct termios	new_attributes;
 }				t_data;
 
-
 /*FUNCTIONS*/
+
+//init.c
+void	init_data(t_data *data);
 
 //utils.c
 int		double_quoted(char *str, int index);
 int		single_quoted(char *str, int index);
-void	print_progress(int printer, char *message);
 t_data	*use_data(void);
-
 
 #endif
