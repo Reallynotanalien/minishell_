@@ -10,11 +10,17 @@ void	parsing_error(char *error)
 	use_data()->error_flag = ERROR;
 }
 
+void	clean_data(void)
+{
+	if (use_data())
+		free (use_data());
+}
+
 /*Clears the readline history and frees the data struct.*/
 void	cleanup(void)
 {
 	rl_clear_history();
-	free(use_data());
+	clean_data();
 }
 
 /*Gracefully exits the program by cleaning up all necessary data
