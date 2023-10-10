@@ -1,3 +1,26 @@
+----Most Recent----
+
+Doing :
+Parsing functions for tokens
+
+To do next :
+Exit and clean functions
+Create a line with only the necessary whitespaces, before tokenisation
+Verify if all quotes are closed (before tokenisation)
+
+
+Done :
+Added token struct to .h
+Created single_quoted and double_quoted functions.
+Cleaned journal and commits
+
+
+To discuss :
+The code structure of the tokenisation and error handling
+
+
+
+
 18/09
 Worked on pull requests
 Correct pipex
@@ -94,10 +117,3 @@ Added protection in cleanup (created 'clean_data' function)
 To do next :
 
 To discuss :
-Symbol beside lines to delete
-
-10-04
-
-Done :
-Added token struct to .h
-Created single_quoted and double_quoted functions.
