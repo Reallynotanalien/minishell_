@@ -16,7 +16,7 @@ void	exit_program(void);
 
 //parsing.c
 int		main_parsing(int argc, char **argv, char **env);
-void	parsing(void);
+int		line_parsing(void);
 
 //signals.c
 void	signals(void);

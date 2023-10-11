@@ -3,18 +3,21 @@
 int	main_parsing(int argc, char **argv, char **env)
 {
 	if (argc != 1)
-		return (printf(ARGC_ERROR), 0);
+		return (printf(ARGC_ERROR), ERROR);
 	use_data()->new_env = env;
 	if (!use_data()->new_env)
-		return (printf(ENV_ERROR), 0);
+		return (printf(ENV_ERROR), ERROR);
 	if (!argv)
-		return (printf(ARGV_ERROR), 0);
-	return (1);
+		return (printf(ARGV_ERROR), ERROR);
+	return (0);
 }
 
-void	parsing(void)
+int	line_parsing(void)
 {
-	//Cut the line into tokens
-	//Iterate through each token to make sure they are valid
+	//1- Look if all the quotes are closed if not return ERROR
+
+	//2- Cut the line into tokens
+	//3- Iterate through each token to make sure they are valid
 	//and add them to the command struct
+	return (0);
 }
