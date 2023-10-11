@@ -1,5 +1,7 @@
 # include "../../includes/minishell.h"
 
+/*Checks if the minishell args are valid and makes a copy
+of the env variable to be used later.*/
 int	main_parsing(int argc, char **argv, char **env)
 {
 	if (argc != 1)
