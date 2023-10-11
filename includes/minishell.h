@@ -34,8 +34,8 @@
 
 /*STRUCTS*/
 
-/*This struct represents the tokens used for each readline return.
-They are seperated in different types defined in VARIABLES.
+//This struct represents the tokens used for each readline return.
+//They are seperated in different types defined in VARIABLES.
 typedef struct s_token
 {
 	char			*token;
