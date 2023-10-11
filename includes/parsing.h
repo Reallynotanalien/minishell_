@@ -4,6 +4,7 @@
 /*INCLUDES*/
 
 /*ERROR MESSAGES*/
+# define STRDUP_ERROR "Could not duplicate string.\n"
 
 /*STRUCTS*/
 
@@ -24,5 +25,8 @@ void	signals(void);
 //term_attributes.c
 void	disable_ctrlc(void);
 void	restore_attributes(void);
+
+//token_split.c
+int	split_tokens(void);
 
 #endif
