@@ -4,6 +4,7 @@
 /*INCLUDES*/
 
 /*ERROR MESSAGES*/
+# define STRDUP_ERROR "Could not duplicate string.\n"
 
 /*STRUCTS*/
 
