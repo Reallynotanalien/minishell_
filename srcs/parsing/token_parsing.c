@@ -11,7 +11,7 @@ have been caught earlier if a redirection symbol is present on left*/
 
 int	next_isredirection(char *line, int index)
 {
-	if (ft_iswhitespace(line[index + 1] == 1))
+	if (ft_iswhitespace(line[index + 1]))
 		index += 2;
 	else
 		index++;
@@ -36,10 +36,10 @@ int	parsing_redirection(char *line, int index)
 		else
 			index++;
 		if (line[index + 1] && line[index] == line[index + 1])
-			printf ("minishell: syntax error near unexpected token '%c%c'",
-				line[index]);
+			printf ("minishell: syntax error near unexpected token '%c%c'\n",
+				line[index], line[index]);
 		else
-			printf ("minishell: syntax error near unexpected token '%c'",
+			printf ("minishell: syntax error near unexpected token '%c'\n",
 				line[index]);
 		return (ERROR);
 	}
