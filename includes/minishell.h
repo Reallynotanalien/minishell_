@@ -35,7 +35,7 @@
 /*STRUCTS*/
 
 /*This struct represents the tokens used for each readline return.
-They are seperated in different types defined in VARIABLES.
+They are seperated in different types defined in VARIABLES.*/
 typedef struct s_token
 {
 	char			*token;
@@ -54,7 +54,7 @@ typedef struct s_data
 	struct termios	new_attributes;
 }				t_data;
 
-/*FUNCTIONS*/
+//FUNCTIONS
 
 //init.c
 void	init_data(t_data *data);
@@ -63,5 +63,6 @@ void	init_data(t_data *data);
 int		double_quoted(char *str, int index);
 int		single_quoted(char *str, int index);
 t_data	*use_data(void);
+int		print_error(char *message);
 
 #endif

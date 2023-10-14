@@ -15,7 +15,7 @@ t_data	*use_data(void)
 
 int	print_error(char *message)
 {
-	write(2, &message, sizeof(message));
-	write(2, "\n", 1);
+	printf("%s\n", message);
+	// write(2, "\n", 1);
 	return (ERROR);
 }
