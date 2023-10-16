@@ -1,18 +1,26 @@
 # include "../../includes/minishell.h"
 
+/*Checks if the minishell args are valid and makes a copy
+of the env variable to be used later.*/
 int	main_parsing(int argc, char **argv, char **env)
 {
 	if (argc != 1)
-		return (printf(ARGC_ERROR), 0);
+		return (printf(ARGC_ERROR), ERROR);
 	use_data()->new_env = env;
+	if (!use_data()->new_env)
+		return (printf(ENV_ERROR), ERROR);
 	if (!argv)
-		printf("No argv\n");
-	return (1);
+		return (printf(ARGV_ERROR), ERROR);
+	return (0);
 }
 
-void	parsing(void)
+int	line_parsing(void)
 {
-	//This line below is just for testing. To be deleted later on.
-	if (!use_data()->line)
-		parsing_error("There was an error!!");
+	//1- Look if all the quotes are closed if not return ERROR
+	//2- Cut the line into tokens
+	if (split_tokens() == ERROR)
+		return (ERROR);
+	//3- Iterate through each token to make sure they are valid
+	//and add them to the command struct
+	return (0);
 }

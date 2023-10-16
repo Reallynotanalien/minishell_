@@ -31,11 +31,13 @@
 
 /*ERROR MESSAGES*/
 # define ARGC_ERROR "No argument should be sent appart from the program's name\n"
+# define ENV_ERROR "The environment could not be copied\n"
+# define ARGV_ERROR "There is no argv\n"
 
 /*STRUCTS*/
 
-/*This struct represents the tokens used for each readline return.
-They are seperated in different types defined in VARIABLES.*/
+//This struct represents the tokens used for each readline return.
+//They are seperated in different types defined in VARIABLES.
 typedef struct s_token
 {
 	char			*token;
