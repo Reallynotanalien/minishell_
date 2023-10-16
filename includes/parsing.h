@@ -17,6 +17,8 @@ void	exit_program(void);
 
 //parsing.c
 int		main_parsing(int argc, char **argv, char **env);
+void	parsing(void);
+int		parsing_redirection(char *line, int index);
 int		line_parsing(void);
 
 //signals.c

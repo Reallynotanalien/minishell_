@@ -12,3 +12,10 @@ t_data	*use_data(void)
 	}
 	return (data);
 }
+
+int	print_error(char *message)
+{
+	printf("%s\n", message);
+	// write(2, "\n", 1);
+	return (ERROR);
+}
