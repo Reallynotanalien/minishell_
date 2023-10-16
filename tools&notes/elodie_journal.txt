@@ -1,11 +1,12 @@
 ----Most Recent----
 
 Doing :
-Parsing functions for tokens
+Create a line with only the necessary whitespaces, before tokenisation
+
 
 To do next :
+Test how th git works
 Exit and clean functions
-Create a line with only the necessary whitespaces, before tokenisation
 Verify if all quotes are closed (before tokenisation)
 
 
@@ -14,6 +15,8 @@ Token_parsing function
 
 To discuss :
 Git (malord)
+Error in env_error definition
+Error in token_split (does not return anything)
 
 
 

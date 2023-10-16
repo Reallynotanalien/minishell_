@@ -16,6 +16,7 @@ void	cleanup(void);
 void	exit_program(void);
 
 //parsing.c
+char	*remove_spaces(char *str);
 int		main_parsing(int argc, char **argv, char **env);
 void	parsing(void);
 int		parsing_redirection(char *line, int index);
