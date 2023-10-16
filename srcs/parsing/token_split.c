@@ -8,4 +8,5 @@ int	split_tokens(void)
 	if (!temp)
 		return (STRDUP_ERROR, ERROR);
 	free(temp);
+	return (0);
 }

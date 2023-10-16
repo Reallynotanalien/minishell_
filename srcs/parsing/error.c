@@ -23,6 +23,13 @@ void	cleanup(void)
 	clean_data();
 }
 
+int	print_error(char *message)
+{
+	printf("%s\n", message);
+	// write(2, "\n", 1);
+	return (ERROR);
+}
+
 /*Gracefully exits the program by cleaning up all necessary data
 before printing an exit message, restoring the terminal's original
 attributes and exiting.*/

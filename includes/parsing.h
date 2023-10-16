@@ -14,6 +14,7 @@
 void	parsing_error(char *error);
 void	cleanup(void);
 void	exit_program(void);
+int		print_error(char *message);
 
 //parsing.c
 int		main_parsing(int argc, char **argv, char **env);
@@ -29,6 +30,6 @@ void	disable_ctrlc(void);
 void	restore_attributes(void);
 
 //token_split.c
-int	split_tokens(void);
+int		split_tokens(void);
 
 #endif

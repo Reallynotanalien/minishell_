@@ -65,6 +65,5 @@ void	init_data(t_data *data);
 int		double_quoted(char *str, int index);
 int		single_quoted(char *str, int index);
 t_data	*use_data(void);
-int		print_error(char *message);
 
 #endif
