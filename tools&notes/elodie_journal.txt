@@ -10,13 +10,10 @@ Verify if all quotes are closed (before tokenisation)
 
 
 Done :
-Added token struct to .h
-Created single_quoted and double_quoted functions.
-Cleaned journal and commits
-
+Token_parsing function
 
 To discuss :
-The code structure of the tokenisation and error handling
+Git (malord)
 
 
 
