@@ -13,13 +13,6 @@ t_data	*use_data(void)
 	return (data);
 }
 
-int	print_error(char *message)
-{
-	printf("%s\n", message);
-	// write(2, "\n", 1);
-	return (ERROR);
-}
-
 //Returns 1 if 'index' is part of a single-quoted string. Else returns 0.
 /*Counts the number of single quotes until index is reached,
 checks if they are already closed (even number of quotes), 

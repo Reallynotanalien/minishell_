@@ -12,6 +12,8 @@ void	parsing_error(char *error)
 
 void	clean_data(void)
 {
+	if (use_data()->token)
+		free (use_data()->token);
 	if (use_data())
 		free (use_data());
 }
@@ -21,6 +23,12 @@ void	cleanup(void)
 {
 	rl_clear_history();
 	clean_data();
+}
+
+int	print_error(char *message)
+{
+	printf("%s\n", message);
+	return (ERROR);
 }
 
 /*Gracefully exits the program by cleaning up all necessary data
