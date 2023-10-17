@@ -47,22 +47,33 @@ int	split_tokens(void)
 	temp = ft_strdup(use_data()->line);
 	if (!temp)
 		return (print_error(STRDUP_ERROR));
-	while (temp[count] != '\0')
+	while (temp[count] != '\0' && temp[count + 1] != '\0')
 	{
 		token = NULL;
 		end = count;
-		if (is_redirection(temp[count]))
+		if (!is_redirection(temp[count]))
+		{
+			while (temp[end] && !is_redirection(temp[end + 1]))
+				end++;
+		}
+		else
 		{
 			//parsing redirection should check if there are 3 symbols next to one another
 			if (parsing_redirection(use_data()->line, count) != ERROR)
 			{
 				if (temp[count] == temp[count + 1])
 					end++;
-				token = ft_strndup(temp, count, end);
-				add_token(token);
-				count = end++;
 			}
 		}
+		printf("count: %i\n", count);
+		printf("end: %i\n", end);
+		if (ft_iswhitespace(temp[count]))
+			count++;
+		printf("Char: %c OK\n", temp[count]);
+		printf("count++: %i\n", count);
+		token = ft_strndup(temp, count, end);
+		add_token(token);
+		count = end++;
 		free(token);
 		count++;
 	}
