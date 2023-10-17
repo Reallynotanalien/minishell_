@@ -12,6 +12,7 @@ SRCS =	./srcs/init.c \
 		./srcs/parsing/token_parsing.c \
 		./srcs/parsing/token_split.c \
 		./srcs/exec/exec.c \
+		./srcs/linked_list.c \
 		./srcs/utils.c \
 		
 

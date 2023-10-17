@@ -5,22 +5,27 @@ of the env variable to be used later.*/
 int	main_parsing(int argc, char **argv, char **env)
 {
 	if (argc != 1)
-		return (printf(ARGC_ERROR), ERROR);
+		return (print_error(ARGC_ERROR));
 	use_data()->new_env = env;
 	if (!use_data()->new_env)
-		return (printf(ENV_ERROR), ERROR);
+		return (print_error(ENV_ERROR));
 	if (!argv)
-		return (printf(ARGV_ERROR), ERROR);
+		return (print_error(ARGV_ERROR));
 	return (0);
 }
 
+/*First checks if all the quotes are closed, if not, returns ERROR.*/
 int	line_parsing(void)
 {
 	//1- Look if all the quotes are closed if not return ERROR
+	//then deletes all superfluous spaces and changes the line 
+	//accordingly. 
 	//2- Cut the line into tokens
 	if (split_tokens() == ERROR)
 		return (ERROR);
+	view_list();
 	//3- Iterate through each token to make sure they are valid
 	//and add them to the command struct
+	free_tokens_if_not_empty();
 	return (0);
 }

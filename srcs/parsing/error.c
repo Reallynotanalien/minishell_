@@ -12,6 +12,8 @@ void	parsing_error(char *error)
 
 void	clean_data(void)
 {
+	if (use_data()->token)
+		free (use_data()->token);
 	if (use_data())
 		free (use_data());
 }
@@ -26,7 +28,6 @@ void	cleanup(void)
 int	print_error(char *message)
 {
 	printf("%s\n", message);
-	// write(2, "\n", 1);
 	return (ERROR);
 }
 

@@ -22,17 +22,17 @@
 
 /*VARIABLES*/
 # define ERROR 1
-# define YES 0
-# define NO 1
+# define YES 1
+# define NO 0
 # define T_STR 1
 # define T_SUBST 2
 # define T_PIPE 3
 # define T_REDIR 4
 
 /*ERROR MESSAGES*/
-# define ARGC_ERROR "No argument should be sent appart from the program's name\n"
-# define ENV_ERROR "The environment could not be copied\n"
-# define ARGV_ERROR "There is no argv\n"
+# define ARGC_ERROR "No argument should be sent appart from the program's name"
+# define ENV_ERROR "The environment could not be copied"
+# define ARGV_ERROR "There is no argv"
 
 /*STRUCTS*/
 
@@ -65,5 +65,12 @@ void	init_data(t_data *data);
 int		double_quoted(char *str, int index);
 int		single_quoted(char *str, int index);
 t_data	*use_data(void);
+
+//linked_list.c
+t_token	*add_token(char *token);
+void	free_tokens_if_not_empty(void);
+t_token	*newlst(char *token, int type);
+void	addlst(t_token *lst, char *token, int type);
+void	view_list(void);
 
 #endif

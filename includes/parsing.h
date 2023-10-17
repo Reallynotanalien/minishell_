@@ -29,6 +29,8 @@ void	signals(void);
 void	disable_ctrlc(void);
 void	restore_attributes(void);
 
+
+
 //token_split.c
 int		split_tokens(void);
 
