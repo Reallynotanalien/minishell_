@@ -7,76 +7,34 @@ int	is_redirection(char c)
 	return (NO);
 }
 
-void	*ft_memncpy(void *dest, const void *src, int start, int end)
-{
-	size_t	a;
-
-	a = 0;
-	if (!dest && !src)
-		return (NULL);
-	while (start <= end)
-	{
-		((char *)dest)[a] = ((char *)src)[start];
-		start++;
-		a++;
-	}
-	return (dest);
-}
-
-char	*ft_strndup(char *src, int start, int end)
-{
-	int		len;
-	char	*copy;
-
-	len = end - start + 1;
-	copy = ft_calloc(sizeof(char), len + 1);
-	if (copy == NULL)
-		return (NULL);
-	ft_memncpy(copy, src, start, end);
-	return (copy);
-}
-
 int	split_tokens(void)
 {
-	char	*temp;
 	char	*token;
 	int		count;
 	int		end;
 
 	count = 0;
-	temp = ft_strdup(use_data()->line);
-	if (!temp)
-		return (print_error(STRDUP_ERROR));
-	while (temp[count] != '\0' && temp[count + 1] != '\0')
+	while (use_data()->line[count] != '\0'
+		&& use_data()->line[count + 1] != '\0')
 	{
 		token = NULL;
 		end = count;
-		if (!is_redirection(temp[count]))
-		{
-			while (temp[end] && !is_redirection(temp[end + 1]))
+		if (!is_redirection(use_data()->line[count]))
+			while (use_data()->line[end]
+				&& !is_redirection(use_data()->line[end + 1]))
 				end++;
-		}
 		else
 		{
 			//parsing redirection should check if there are 3 symbols next to one another
 			if (parsing_redirection(use_data()->line, count) != ERROR)
-			{
-				if (temp[count] == temp[count + 1])
+				if (use_data()->line[count] == use_data()->line[count + 1])
 					end++;
-			}
 		}
-		printf("count: %i\n", count);
-		printf("end: %i\n", end);
-		if (ft_iswhitespace(temp[count]))
-			count++;
-		printf("Char: %c OK\n", temp[count]);
-		printf("count++: %i\n", count);
-		token = ft_strndup(temp, count, end);
+		token = ft_strtrim(ft_strdup_part(use_data()->line, count, end), " ");
 		add_token(token);
 		count = end++;
 		free(token);
 		count++;
 	}
-	free(temp);
 	return (0);
 }
