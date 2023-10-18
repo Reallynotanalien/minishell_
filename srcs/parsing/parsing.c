@@ -22,6 +22,7 @@ void	line_parsing(void)
 		return ;
 	split_tokens();
 	view_list();
+	build_commands();
 	//3- Iterate through each token to make sure they are valid
 	//and add them to the command struct
 	free_tokens_if_not_empty();

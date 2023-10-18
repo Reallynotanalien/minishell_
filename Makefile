@@ -5,15 +5,17 @@ NAME = minishell
 #source directories
 SRCS =	./srcs/init.c \
 		./srcs/minishell.c \
+		./srcs/parsing/build_commands.c \
+		./srcs/parsing/command_list.c \
 		./srcs/parsing/error.c \
 		./srcs/parsing/line_parsing.c \
+		./srcs/parsing/linked_list.c \
 		./srcs/parsing/parsing.c \
 		./srcs/parsing/signals.c \
 		./srcs/parsing/term_attributes.c \
 		./srcs/parsing/token_parsing.c \
 		./srcs/parsing/token_split.c \
 		./srcs/exec/exec.c \
-		./srcs/linked_list.c \
 		./srcs/utils.c \
 		
 
