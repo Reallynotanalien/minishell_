@@ -27,8 +27,8 @@ void	check_type(char *token)
 	}
 	else
 	{
-		check_if_file();
-		check_if_substitution();
+		printf("check_if_file()\n");
+		printf("check_if_substitution()\n");
 	}
 }
 

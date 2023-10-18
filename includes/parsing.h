@@ -41,4 +41,6 @@ void		restore_attributes(void);
 //token_split.c
 void		split_tokens(void);
 
+int			is_redirection(char c);
+
 #endif
