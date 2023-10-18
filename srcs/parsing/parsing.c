@@ -15,14 +15,17 @@ int	main_parsing(int argc, char **argv, char **env)
 }
 
 /*First checks if all the quotes are closed, if not, returns ERROR
-and sets the error flag to ERROR. Then, splits the line into tokens.*/
+and sets the error flag to ERROR. Then, splits the line into tokens.
+Those tokens are then used to create a command list, in which each 
+command will be associated with the right input and output file for
+easy execution.*/
 void	line_parsing(void)
 {
 	if (parse_quotes(use_data()->line) == ERROR)
 		return ;
 	split_tokens();
 	view_list();
-	//3- Iterate through each token to make sure they are valid
-	//and add them to the command struct
-	return (0);
+	build_commands();
+	view_commands();
+	free_tokens_if_not_empty();
 }

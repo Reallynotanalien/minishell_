@@ -1,4 +1,4 @@
-#include "../includes/minishell.h"
+# include "../../includes/minishell.h"
 
 t_token	*create_token(void)
 {
@@ -101,6 +101,7 @@ void	view_list(void)
 	{
 		printf("----------------\n");
 		printf("token%d:[%s]\n", i++, (char *)tokens->token);
+		printf("type: %d\n", tokens->type);
 		tokens = tokens->next;
 	}
 }
