@@ -6,7 +6,7 @@ NAME = minishell
 SRCS =	./srcs/init.c \
 		./srcs/minishell.c \
 		./srcs/parsing/error.c \
-		./srcs/line_parsing.c \
+		./srcs/parsing/line_parsing.c \
 		./srcs/parsing/parsing.c \
 		./srcs/parsing/signals.c \
 		./srcs/parsing/term_attributes.c \
