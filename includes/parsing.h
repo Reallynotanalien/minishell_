@@ -17,6 +17,10 @@ void	cleanup(void);
 void	exit_program(void);
 int		print_error(char *message);
 
+//line_parsing.c
+int		parse_quotes(char *str);
+char	*remove_spaces(char *str);
+
 //parsing.c
 char	*remove_spaces(char *str);
 int		main_parsing(int argc, char **argv, char **env);

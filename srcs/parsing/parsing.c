@@ -1,29 +1,5 @@
 # include "../../includes/minishell.h"
 
-//🌷K: Quand on écrit quelque chose entre quotes genre : "Allo j'aime 42" et 
-// qu'il y a une quote entre les quotes, ça donne le warning de unclosed 
-//quotes mais ça devrait pas 
-int	parse_quotes(char *str)
-{
-	int	i;
-	int	single_quotes;
-	int	double_quotes;
-
-	single_quotes = 0;
-	i = -1;
-	while (str[++i])
-		if (str[i] == '\'')
-			single_quotes++;
-	double_quotes = 0;
-	i = -1;
-	while (str[++i])
-		if (str[i] == '\"')
-			double_quotes ++;
-	if (single_quotes % 2 != 0 || double_quotes % 2 != 0)
-		return (parsing_error(QUOTES_ERROR));
-	return (0);
-}
-
 /*Checks if the minishell args are valid and makes a copy
 of the env variable to be used later.*/
 int	main_parsing(int argc, char **argv, char **env)
@@ -38,56 +14,15 @@ int	main_parsing(int argc, char **argv, char **env)
 	return (0);
 }
 
-/*First checks if all the quotes are closed, if not, returns ERROR.*/
+/*First checks if all the quotes are closed, if not, returns ERROR
+and sets the error flag to ERROR. Then, splits the line into tokens.*/
 void	line_parsing(void)
 {
-	//1- Look if all the quotes are closed if not return ERROR
-	//then deletes all superfluous spaces and changes the line 
-	//accordingly. 
 	if (parse_quotes(use_data()->line) == ERROR)
 		return ;
 	split_tokens();
-	//view_list to be deleted before we push
 	view_list();
 	//3- Iterate through each token to make sure they are valid
 	//and add them to the command struct
 	free_tokens_if_not_empty();
-}
-
-// 👷 E : Working on this ! 👷
-//Finds the lenght of the given string without useless spaces
-// int	get_strlen()
-// {
-
-// }
-
-//This works, except it leaves a single space at the end of the str
-char	*remove_spaces(char *str)
-{
-	char	*new_str;
-	int		i;
-	int		str_len;
-
-	if (!str || !str[0] || parse_quotes(str) == ERROR)
-		return (NULL);
-	i = -1;
-	str_len = 0;
-	while (str[++i])
-		if (!ft_iswhitespace(str[i]) || double_quoted(str, i) 
-			|| single_quoted(str, i)
-			|| (i != 0 && !ft_iswhitespace(str[i - 1])))
-			str_len++;
-	new_str = ft_calloc(str_len + 1, sizeof(char));
-	if (!new_str)
-	{
-		print_error("minishell: could not allocate memory");
-		return (NULL);
-	}
-	i = -1;
-	str_len = 0;
-	while (str[++i])
-		if (!ft_iswhitespace(str[i])
-			|| (i != 0 && !ft_iswhitespace(str[i - 1])))
-			new_str[str_len++] = str[i];
-	return (new_str);
 }
