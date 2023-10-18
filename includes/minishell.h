@@ -28,6 +28,7 @@
 # define T_SUBST 2
 # define T_PIPE 3
 # define T_REDIR 4
+# define T_HEREDOC 5
 
 /*ERROR MESSAGES*/
 # define ARGC_ERROR "No argument should be sent appart from the program's name"
@@ -35,6 +36,15 @@
 # define ARGV_ERROR "There is no argv"
 
 /*STRUCTS*/
+
+typedef struct s_command
+{
+	int					infile;
+	int					outfile;
+	char				*cmd;
+	char				*args;
+	struct s_command	*next;
+}					t_command;
 
 //This struct represents the tokens used for each readline return.
 //They are seperated in different types defined in VARIABLES.
@@ -48,12 +58,13 @@ typedef struct s_token
 //This will be the main static struct, to be modified as we go!
 typedef struct s_data
 {
-	struct s_token	*token;
-	int				error_flag;
-	char			**new_env;
-	char			*line;
-	struct termios	old_attributes;
-	struct termios	new_attributes;
+	struct s_token		*token;
+	struct s_command	*cmd;
+	int					error_flag;
+	char				**new_env;
+	char				*line;
+	struct termios		old_attributes;
+	struct termios		new_attributes;
 }				t_data;
 
 //FUNCTIONS
@@ -72,5 +83,11 @@ void	free_tokens_if_not_empty(void);
 t_token	*newlst(char *token, int type);
 void	addlst(t_token *lst, char *token, int type);
 void	view_list(void);
+
+//command_list.c
+t_command	*create_command(void);
+t_command	*add_command(char *command);
+void		free_commands_if_not_empty(void);
+void		view_commands(void);
 
 #endif

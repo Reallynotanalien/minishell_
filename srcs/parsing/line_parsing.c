@@ -31,6 +31,14 @@ int	parse_quotes(char *str)
 
 // }
 
+//🌷K: J'ai essayé de le mettre devant le readline, mais il y a 2 problèmes:
+//1- For some reason, quand on fait ça et qu'une erreur arrive dans le programme
+//tout ferme???
+//2- Si on remplace la ligne directement, la ligne qui va être ajoutée à 
+//l'history sera pas bonne (ça va être la nouvelle version changée). Donc je 
+//pense qu'il faudrait faire une copie de la ligne sans les espaces et c'est ça
+//que je vais envoyer à split_tokens, mais on garde quand même la vraie ligne en
+//mémoire 🌷
 //This works, except it leaves a single space at the end of the str
 char	*remove_spaces(char *str)
 {
