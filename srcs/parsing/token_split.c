@@ -7,7 +7,7 @@ int	is_redirection(char c)
 	return (NO);
 }
 
-int	split_tokens(void)
+void	split_tokens(void)
 {
 	char	*token;
 	int		count;
@@ -36,5 +36,4 @@ int	split_tokens(void)
 		free(token);
 		count++;
 	}
-	return (0);
 }

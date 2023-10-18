@@ -5,13 +5,14 @@
 
 /*ERROR MESSAGES*/
 # define STRDUP_ERROR "Could not duplicate string.\n"
+# define QUOTES_ERROR "found unclosed quotation marks"
 
 /*STRUCTS*/
 
 /*FUNCTIONS*/
 
 //errors.c
-void	parsing_error(char *error);
+int		parsing_error(char *error);
 void	cleanup(void);
 void	exit_program(void);
 int		print_error(char *message);
@@ -21,7 +22,7 @@ char	*remove_spaces(char *str);
 int		main_parsing(int argc, char **argv, char **env);
 void	parsing(void);
 int		parsing_redirection(char *line, int index);
-int		line_parsing(void);
+void	line_parsing(void);
 
 //signals.c
 void	signals(void);
@@ -30,9 +31,7 @@ void	signals(void);
 void	disable_ctrlc(void);
 void	restore_attributes(void);
 
-
-
 //token_split.c
-int		split_tokens(void);
+void	split_tokens(void);
 
 #endif

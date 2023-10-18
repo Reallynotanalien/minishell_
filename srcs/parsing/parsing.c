@@ -1,35 +1,8 @@
 # include "../../includes/minishell.h"
 
-/*Checks if the minishell args are valid and makes a copy
-of the env variable to be used later.*/
-int	main_parsing(int argc, char **argv, char **env)
-{
-	if (argc != 1)
-		return (print_error(ARGC_ERROR));
-	use_data()->new_env = env;
-	if (!use_data()->new_env)
-		return (print_error(ENV_ERROR));
-	if (!argv)
-		return (print_error(ARGV_ERROR));
-	return (0);
-}
-
-/*First checks if all the quotes are closed, if not, returns ERROR.*/
-int	line_parsing(void)
-{
-	//1- Look if all the quotes are closed if not return ERROR
-	//then deletes all superfluous spaces and changes the line 
-	//accordingly. 
-	//2- Cut the line into tokens
-	if (split_tokens() == ERROR)
-		return (ERROR);
-	view_list();
-	//3- Iterate through each token to make sure they are valid
-	//and add them to the command struct
-	free_tokens_if_not_empty();
-	return (0);
-}
-
+//🌷K: Quand on écrit quelque chose entre quotes genre : "Allo j'aime 42" et 
+// qu'il y a une quote entre les quotes, ça donne le warning de unclosed 
+//quotes mais ça devrait pas 
 int	parse_quotes(char *str)
 {
 	int	i;
@@ -47,8 +20,38 @@ int	parse_quotes(char *str)
 		if (str[i] == '\"')
 			double_quotes ++;
 	if (single_quotes % 2 != 0 || double_quotes % 2 != 0)
-		return (print_error("minishell: found unclosed quotation marks"));
+		return (parsing_error(QUOTES_ERROR));
 	return (0);
+}
+
+/*Checks if the minishell args are valid and makes a copy
+of the env variable to be used later.*/
+int	main_parsing(int argc, char **argv, char **env)
+{
+	if (argc != 1)
+		return (print_error(ARGC_ERROR));
+	use_data()->new_env = env;
+	if (!use_data()->new_env)
+		return (print_error(ENV_ERROR));
+	if (!argv)
+		return (print_error(ARGV_ERROR));
+	return (0);
+}
+
+/*First checks if all the quotes are closed, if not, returns ERROR.*/
+void	line_parsing(void)
+{
+	//1- Look if all the quotes are closed if not return ERROR
+	//then deletes all superfluous spaces and changes the line 
+	//accordingly. 
+	if (parse_quotes(use_data()->line) == ERROR)
+		return ;
+	split_tokens();
+	//view_list to be deleted before we push
+	view_list();
+	//3- Iterate through each token to make sure they are valid
+	//and add them to the command struct
+	free_tokens_if_not_empty();
 }
 
 // 👷 E : Working on this ! 👷

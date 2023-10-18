@@ -4,10 +4,11 @@
 printed and the error flag gets turned on. The parsing can then 
 continue and print as many error messages as it needs without exiting
 the program; the flag will get catched at the moment of the execution.*/
-void	parsing_error(char *error)
+int	parsing_error(char *error)
 {
-	printf("ERROR: %s\n", error);
+	printf("minishell: %s\n", error);
 	use_data()->error_flag = ERROR;
+	return (ERROR);
 }
 
 void	clean_data(void)
