@@ -6,12 +6,14 @@ NAME = minishell
 SRCS =	./srcs/init.c \
 		./srcs/minishell.c \
 		./srcs/parsing/error.c \
+		./srcs/parsing/line_parsing.c \
 		./srcs/parsing/parsing.c \
 		./srcs/parsing/signals.c \
 		./srcs/parsing/term_attributes.c \
 		./srcs/parsing/token_parsing.c \
 		./srcs/parsing/token_split.c \
 		./srcs/exec/exec.c \
+		./srcs/linked_list.c \
 		./srcs/utils.c \
 		
 

@@ -8,7 +8,7 @@
 # define PIPE_ERROR "Error: pipe did not work."
 # define PATH_ERROR "Error: path not found."
 # define COMMAND_ERROR "Error: command not found."
-# define ENV_ERROR "Error: PATH is not an environment variable."
+# define PATH_ENV_ERROR "Error: PATH is not an environment variable."
 # define OPEN_ERROR "Error: file could not be opened."
 
 /*STRUCTS*/

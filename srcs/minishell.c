@@ -12,12 +12,10 @@ int	main(int argc, char **argv, char **env)
 			return (ERROR);						//Probably not the right return value. (Syntax error " or allocation failed.)
 		if (use_data()->line && *use_data()->line)
 		{
-			if (line_parsing() == ERROR)
-				break ;
+			line_parsing();
 			if (use_data()->error_flag != ERROR)
 				exec();
 			add_history(use_data()->line);
-			//free tokens
 		}
 		if (use_data()->line == NULL)
 			exit_program();

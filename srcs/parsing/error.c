@@ -4,14 +4,17 @@
 printed and the error flag gets turned on. The parsing can then 
 continue and print as many error messages as it needs without exiting
 the program; the flag will get catched at the moment of the execution.*/
-void	parsing_error(char *error)
+int	parsing_error(char *error)
 {
-	printf("ERROR: %s\n", error);
+	printf("minishell: %s\n", error);
 	use_data()->error_flag = ERROR;
+	return (ERROR);
 }
 
 void	clean_data(void)
 {
+	if (use_data()->token)
+		free (use_data()->token);
 	if (use_data())
 		free (use_data());
 }
@@ -21,6 +24,12 @@ void	cleanup(void)
 {
 	rl_clear_history();
 	clean_data();
+}
+
+int	print_error(char *message)
+{
+	printf("%s\n", message);
+	return (ERROR);
 }
 
 /*Gracefully exits the program by cleaning up all necessary data
