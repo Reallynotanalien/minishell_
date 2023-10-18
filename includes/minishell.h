@@ -28,6 +28,7 @@
 # define T_SUBST 2
 # define T_PIPE 3
 # define T_REDIR 4
+# define T_HEREDOC 5
 
 /*ERROR MESSAGES*/
 # define ARGC_ERROR "No argument should be sent appart from the program's name"
