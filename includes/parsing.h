@@ -17,6 +17,7 @@ void	exit_program(void);
 int		print_error(char *message);
 
 //parsing.c
+char	*remove_spaces(char *str);
 int		main_parsing(int argc, char **argv, char **env);
 void	parsing(void);
 int		parsing_redirection(char *line, int index);

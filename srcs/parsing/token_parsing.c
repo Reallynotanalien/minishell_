@@ -21,10 +21,10 @@ int	next_isredirection(char *line, int index)
 	return (0);
 }
 
-//For '>>', index is the index of the first '>'. Does not parse here_doc.
+//For '>>', index is the index of the first '>'.
 int	parsing_redirection(char *line, int index)
 {
-	if (line[index + 1] && line[index] == line[index + 1])
+	if (line[index + 1] && line[index] == line[index + 1] && line[index] != '|')
 		index ++;
 	if (!line[index + 1])
 		return (print_error
@@ -32,9 +32,7 @@ int	parsing_redirection(char *line, int index)
 	if (index == 0 && line[index] == '|')
 		return (print_error
 			("minishell: syntax error near unexpected token '|'"));
-	if ((next_isredirection(line, index) && line[index] == '|')
-		|| (next_isredirection(line, index)
-			&& next_isredirection(line, index + 1)))
+	if (next_isredirection(line, index))
 	{
 		if (ft_iswhitespace(line[index + 1]))
 			index += 2;
