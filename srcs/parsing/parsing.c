@@ -48,10 +48,10 @@ int	parse_quotes(char *str)
 
 // 👷 E : Working on this ! 👷
 //Finds the lenght of the given string without useless spaces
-int	get_strlen()
-{
+// int	get_strlen()
+// {
 
-}
+// }
 
 //This works, except it leaves a single space at the end of the str
 char	*remove_spaces(char *str)
