@@ -1,8 +1,5 @@
 # include "../../includes/minishell.h"
 
-//🌷K: Quand on écrit quelque chose entre quotes genre : "Allo j'aime 42" et 
-// qu'il y a une quote entre les quotes, ça donne le warning de unclosed 
-//quotes mais ça devrait pas 
 int	parse_quotes(char *str)
 {
 	int	i;
@@ -12,11 +9,11 @@ int	parse_quotes(char *str)
 	single_quotes = 0;
 	i = -1;
 	while (str[++i])
-		if (str[i] == '\'')
+		if (str[i] == '\'' && !double_quoted(str, i))
 			single_quotes++;
 	double_quotes = 0;
 	i = -1;
-	while (str[++i])
+	while (str[++i] && !single_quoted(str, i))
 		if (str[i] == '\"')
 			double_quotes ++;
 	if (single_quotes % 2 != 0 || double_quotes % 2 != 0)
@@ -43,10 +40,7 @@ char	*remove_spaces(char *str)
 	int		str_len;
 
 	if (!str || !str[0] || parse_quotes(str) == ERROR)
-	{
-		free (str);
-		return (NULL);
-	}
+		return (free (str), NULL);
 	i = -1;
 	str_len = 0;
 	while (str[++i])
@@ -55,10 +49,7 @@ char	*remove_spaces(char *str)
 			str_len++;
 	new_str = ft_calloc(str_len + 1, sizeof(char));
 	if (!new_str)
-	{
-		free (str);
-		return (NULL);
-	}
+		return (free (str), NULL);
 	i = -1;
 	str_len = 0;
 	while (str[++i])
