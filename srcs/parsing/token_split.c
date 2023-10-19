@@ -7,6 +7,31 @@ int	is_redirection(char c)
 	return (NO);
 }
 
+void	check_type(char *token)
+{
+	if (is_redirection(token[0]))
+	{
+		if (token[0] == '|')
+			use_data()->token->type = T_PIPE;
+		else if (token[0] == '<')
+		{
+			if (token[1] != '\0')
+				use_data()->token->type = T_HEREDOC;
+			else
+				use_data()->token->type = T_REDIR;
+		}
+		else if (token[0] == '>')
+		{
+			use_data()->token->type = T_REDIR;
+		}
+	}
+	else
+	{
+		printf("check_if_file()\n");
+		printf("check_if_substitution()\n");
+	}
+}
+
 void	split_tokens(void)
 {
 	char	*token;
@@ -32,6 +57,7 @@ void	split_tokens(void)
 		}
 		token = ft_strtrim(ft_strdup_part(use_data()->line, count, end), " ");
 		add_token(token);
+		check_type(token);
 		count = end++;
 		free(token);
 		count++;

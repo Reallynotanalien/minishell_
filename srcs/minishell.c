@@ -20,6 +20,7 @@ int	main(int argc, char **argv, char **env)
 		if (use_data()->line == NULL)
 			exit_program();
 		free(use_data()->line);
+		free_commands_if_not_empty();
 	}
 	cleanup();
 	return (0);
