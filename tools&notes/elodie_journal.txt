@@ -1,17 +1,17 @@
 ----Most Recent----
 
 Doing :
-Create a line with only the necessary whitespaces, before tokenisation
-
+substitution function
 
 To do next :
 Test how th git works
 Exit and clean functions
-Verify if all quotes are closed (before tokenisation)
 
 
 Done :
 Token_parsing function
+Create a line with only the necessary whitespaces, before tokenisation
+Verify if all quotes are closed (before tokenisation)
 
 To discuss :
 Git (malord)

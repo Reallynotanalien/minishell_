@@ -40,7 +40,7 @@ int	single_quoted(char *str, int index)
 		}
 		i++;
 	}
-	if (quoted % 2 != 0 && ft_strchr(&str[i], '\''))
+	if (quoted % 2 != 0 && ft_strchr(&str[i + 1], '\''))
 		return (1);
 	return (0);
 }
@@ -56,7 +56,7 @@ int	double_quoted(char *str, int index)
 	i = 0;
 	while (str[i] && i < index)
 	{
-		if (str[i] == '"' && single_quoted(str, i) == 0)
+		if (str[i] == '"' && !single_quoted(str, i))
 		{
 			i_tmp = i;
 			while (str[i_tmp] && str[i_tmp] != '\"')
@@ -68,7 +68,7 @@ int	double_quoted(char *str, int index)
 		}
 		i++;
 	}
-	if (quoted % 2 != 0 && ft_strchr(&str[i], '\"'))
+	if (quoted % 2 != 0 && ft_strchr(&str[i + 1], '\"'))
 		return (1);
 	return (0);
 }
