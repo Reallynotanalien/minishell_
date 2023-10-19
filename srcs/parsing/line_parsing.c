@@ -17,22 +17,26 @@ int	parse_quotes(char *str)
 		if (str[i] == '\"')
 			double_quotes ++;
 	if (single_quotes % 2 != 0 || double_quotes % 2 != 0)
-		return (print_error("minishell: found unclosed quotation marks"));
+		return (parsing_error(QUOTES_ERROR));
 	return (0);
 }
 
-int	is_end(char *str, int index)
-{
-	while (str[index])
-	{
-		if (!ft_iswhitespace(str[index]))
-			return (0);
-		index++;
-	}
-	return (1);
-}
+// 👷 E : Working on this ! 👷
+//Finds the lenght of the given string without useless spaces
+// int	get_strlen()
+// {
 
-//This works, but has too many lines
+// }
+
+//🌷K: J'ai essayé de le mettre devant le readline, mais il y a 2 problèmes:
+//1- For some reason, quand on fait ça et qu'une erreur arrive dans le programme
+//tout ferme???
+//2- Si on remplace la ligne directement, la ligne qui va être ajoutée à 
+//l'history sera pas bonne (ça va être la nouvelle version changée). Donc je 
+//pense qu'il faudrait faire une copie de la ligne sans les espaces et c'est ça
+//que je vais envoyer à split_tokens, mais on garde quand même la vraie ligne en
+//mémoire 🌷
+//This works, except it leaves a single space at the end of the str
 char	*remove_spaces(char *str)
 {
 	char	*new_str;
@@ -44,8 +48,9 @@ char	*remove_spaces(char *str)
 	i = -1;
 	str_len = 0;
 	while (str[++i])
-		if ((!ft_iswhitespace(str[i]) || double_quoted(str, i) 
-				|| single_quoted(str, i)) && !is_end(str, i))
+		if (!ft_iswhitespace(str[i]) || double_quoted(str, i) 
+			|| single_quoted(str, i)
+			|| (i != 0 && !ft_iswhitespace(str[i - 1])))
 			str_len++;
 	new_str = ft_calloc(str_len + 1, sizeof(char));
 	if (!new_str)
@@ -53,10 +58,8 @@ char	*remove_spaces(char *str)
 	i = -1;
 	str_len = 0;
 	while (str[++i])
-		if (double_quoted(str, i) || single_quoted(str, i)
-			|| (!is_end(str, i) && (!ft_iswhitespace(str[i])
-					|| (i != 0 && !ft_iswhitespace(str[i - 1])))))
+		if (!ft_iswhitespace(str[i])
+			|| (i != 0 && !ft_iswhitespace(str[i - 1])))
 			new_str[str_len++] = str[i];
-	free (str);
 	return (new_str);
 }

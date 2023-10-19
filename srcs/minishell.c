@@ -7,9 +7,7 @@ int	main(int argc, char **argv, char **env)
 	signals();
 	while (1)
 	{
-		use_data()->line = remove_spaces(readline("minishell$> "));
-		if (!use_data()->line)
-			return (ERROR);						//Probably not the right return value. (Syntax error " or allocation failed.)
+		use_data()->line = readline("minishell$> ");
 		if (use_data()->line && *use_data()->line)
 		{
 			line_parsing();
