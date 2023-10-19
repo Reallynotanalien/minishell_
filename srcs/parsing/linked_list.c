@@ -102,6 +102,8 @@ void	view_list(void)
 		printf("----------------\n");
 		printf("token%d:[%s]\n", i++, (char *)tokens->token);
 		printf("type: %d\n", tokens->type);
+		if (!tokens->next)
+			return ;
 		tokens = tokens->next;
 	}
 }
