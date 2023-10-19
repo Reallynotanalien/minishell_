@@ -7,6 +7,14 @@ int	is_redirection(char c)
 	return (NO);
 }
 
+int	iterate_until_redirection(char *line, int end)
+{
+	while (line[end] && line[end + 1]
+		&& !is_redirection(line[end + 1]))
+		end++;
+	return (end);
+}
+
 void	check_type(char *token)
 {
 	if (is_redirection(token[0]))
@@ -35,31 +43,30 @@ void	check_type(char *token)
 void	split_tokens(void)
 {
 	char	*token;
+	char	*line;
 	int		count;
 	int		end;
 
 	count = 0;
-	while (use_data()->line[count] != '\0'
-		&& use_data()->line[count + 1] != '\0')
+	line = ft_strdup(use_data()->line);
+	while (line[count] != '\0' && line[count + 1] != '\0')
 	{
 		token = NULL;
 		end = count;
-		if (!is_redirection(use_data()->line[count]))
-			while (use_data()->line[end]
-				&& !is_redirection(use_data()->line[end + 1]))
-				end++;
+		if (!is_redirection(line[count]))
+			end = iterate_until_redirection(line, end);
 		else
 		{
-			//parsing redirection should check if there are 3 symbols next to one another
-			if (parsing_redirection(use_data()->line, count) != ERROR)
-				if (use_data()->line[count] == use_data()->line[count + 1])
+			if (parsing_redirection(line, count) != ERROR)
+				if (line[count] == line[count + 1])
 					end++;
 		}
-		token = ft_strtrim(ft_strdup_part(use_data()->line, count, end), " ");
+		token = ft_strtrim(ft_strdup_part(line, count, end), " ");
 		add_token(token);
-		check_type(token);
+		printf("check_type(token)\n");
 		count = end++;
 		free(token);
 		count++;
 	}
+	free(line);
 }
