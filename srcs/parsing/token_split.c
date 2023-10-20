@@ -7,11 +7,35 @@ int	is_redirection(char c)
 	return (NO);
 }
 
+int	is_double_quote(char c)
+{
+	if (c == '"')
+		return (YES);
+	return (NO);
+}
+
+int	iterate_until_quotes_are_closed(char *line, int end)
+{
+	while (line[end + 1] && !is_double_quote(line[end + 1]))
+		end++;
+	if (!ft_iswhitespace(line[end + 1]))
+		return (end);
+	return (end + 1);
+}
+
 int	iterate_until_redirection(char *line, int end)
 {
 	while (line[end] && line[end + 1]
 		&& !is_redirection(line[end + 1]))
+		//&& !is_double_quote(line[end]))
+	{
+		//if (is_redirection(line[end]))
+			//return (end);
+		if (line[end + 1] == '"')
+			end = iterate_until_quotes_are_closed(line, end + 1);
 		end++;
+	}
+	printf("I have iterated through redirections\n");
 	return (end);
 }
 
@@ -49,22 +73,30 @@ void	split_tokens(void)
 
 	count = 0;
 	line = ft_strdup(use_data()->line);
-	while (line[count] != '\0' && line[count + 1] != '\0')
+	while (line[count] && line[count + 1])
 	{
 		token = NULL;
+		if (ft_iswhitespace(line[count]))
+			count++;
 		end = count;
 		if (!is_redirection(line[count]))
 			end = iterate_until_redirection(line, end);
 		else
 		{
 			if (parsing_redirection(line, count) != ERROR)
+			{
 				if (line[count] == line[count + 1])
 					end++;
+			}
+			else
+				return ;
 		}
-		token = ft_strtrim(ft_strdup_part(line, count, end), " ");
+		token = ft_strtrim(ft_substr(line, count, (end - count + 1)), " ");
 		add_token(token);
 		printf("check_type(token)\n");
-		count = end++;
+		printf("count: %i\n", count);
+		printf("end: %i\n", end);
+		count = end;
 		free(token);
 		count++;
 	}
