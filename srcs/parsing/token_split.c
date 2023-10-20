@@ -76,8 +76,6 @@ void	split_tokens(void)
 	while (line[count] && line[count + 1])
 	{
 		token = NULL;
-		if (ft_iswhitespace(line[count]))
-			count++;
 		end = count;
 		if (!is_redirection(line[count]))
 			end = iterate_until_redirection(line, end);
@@ -91,11 +89,9 @@ void	split_tokens(void)
 			else
 				return ;
 		}
+		//trouver comment envoyer tous les whitespaces à strtrim
 		token = ft_strtrim(ft_substr(line, count, (end - count + 1)), " ");
 		add_token(token);
-		printf("check_type(token)\n");
-		printf("count: %i\n", count);
-		printf("end: %i\n", end);
 		count = end;
 		free(token);
 		count++;
