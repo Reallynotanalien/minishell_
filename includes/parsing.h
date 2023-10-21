@@ -23,6 +23,7 @@ int			print_error(char *message);
 //line_parsing.c
 int			parse_quotes(char *str);
 int			remove_spaces(char *str);
+char		*ft_strtrim_whitespaces(char *str);
 
 //parsing.c
 int			main_parsing(int argc, char **argv, char **env);

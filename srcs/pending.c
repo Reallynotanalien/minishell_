@@ -2,15 +2,7 @@
 #include "../includes/minishell.h"
 //intended to avoid conflicts (to be moved later)
 
-int	check_if_file(char *token)
-{
 
-}
-
-int	check_if_substitution(char *token)
-{
-
-}
 
 int	len_before_whitespace(char *str)
 {
@@ -64,4 +56,21 @@ char	*substitute_variable(char *token)
 			&& (token [i + 1] && token[i] == '\"' && token[i + 1] == '$'))
 			nb_tokens++;
 	}
+}
+
+
+//This considers "str" was allocated (it frees it).
+char	*ft_strtrim_whitespaces(char *str)
+{
+	int	i_start;
+	int	i_end;
+
+	i_start = 0;
+	while (str[i_start] && ft_iswhitespace(str[i_start]))
+		i_start++;
+	i_end = ft_strlen(str) - 1;
+	while (str[i_end] && ft_iswhitespace(str[i_end]))
+		i_end--;
+	free (str);
+	return (ft_substr(str, i_start, i_end - i_start + 1));
 }

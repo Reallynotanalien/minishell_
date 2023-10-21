@@ -21,12 +21,6 @@ int	parse_quotes(char *str)
 	return (0);
 }
 
-// 👷 E : Working on this ! 👷
-//Finds the lenght of the given string without useless spaces
-// int	get_strlen()
-// {
-
-// }
 int	remove_spaces(char *str)
 {
 	char	*new_str;
