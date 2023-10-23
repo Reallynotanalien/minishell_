@@ -6,7 +6,7 @@ continue and print as many error messages as it needs without exiting
 the program; the flag will get catched at the moment of the execution.*/
 int	parsing_error(char *error)
 {
-	printf("minishell: %s\n", error);
+	printf("minishell: %s", error);
 	use_data()->error_flag = ERROR;
 	return (ERROR);
 }

@@ -31,9 +31,9 @@
 # define T_HEREDOC 5
 
 /*ERROR MESSAGES*/
-# define ARGC_ERROR "No argument should be sent appart from the program's name"
-# define ENV_ERROR "The environment could not be copied"
-# define ARGV_ERROR "There is no argv"
+# define ARGC_ERROR "No argument should be sent appart from the program's name\n"
+# define ENV_ERROR "The environment could not be copied\n"
+# define ARGV_ERROR "There is no argv\n"
 
 /*STRUCTS*/
 
@@ -72,19 +72,17 @@ typedef struct s_data
 //FUNCTIONS
 
 //init.c
-void	init_data(t_data *data);
+void		init_data(t_data *data);
 
 //utils.c
-int		double_quoted(char *str, int index);
-int		single_quoted(char *str, int index);
-t_data	*use_data(void);
+int			double_quoted(char *str, int index);
+int			single_quoted(char *str, int index);
+t_data		*use_data(void);
 
 //linked_list.c
-t_token	*add_token(char *token);
-void	free_tokens_if_not_empty(void);
-t_token	*newlst(char *token, int type);
-void	addlst(t_token *lst, char *token, int type);
-void	view_list(void);
+t_token		*add_token(char *token);
+void		free_tokens_if_not_empty(void);
+void		view_list(void);
 
 //command_list.c
 t_command	*create_command(void);
