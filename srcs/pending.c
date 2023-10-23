@@ -35,6 +35,7 @@ When placing a "variable name" in a token, substitute it. Also handle quotes
 	3 : erase unused ' and "
 	4 : reconstruct new_token	*/
 
+
 int	count_nbblocks(char *token)
 {
 	int	i;
@@ -133,7 +134,6 @@ char	*substitute_variable(char *token)
 		i++;
 	}
 	var_division = ft_calloc(nb_tokens, sizeof(char *));
-
 }
 
 //This considers "str" was allocated (it frees it).
