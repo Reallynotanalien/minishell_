@@ -27,11 +27,11 @@ int	parsing_redirection(char *line, int index)
 	if (line[index + 1] && line[index] == line[index + 1] && line[index] != '|')
 		index ++;
 	if (!line[index + 1])
-		return (print_error
-			("minishell: syntax error near unexpected token 'newline'"));
+		return (parsing_error
+			("syntax error near unexpected token 'newline'\n"));
 	if (index == 0 && line[index] == '|')
-		return (print_error
-			("minishell: syntax error near unexpected token '|'"));
+		return (parsing_error
+			("syntax error near unexpected token '|'\n"));
 	if (next_isredirection(line, index))
 	{
 		if (ft_iswhitespace(line[index + 1]))
@@ -39,12 +39,13 @@ int	parsing_redirection(char *line, int index)
 		else
 			index++;
 		if (line[index + 1] && line[index] == line[index + 1])
-			printf ("minishell: syntax error near unexpected token '%c%c'\n",
-				line[index], line[index]);
+			return (parsing_error(""),
+				printf("syntax error near unexpected token '%c%c'\n",
+					line[index], line[index]), ERROR);
 		else
-			printf ("minishell: syntax error near unexpected token '%c'\n",
-				line[index]);
-		return (ERROR);
+			return (parsing_error(""),
+				printf("syntax error near unexpected token '%c'\n",
+					line[index]), ERROR);
 	}
 	return (0);
 }

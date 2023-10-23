@@ -26,29 +26,32 @@ int	iterate_until_redirection(char *line, int end)
 	return (end);
 }
 
-void	check_type(char *token)
+int	check_type(char *token)
 {
+	int	type;
+
+	type = 0;
 	if (is_redirection(token[0]))
 	{
 		if (token[0] == '|')
-			use_data()->token->type = T_PIPE;
+			type = T_PIPE;
 		else if (token[0] == '<')
 		{
 			if (token[1] != '\0')
-				use_data()->token->type = T_HEREDOC;
+				type = T_HEREDOC;
 			else
-				use_data()->token->type = T_REDIR;
+				type = T_REDIR;
 		}
 		else if (token[0] == '>')
-		{
-			use_data()->token->type = T_REDIR;
-		}
+			type = T_REDIR;
 	}
 	else
 	{
 		printf("check_if_file()\n");
 		printf("check_if_substitution()\n");
+		type = T_STR;
 	}
+	return (type);
 }
 
 /*Copies the part of the command line that we want as a token and
@@ -75,7 +78,7 @@ All of the superfluous whitespaces that would be in between tokens are also
 deleted.
 This function works wether the strings and the redirections are separated by
 a space or not. (Ex: cat | cat OR cat|cat both work.).*/
-void	split_tokens(void)
+int	split_tokens(void)
 {
 	size_t	start;
 	int		end;
@@ -87,11 +90,13 @@ void	split_tokens(void)
 		if (!is_redirection(use_data()->line[start]))
 			end = iterate_until_redirection(use_data()->line, end);
 		else
-			if (parsing_redirection(use_data()->line, start) != ERROR)
-				if (use_data()->line[start] == use_data()->line[start + 1])
-					end++;
+			if (parsing_redirection(use_data()->line, start) == ERROR)
+				return (ERROR);
+			else if (use_data()->line[start] == use_data()->line[start + 1])
+				end++;
 		new_token(start, end);
 		start = end;
 		start++;
 	}
+	return (0);
 }
