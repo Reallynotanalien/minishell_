@@ -75,14 +75,12 @@ typedef struct s_data
 void		init_data(t_data *data);
 
 //utils.c
-int			double_quoted(char *str, int index);
-int			single_quoted(char *str, int index);
 t_data		*use_data(void);
+void		view_list(void);
 
 //linked_list.c
 t_token		*add_token(char *token);
 void		free_tokens_if_not_empty(void);
-void		view_list(void);
 
 //command_list.c
 t_command	*create_command(void);

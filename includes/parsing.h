@@ -38,12 +38,15 @@ void		signals(void);
 void		disable_ctrlc(void);
 void		restore_attributes(void);
 
+//token_parsing_utils.c
+int			double_quoted(char *str, int index);
+int			single_quoted(char *str, int index);
+
 //token_split.c
 int			split_tokens(void);
 
 //token_split_utils.c
 int			is_redirection(char c);
 int			is_double_quote(char c);
-int			check_type(char *token);
 
 #endif
