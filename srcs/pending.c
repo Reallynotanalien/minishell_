@@ -35,13 +35,10 @@ When placing a "variable name" in a token, substitute it. Also handle quotes
 	3 : erase unused ' and "
 	4 : reconstruct new_token	*/
 
-int	count_nbblocks(char *token)
 
 int	count_nbblocks(char *token)
 {
 	int	i;
-	int	nb_blocks;
-	int	flag_var;
 	int	nb_blocks;
 	int	flag_var;
 
@@ -51,15 +48,9 @@ int	count_nbblocks(char *token)
 	else
 		nb_blocks = 1;
 	flag_var = 0;
-	if (token[0] == '$')
-		nb_blocks = 0;
-	else
-		nb_blocks = 1;
-	flag_var = 0;
 	while (token[++i])
 	{
 		if (token[i] == '$' && !single_quoted(token, i) && token[i + 1])
-		if (token[i] == '$' && !single_quoted(token, i) && token[i + 1])
 		{
 			nb_blocks++;
 			flag_var = 1;
@@ -118,116 +109,6 @@ char	*substitute_variable(char *token)
 	nb_blocks = count_nbblocks(token);
 	blocks = ft_calloc(nb_blocks, sizeof(char *));
 	create_blocks(token, blocks);
-// 	new_token = create_newtoken(blocks);
-
-	// int		i;
-	// int		nb_blocks;
-	// char	**blocks;
-
-	// i = 0;
-	// nb_tokens = 0;
-	// if (token[0] != '$')
-	// 	nb_tokens++;
-	// while (token[i])
-	// {
-	// 	if (token[i] == '$' && !single_quoted(token, i))
-	// 	{
-	// 		nb_tokens++;
-	// 		while (token[i] && token[i] != '\'' && token[i] != '\"'
-	// 			&& token[i] != '$' && !ft_iswhitespace(token[i]))
-	// 			i++;
-	// 	}
-	// 	if (token[i] && token[i] != '$'
-	// 		&& (token [i + 1] && token[i] == '\"' && token[i + 1] == '$'))
-	// 		nb_tokens++;
-	// 	i++;
-	// }
-	// var_division = ft_calloc(nb_tokens, sizeof(char *));
-
-}
-			nb_blocks++;
-			flag_var = 1;
-		}
-		if ((ft_iswhitespace(token[i]) || token[i] == '\"' || token[i] == '\'')
-			&& flag_var == 1)
-		{
-			nb_blocks++;
-			flag_var = 0;
-		}
-	}
-	return (nb_blocks);
-}
-
-char	*substitute_block(char *token, int index)
-{
-	int		i;
-	char	*new_block;
-	char	*var_name;
-
-	i = index;
-	if (token[index + 1] == '?')
-		function_exstat();
-	while (!ft_iswhitespace(token[i]) && token[i] != '\"' && token[i] != '\'')
-		i++;
-	var_name = ft_substr(token, index + 1, i - index);
-	new_block = ft_calloc(ft_strlen(getenv(var_name)), sizeof(char));
-	new_block = getenv(var_name);
-}
-
-int	create_blocks(char *token, char **blocks)
-{
-	int	i;
-	int	i_block;
-
-	i = 0;
-	while (token[i])
-	{
-		while (token[i]
-			&& !(token[i] == '$' && !single_quoted(token, i) && token[i + 1]))
-			blocks[i][i_block] = token[i++];
-		if (token[i])
-		{
-			blocks[i_block] = substitute_block(token, i);
-			i += ft_strlen(blocks[i_block++]);
-		}
-	}
-}
-
-char	*substitute_variable(char *token)
-{
-	int		nb_blocks;
-	char	**blocks;
-	char	*new_token;
-
-	nb_blocks = count_nbblocks(token);
-	blocks = ft_calloc(nb_blocks, sizeof(char *));
-	create_blocks(token, blocks);
-// 	new_token = create_newtoken(blocks);
-
-	// int		i;
-	// int		nb_blocks;
-	// char	**blocks;
-
-	// i = 0;
-	// nb_tokens = 0;
-	// if (token[0] != '$')
-	// 	nb_tokens++;
-	// while (token[i])
-	// {
-	// 	if (token[i] == '$' && !single_quoted(token, i))
-	// 	{
-	// 		nb_tokens++;
-	// 		while (token[i] && token[i] != '\'' && token[i] != '\"'
-	// 			&& token[i] != '$' && !ft_iswhitespace(token[i]))
-	// 			i++;
-	// 	}
-	// 	if (token[i] && token[i] != '$'
-	// 		&& (token [i + 1] && token[i] == '\"' && token[i + 1] == '$'))
-	// 		nb_tokens++;
-	// 	i++;
-	// }
-	// var_division = ft_calloc(nb_tokens, sizeof(char *));
-
 }
 
 //This considers "str" was allocated (it frees it).
