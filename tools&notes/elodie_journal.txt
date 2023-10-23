@@ -4,14 +4,15 @@ Doing :
 substitution function
 
 To do next :
+Find how to handle last pipeline's exit status ($?)
 Test how th git works
 Exit and clean functions
 Initiation struct et free
 Ajouter tests
-Remove whitespaces before and after str function
 
 
 Done :
+Remove whitespaces before and after str function
 Token_parsing function
 Create a line with only the necessary whitespaces, before tokenisation
 Verify if all quotes are closed (before tokenisation)
@@ -20,6 +21,7 @@ To discuss :
 Git (malord)
 data->quote_flag : Useful ?
 data->error_flag : Defaults to 0 ? (For init) + Check Init !
+Added test_2 file
 
 
 
