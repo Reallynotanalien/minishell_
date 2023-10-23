@@ -64,6 +64,7 @@ typedef struct s_data
 	int					quote_flag;
 	char				**new_env;
 	char				*line;
+	char				*line_cpy;
 	struct termios		old_attributes;
 	struct termios		new_attributes;
 }				t_data;

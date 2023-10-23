@@ -21,30 +21,14 @@ int	parse_quotes(char *str)
 	return (0);
 }
 
-// 👷 E : Working on this ! 👷
-//Finds the lenght of the given string without useless spaces
-// int	get_strlen()
-// {
-
-// }
-
-//🌷K: J'ai essayé de le mettre devant le readline, mais il y a 2 problèmes:
-//1- For some reason, quand on fait ça et qu'une erreur arrive dans le programme
-//tout ferme???
-//2- Si on remplace la ligne directement, la ligne qui va être ajoutée à 
-//l'history sera pas bonne (ça va être la nouvelle version changée). Donc je 
-//pense qu'il faudrait faire une copie de la ligne sans les espaces et c'est ça
-//que je vais envoyer à split_tokens, mais on garde quand même la vraie ligne en
-//mémoire 🌷
-//This works, except it leaves a single space at the end of the str
-char	*remove_spaces(char *str)
+int	remove_spaces(char *str)
 {
 	char	*new_str;
 	int		i;
 	int		str_len;
 
-	if (!str || !str[0] || parse_quotes(str) == ERROR)
-		return (free (str), NULL);
+	if (!str || !str[0])
+		return (free (str), ERROR);
 	i = -1;
 	str_len = 0;
 	while (str[++i])
@@ -54,12 +38,13 @@ char	*remove_spaces(char *str)
 			str_len++;
 	new_str = ft_calloc(str_len + 1, sizeof(char));
 	if (!new_str)
-		return (free (str), NULL);
+		return (free (str), ERROR);
 	i = -1;
 	str_len = 0;
 	while (str[++i])
 		if (!ft_iswhitespace(str[i])
 			|| (i != 0 && !ft_iswhitespace(str[i - 1])))
 			new_str[str_len++] = str[i];
-	return (new_str);
+	use_data()->line_cpy = new_str;
+	return (EXIT_SUCCESS);
 }
