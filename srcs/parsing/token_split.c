@@ -89,8 +89,7 @@ void	split_tokens(void)
 			else
 				return ;
 		}
-		//trouver comment envoyer tous les whitespaces à strtrim
-		token = ft_strtrim(ft_substr(line, count, (end - count + 1)), " ");
+		token = ft_strtrim_whitespaces(ft_substr(line, count, (end - count + 1)));
 		add_token(token);
 		count = end;
 		free(token);
