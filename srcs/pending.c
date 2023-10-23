@@ -139,8 +139,9 @@ char	*substitute_variable(char *token)
 //This considers "str" was allocated (it frees it).
 char	*ft_strtrim_whitespaces(char *str)
 {
-	int	i_start;
-	int	i_end;
+	int		i_start;
+	int		i_end;
+	char	*str_cpy;
 
 	i_start = 0;
 	while (str[i_start] && ft_iswhitespace(str[i_start]))
@@ -148,6 +149,7 @@ char	*ft_strtrim_whitespaces(char *str)
 	i_end = ft_strlen(str) - 1;
 	while (str[i_end] && ft_iswhitespace(str[i_end]))
 		i_end--;
+	str_cpy = ft_substr(str, i_start, i_end - i_start + 1);
 	free (str);
-	return (ft_substr(str, i_start, i_end - i_start + 1), free(str));
+	return (str_cpy);
 }
