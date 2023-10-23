@@ -35,7 +35,6 @@ int	iterate_until_redirection(char *line, int end)
 			end = iterate_until_quotes_are_closed(line, end + 1);
 		end++;
 	}
-	printf("I have iterated through redirections\n");
 	return (end);
 }
 
@@ -89,7 +88,8 @@ void	split_tokens(void)
 			else
 				return ;
 		}
-		token = ft_strtrim_whitespaces(ft_substr(line, count, (end - count + 1)));
+		token = ft_substr(line, count, (end - count + 1));
+		token = ft_strtrim_whitespaces(token);
 		add_token(token);
 		count = end;
 		free(token);
