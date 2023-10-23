@@ -62,10 +62,12 @@ int	split_tokens(void)
 		if (!is_redirection(use_data()->line[start]))
 			end = iterate_until_redirection(use_data()->line, end);
 		else
+		{
 			if (parsing_redirection(use_data()->line, start) == ERROR)
 				return (ERROR);
 			else if (use_data()->line[start] == use_data()->line[start + 1])
 				end++;
+		}
 		new_token(start, end);
 		start = end;
 		start++;

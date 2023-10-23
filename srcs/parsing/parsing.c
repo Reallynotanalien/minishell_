@@ -26,7 +26,10 @@ void	line_parsing(void)
 	// if (remove_spaces(use_data()->line) == ERROR)
 	// 	return ;
 	if (split_tokens() == ERROR)
+	{
 		free_tokens_if_not_empty();
+		return ;
+	}
 	view_list();
 	printf("build_commands()\n");
 	printf("view_commands()\n");
