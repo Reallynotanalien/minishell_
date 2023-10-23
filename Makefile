@@ -17,6 +17,7 @@ SRCS =	./srcs/init.c \
 		./srcs/parsing/token_split.c \
 		./srcs/exec/exec.c \
 		./srcs/utils.c \
+		./srcs/pending.c \
 		
 
 #colours ------------------------------------------
