@@ -26,34 +26,6 @@ int	iterate_until_redirection(char *line, int end)
 	return (end);
 }
 
-int	check_type(char *token)
-{
-	int	type;
-
-	type = 0;
-	if (is_redirection(token[0]))
-	{
-		if (token[0] == '|')
-			type = T_PIPE;
-		else if (token[0] == '<')
-		{
-			if (token[1] != '\0')
-				type = T_HEREDOC;
-			else
-				type = T_REDIR;
-		}
-		else if (token[0] == '>')
-			type = T_REDIR;
-	}
-	else
-	{
-		printf("check_if_file()\n");
-		printf("check_if_substitution()\n");
-		type = T_STR;
-	}
-	return (type);
-}
-
 /*Copies the part of the command line that we want as a token and
 deletes all of the superfluous whitespaces that would be before or
 after the string. 

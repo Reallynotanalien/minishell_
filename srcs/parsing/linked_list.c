@@ -1,5 +1,33 @@
 # include "../../includes/minishell.h"
 
+int	check_type(char *token)
+{
+	int	type;
+
+	type = 0;
+	if (is_redirection(token[0]))
+	{
+		if (token[0] == '|')
+			type = T_PIPE;
+		else if (token[0] == '<')
+		{
+			if (token[1] != '\0')
+				type = T_HEREDOC;
+			else
+				type = T_REDIR;
+		}
+		else if (token[0] == '>')
+			type = T_REDIR;
+	}
+	else
+	{
+		printf("check_if_file()\n");
+		printf("check_if_substitution()\n");
+		type = T_STR;
+	}
+	return (type);
+}
+
 /*Initializes a new token node.*/
 t_token	*create_token(void)
 {
@@ -67,22 +95,4 @@ t_token	*lstget_prev(t_token *lst, t_token *reference)
 	if (previous == lst)
 		return (NULL);
 	return (previous);
-}
-
-void	view_list(void)
-{
-	t_token	*tokens;
-	int		i;
-
-	i = 1;
-	tokens = use_data()->token;
-	while (tokens)
-	{
-		printf("----------------\n");
-		printf("token%d:[%s]\n", i++, (char *)tokens->token);
-		printf("type: %d\n", tokens->type);
-		if (!tokens->next)
-			return ;
-		tokens = tokens->next;
-	}
 }
