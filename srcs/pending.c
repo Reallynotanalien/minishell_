@@ -109,6 +109,31 @@ char	*substitute_variable(char *token)
 	nb_blocks = count_nbblocks(token);
 	blocks = ft_calloc(nb_blocks, sizeof(char *));
 	create_blocks(token, blocks);
+	new_token = create_newtoken(blocks);
+
+	int		i;
+	int		nb_blocks;
+	char	**blocks;
+
+	i = 0;
+	nb_tokens = 0;
+	if (token[0] != '$')
+		nb_tokens++;
+	while (token[i])
+	{
+		if (token[i] == '$' && !single_quoted(token, i))
+		{
+			nb_tokens++;
+			while (token[i] && token[i] != '\'' && token[i] != '\"'
+				&& token[i] != '$' && !ft_iswhitespace(token[i]))
+				i++;
+		}
+		if (token[i] && token[i] != '$'
+			&& (token [i + 1] && token[i] == '\"' && token[i + 1] == '$'))
+			nb_tokens++;
+		i++;
+	}
+	var_division = ft_calloc(nb_tokens, sizeof(char *));
 }
 
 //This considers "str" was allocated (it frees it).
@@ -119,10 +144,12 @@ char	*ft_strtrim_whitespaces(char *str)
 	char	*str_cpy;
 
 	i_start = 0;
-	while (str[i_start] && ft_iswhitespace(str[i_start]))
+	while (str[i_start] && (ft_iswhitespace(str[i_start])
+			|| !ft_isascii(str[i_start])))
 		i_start++;
 	i_end = ft_strlen(str) - 1;
-	while (str[i_end] && ft_iswhitespace(str[i_end]))
+	while (str[i_end] && (ft_iswhitespace(str[i_end])
+			|| !ft_isascii(str[i_end])))
 		i_end--;
 	str_cpy = ft_substr(str, i_start, i_end - i_start + 1);
 	free (str);
