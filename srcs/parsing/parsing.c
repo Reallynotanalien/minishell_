@@ -21,8 +21,8 @@ command will be associated with the right input and output file for
 easy execution.*/
 void	line_parsing(void)
 {
-	// if (parse_quotes(use_data()->line) == ERROR)
-	// 	return ;
+	if (parse_quotes(use_data()->line) == ERROR)
+		return ;
 	// if (remove_spaces(use_data()->line) == ERROR)
 	// 	return ;
 	if (split_tokens() == ERROR)

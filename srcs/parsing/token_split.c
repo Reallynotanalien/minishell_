@@ -14,8 +14,13 @@ int	iterate_until_quotes_are_closed(char *line, int end)
 quote, iterates until it finds the closing quote so that we do not
 include any redirection character that is contained between those quotes
 into our count, since those will be part of the string.*/
-int	iterate_until_redirection(char *line, int end)
+int	iterate_until_redirection(char *line, int end, int start)
 {
+	if (start == 0 && is_double_quote(use_data()->line[start]))
+	{
+		end = iterate_until_quotes_are_closed(use_data()->line, end + 1);
+		end++;
+	}
 	while (line[end] && line[end + 1]
 		&& !is_redirection(line[end + 1]))
 	{
@@ -60,7 +65,7 @@ int	split_tokens(void)
 	{
 		end = start;
 		if (!is_redirection(use_data()->line[start]))
-			end = iterate_until_redirection(use_data()->line, end);
+			end = iterate_until_redirection(use_data()->line, end, start);
 		else
 		{
 			if (parsing_redirection(use_data()->line, start) == ERROR)
