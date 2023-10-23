@@ -11,6 +11,7 @@ SRCS =	./srcs/init.c \
 		./srcs/parsing/line_parsing.c \
 		./srcs/parsing/linked_list.c \
 		./srcs/parsing/parsing.c \
+		./srcs/pending.c \
 		./srcs/parsing/signals.c \
 		./srcs/parsing/term_attributes.c \
 		./srcs/parsing/token_parsing.c \
