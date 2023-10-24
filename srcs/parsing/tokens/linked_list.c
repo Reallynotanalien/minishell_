@@ -1,4 +1,4 @@
-# include "../../includes/minishell.h"
+# include "../../../includes/minishell.h"
 
 /*Adds an index number representing the token's type to facilitate
 the transfer to the command struct later on. 
@@ -27,11 +27,7 @@ int	check_type(char *token)
 			type = T_REDIR;
 	}
 	else
-	{
-		printf("check_if_file()\n");
-		printf("check_if_substitution()\n");
 		type = T_STR;
-	}
 	return (type);
 }
 
@@ -63,12 +59,16 @@ t_token	*add_token(char *token)
 	new->token = ft_strdup(token);
 	new->type = check_type(token);
 	if (use_data()->token == NULL)
+	{
 		use_data()->token = new;
+		use_data()->token->prev = NULL;
+	}
 	else
 	{
 		next = use_data()->token;
 		while (next->next != NULL)
 			next = next->next;
+		new->prev = next;
 		next->next = new;
 	}
 	return (use_data()->token);

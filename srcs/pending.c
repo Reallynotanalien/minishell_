@@ -132,7 +132,6 @@ char	*do_substitutions(char *token)
 	return (new_token);
 }
 
-
 //This considers "str" was allocated (it frees it).
 char	*ft_strtrim_whitespaces(char *str)
 {
