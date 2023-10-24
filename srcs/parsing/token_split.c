@@ -16,9 +16,9 @@ include any redirection character that is contained between those quotes
 into our count, since those will be part of the string.*/
 int	iterate_until_redirection(char *line, int end, int start)
 {
-	if (start == 0 && is_double_quote(use_data()->line[start]))
+	if (start == 0 && is_double_quote(use_data()->line_cpy[start]))
 	{
-		end = iterate_until_quotes_are_closed(use_data()->line, end + 1);
+		end = iterate_until_quotes_are_closed(use_data()->line_cpy, end + 1);
 		end++;
 	}
 	while (line[end] && line[end + 1]
@@ -39,7 +39,7 @@ void	new_token(int start, int end)
 {
 	char	*token;
 
-	token = ft_substr(use_data()->line, start, (end - start + 1));
+	token = ft_substr(use_data()->line_cpy, start, (end - start + 1));
 	token = ft_strtrim_whitespaces(token);
 	add_token(token);
 	free(token);
@@ -61,16 +61,18 @@ int	split_tokens(void)
 	int		end;
 
 	start = 0;
-	while (use_data()->line[start] && start <= ft_strlen(use_data()->line))
+	while (use_data()->line_cpy[start]
+		&& start <= ft_strlen(use_data()->line_cpy))
 	{
 		end = start;
-		if (!is_redirection(use_data()->line[start]))
-			end = iterate_until_redirection(use_data()->line, end, start);
+		if (!is_redirection(use_data()->line_cpy[start]))
+			end = iterate_until_redirection(use_data()->line_cpy, end, start);
 		else
 		{
-			if (parsing_redirection(use_data()->line, start) == ERROR)
+			if (parsing_redirection(use_data()->line_cpy, start) == ERROR)
 				return (ERROR);
-			else if (use_data()->line[start] == use_data()->line[start + 1])
+			else if (use_data()->line_cpy[start]
+				== use_data()->line_cpy[start + 1])
 				end++;
 		}
 		new_token(start, end);
