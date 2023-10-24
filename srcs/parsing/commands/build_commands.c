@@ -15,6 +15,8 @@ int	get_infile(t_token *tokens)
 				printf("There's a redirection before this command\n");
 			else if (tokens->prev->type == T_HEREDOC)
 				infile = open_heredoc(tokens);
+			//need to check if the delimiter is the whole token or if it
+			//is possible to send a delimiter THEN a command
 		}
 	}
 	return (infile);
