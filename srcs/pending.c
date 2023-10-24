@@ -2,8 +2,6 @@
 #include "../includes/minishell.h"
 //intended to avoid conflicts (to be moved later)
 
-
-
 int	len_before_whitespace(char *str)
 {
 	int	i;
@@ -74,10 +72,16 @@ char	*substitute_block(char *token, int index)
 	i = index;
 	if (token[index + 1] == '?')
 		return (NULL); // return (function_exstat());
-	while (token[i] && !ft_iswhitespace(token[i]) && token[i] != '\"' && token[i] != '\'')
+	if (!token[index + 1] || ft_iswhitespace(token[index + 1] 
+			|| token[index + 1] == '\'' || token[index + 1] == '\"'))
+		return (ft_strdup("$"));
+	while (token[i] && !ft_iswhitespace(token[i])
+		&& token[i] != '\"' && token[i] != '\'')
 		i++;
-	var_name = ft_substr(token, index + 1, i - index);
+	var_name = ft_substr(token, index + 1, i - index - 1);
 	new_block = ft_strdup(getenv(var_name));
+	if (!new_block)
+		new_block = ft_strdup("");
 	free (var_name);
 	return (new_block);
 }
@@ -89,20 +93,28 @@ void	create_blocks(char *token, char **blocks)
 	int	len;
 
 	i = 0;
-	len = 0;
 	i_block = 0;
+	if (token[0] == '$')
+	{
+		blocks[0] = substitute_block(token, i);
+		while (token[i] && !ft_iswhitespace(token[i])
+			&& token[i] != '\"' && token[i] != '\'')
+			i++;
+		i_block++;
+	}
 	while (token[i])
 	{
+		len = 0;
 		while (token[i + len] && !(token[i + len] == '$'
-				&& !single_quoted(token, i + len) && token[i + 1 + len]))
+				&& !single_quoted(token, i + len) && token[i + len]))
 			len ++;
-		blocks[i_block++] = ft_substr(token, i, i + len);
+		blocks[i_block++] = ft_substr(token, i, len);
 		i += len;
 		if (token[i])
 		{
-			blocks[i_block] = substitute_block(token, i);
+			blocks[i_block++] = substitute_block(token, i);
 			while (token[i] && !ft_iswhitespace(token[i])
-				&& token[i] != '\"' && token[i] != '\'')
+				&& token[i] != '\"' && token[i] != '\'' && token[i])
 				i++;
 		}
 	}
@@ -121,7 +133,7 @@ char	*do_substitutions(char *token)
 	create_blocks(token, blocks);
 	new_token = ft_strdup(blocks[0]);
 	i = 1;
-	while (blocks[i + 1])
+	while (i < nb_blocks)
 	{
 		tmp = new_token;
 		new_token = ft_strjoin(new_token, blocks[i]);
@@ -148,4 +160,12 @@ char	*ft_strtrim_whitespaces(char *str)
 	str_cpy = ft_substr(str, i_start, i_end - i_start + 1);
 	free (str);
 	return (str_cpy);
+}
+
+int	is_delimiter(char c)
+{
+	if (!c || ft_iswhitespace(c) || c == '\''
+		|| c == '\"' || c == '$' || c == '<' || c == '<' || c == '|')
+		return (1);
+	return (0);
 }
