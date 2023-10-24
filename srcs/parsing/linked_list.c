@@ -1,5 +1,12 @@
 # include "../../includes/minishell.h"
 
+/*Adds an index number representing the token's type to facilitate
+the transfer to the command struct later on. 
+1 = T_STR
+2 = T_SUBST
+3 = T_PIPE
+4 = T_REDIR
+5 = T_HEREDOC*/
 int	check_type(char *token)
 {
 	int	type;
@@ -67,6 +74,8 @@ t_token	*add_token(char *token)
 	return (use_data()->token);
 }
 
+/*If the token linked list is not empty, frees each token one by
+one.*/
 void	free_tokens_if_not_empty(void)
 {
 	t_token	*temp;
