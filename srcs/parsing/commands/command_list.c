@@ -11,7 +11,7 @@ t_command	*create_command(void)
 	return (new);
 }
 
-t_command	*add_command(char *command)
+t_command	*add_command(char *command, int infile, int outfile)
 {
 	t_command	*new;
 	t_command	*next;
@@ -22,6 +22,8 @@ t_command	*add_command(char *command)
 	if (!new)
 		return (NULL);
 	new->cmd = ft_strdup(command);
+	new->infile = infile;
+	new->outfile = outfile;
 	if (use_data()->cmd == NULL)
 		use_data()->cmd = new;
 	else
@@ -59,6 +61,8 @@ void	view_commands(void)
 	{
 		printf("----------------\n");
 		printf("command%d:[%s]\n", i++, (char *)cmd->cmd);
+		printf("infile no: %i\n", cmd->infile);
+		printf("outfile no: %i\n", cmd->outfile);
 		cmd = cmd->next;
 	}
 }

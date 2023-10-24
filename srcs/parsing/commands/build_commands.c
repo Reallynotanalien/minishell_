@@ -1,7 +1,10 @@
 # include "../../../includes/minishell.h"
 
-void	get_infile(t_token *tokens)
+int	get_infile(t_token *tokens)
 {
+	int	infile;
+
+	infile = STDIN_FILENO;
 	if (tokens->prev != NULL)
 	{
 		if (is_redirection(tokens->prev->token[0]))
@@ -11,15 +14,17 @@ void	get_infile(t_token *tokens)
 			else if (tokens->prev->type == T_REDIR)
 				printf("There's a redirection before this command\n");
 			else if (tokens->prev->type == T_HEREDOC)
-				printf("There's a heredoc before this command \n");
+				infile = open_heredoc(tokens);
 		}
 	}
-	else
-		use_data()->cmd->infile = STDIN_FILENO;
+	return (infile);
 }
 
-void	get_outfile(t_token	*tokens)
+int	get_outfile(t_token	*tokens)
 {
+	int	outfile;
+
+	outfile = STDOUT_FILENO;
 	if (tokens->next)
 	{
 		if (is_redirection(tokens->next->token[0]))
@@ -32,28 +37,31 @@ void	get_outfile(t_token	*tokens)
 				printf("There's a heredoc after this command\n");
 		}
 	}
-	else
-		use_data()->cmd->outfile = STDOUT_FILENO;
+	return (outfile);
 }
 
 void	build_commands(void)
 {
 	t_token	*tokens;
 	int		i;
+	int		infile;
+	int		outfile;
 
 	i = 1;
+	infile = STDIN_FILENO;
+	outfile = STDOUT_FILENO;
 	tokens = use_data()->token;
 	if (!tokens->next)
-		add_command(tokens->token);
+		add_command(tokens->token, infile, outfile);
 	else
 	{
 		while (tokens && tokens->next)
 		{
 			if (is_redirection(tokens->token[0]) && tokens->next)
 				tokens = tokens->next;
-			add_command(tokens->token);
-			get_infile(tokens);
-			get_outfile(tokens);
+			infile = get_infile(tokens);
+			outfile = get_outfile(tokens);
+			add_command(tokens->token, infile, outfile);
 			if (tokens->next)
 				tokens = tokens->next;
 		}

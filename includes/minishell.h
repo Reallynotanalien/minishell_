@@ -72,6 +72,9 @@ typedef struct s_data
 
 //FUNCTIONS
 
+//build_commands_utils.c
+int			open_heredoc(t_token *tokens);
+
 //init.c
 void		init_data(t_data *data);
 
@@ -86,7 +89,7 @@ t_token		*lstget_prev(t_token *lst, t_token *reference);
 
 //command_list.c
 t_command	*create_command(void);
-t_command	*add_command(char *command);
+t_command	*add_command(char *command, int infile, int outfile);
 void		free_commands_if_not_empty(void);
 void		view_commands(void);
 
