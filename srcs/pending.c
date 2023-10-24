@@ -4,15 +4,15 @@
 
 
 
-int	len_before_whitespace(char *str)
-{
-	int	i;
+// int	len_before_whitespace(char *str)
+// {
+// 	int	i;
 
-	i = 0;
-	while (str[i] && !ft_iswhitespace(str[i]))
-		i++;
-	return (i);
-}
+// 	i = 0;
+// 	while (str[i] && !ft_iswhitespace(str[i]))
+// 		i++;
+// 	return (i);
+// }
 
 /*
 Substitutions : $?, $ENV, "", ''(erase ' ' and "" once $ have been dealt with, if not quoted.)
@@ -132,6 +132,7 @@ char	*do_substitutions(char *token)
 	return (new_token);
 }
 
+
 //This considers "str" was allocated (it frees it).
 char	*ft_strtrim_whitespaces(char *str)
 {
@@ -140,10 +141,12 @@ char	*ft_strtrim_whitespaces(char *str)
 	char	*str_cpy;
 
 	i_start = 0;
-	while (str[i_start] && ft_iswhitespace(str[i_start]))
+	while (str[i_start] && (ft_iswhitespace(str[i_start])
+			|| !ft_isascii(str[i_start])))
 		i_start++;
 	i_end = ft_strlen(str) - 1;
-	while (str[i_end] && ft_iswhitespace(str[i_end]))
+	while (str[i_end] && (ft_iswhitespace(str[i_end])
+			|| !ft_isascii(str[i_end])))
 		i_end--;
 	str_cpy = ft_substr(str, i_start, i_end - i_start + 1);
 	free (str);
