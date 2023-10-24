@@ -27,11 +27,7 @@ int	check_type(char *token)
 			type = T_REDIR;
 	}
 	else
-	{
-		printf("check_if_file()\n");
-		printf("check_if_substitution()\n");
 		type = T_STR;
-	}
 	return (type);
 }
 
