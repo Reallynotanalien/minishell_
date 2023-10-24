@@ -1,4 +1,4 @@
-# include "../../includes/minishell.h"
+# include "../../../includes/minishell.h"
 
 void	get_infile(t_token *tokens)
 {

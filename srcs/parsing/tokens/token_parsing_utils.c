@@ -1,4 +1,4 @@
-# include "../../includes/minishell.h"
+# include "../../../includes/minishell.h"
 
 //Returns 1 if 'index' is part of a single-quoted string. Else returns 0.
 /*Counts the number of single quotes until index is reached,

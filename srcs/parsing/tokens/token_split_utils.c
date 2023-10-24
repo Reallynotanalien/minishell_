@@ -1,4 +1,4 @@
-# include "../../includes/minishell.h"
+# include "../../../includes/minishell.h"
 
 /*Returns yes if the character is a redirection character
 (|, < or >).*/

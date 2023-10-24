@@ -1,4 +1,4 @@
-# include "../../includes/minishell.h"
+# include "../../../includes/minishell.h"
 
 /*Iterates until it finds another double quote character.*/
 int	iterate_until_quotes_are_closed(char *line, int end)

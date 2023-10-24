@@ -1,4 +1,4 @@
-# include "../../includes/minishell.h"
+# include "../../../includes/minishell.h"
 
 /*Adds an index number representing the token's type to facilitate
 the transfer to the command struct later on. 

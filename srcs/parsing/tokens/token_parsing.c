@@ -1,5 +1,5 @@
 
-#include "../../includes/minishell.h"
+#include "../../../includes/minishell.h"
 
 /*The below function test the behavior of tokens surrounded by 
 all symbols required to handle in the subject. 
