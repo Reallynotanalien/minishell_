@@ -29,7 +29,9 @@ void	line_parsing(void)
 	if (split_tokens() == ERROR)
 		return (free_tokens_if_not_empty(), free(use_data()->line_cpy));
 	view_list();
-	printf("build_commands()\n");
-	printf("view_commands()\n");
+	//check whitespaces function because now the éèà characters won't print 
+	//if they are at the beginning of a sentence
+	build_commands();
+	view_commands();
 	free_tokens_if_not_empty();
 }

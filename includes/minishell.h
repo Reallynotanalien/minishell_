@@ -53,6 +53,7 @@ typedef struct s_token
 	char			*token;
 	int				type;
 	struct s_token	*next;
+	struct s_token	*prev;
 }	t_token;
 
 //This will be the main static struct, to be modified as we go!
@@ -81,6 +82,7 @@ void		view_list(void);
 //linked_list.c
 t_token		*add_token(char *token);
 void		free_tokens_if_not_empty(void);
+t_token		*lstget_prev(t_token *lst, t_token *reference);
 
 //command_list.c
 t_command	*create_command(void);

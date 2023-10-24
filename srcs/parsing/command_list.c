@@ -22,7 +22,7 @@ t_command	*add_command(char *command)
 	if (!new)
 		return (NULL);
 	new->cmd = ft_strdup(command);
-	if (use_data()->cmd== NULL)
+	if (use_data()->cmd == NULL)
 		use_data()->cmd = new;
 	else
 	{

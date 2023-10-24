@@ -1,28 +1,40 @@
 # include "../../includes/minishell.h"
 
-// void	get_infile(t_token *tokens)
-// {
-// 	if (lstget_prev(tokens, ))
-// 		if (is_redirection(tokens->token[0]))
-// 		{
+void	get_infile(t_token *tokens)
+{
+	if (tokens->prev != NULL)
+	{
+		if (is_redirection(tokens->prev->token[0]))
+		{
+			if (tokens->prev->type == T_PIPE)
+				printf("There's a pipe before this command\n");
+			else if (tokens->prev->type == T_REDIR)
+				printf("There's a redirection before this command\n");
+			else if (tokens->prev->type == T_HEREDOC)
+				printf("There's a heredoc before this command \n");
+		}
+	}
+	else
+		use_data()->cmd->infile = STDIN_FILENO;
+}
 
-// 		}
-// 	else
-// 		use_data()->cmd->infile = STDIN_FILENO;
-// }
-
-// void	get_outfile(t_token	*tokens)
-// {
-// 	if (tokens->next)
-// 		if (is_redirection(tokens->token[0]))
-// 		{
-// 			if (tokens->token[0] == '<')
-// 				if (tokens->token[1] != '\0')
-// 					//open outfile and cmd->outfile becomes this
-// 		}
-// 	else
-// 		use_data()->cmd->outfile = STDOUT_FILENO;
-// }
+void	get_outfile(t_token	*tokens)
+{
+	if (tokens->next)
+	{
+		if (is_redirection(tokens->next->token[0]))
+		{
+			if (tokens->next->type == T_PIPE)
+				printf("There is a pipe after this command\n");
+			else if (tokens->next->type == T_REDIR)
+				printf("There is a redirection after this command\n");
+			else if (tokens->next->type == T_HEREDOC)
+				printf("There's a heredoc after this command\n");
+		}
+	}
+	else
+		use_data()->cmd->outfile = STDOUT_FILENO;
+}
 
 void	build_commands(void)
 {
@@ -40,8 +52,8 @@ void	build_commands(void)
 			if (is_redirection(tokens->token[0]) && tokens->next)
 				tokens = tokens->next;
 			add_command(tokens->token);
-			printf("get_infile(tokens)\n");
-			printf("get_outfile(tokens)\n");
+			get_infile(tokens);
+			get_outfile(tokens);
 			if (tokens->next)
 				tokens = tokens->next;
 		}

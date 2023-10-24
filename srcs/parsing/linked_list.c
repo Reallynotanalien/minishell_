@@ -59,12 +59,16 @@ t_token	*add_token(char *token)
 	new->token = ft_strdup(token);
 	new->type = check_type(token);
 	if (use_data()->token == NULL)
+	{
 		use_data()->token = new;
+		use_data()->token->prev = NULL;
+	}
 	else
 	{
 		next = use_data()->token;
 		while (next->next != NULL)
 			next = next->next;
+		new->prev = next;
 		next->next = new;
 	}
 	return (use_data()->token);
