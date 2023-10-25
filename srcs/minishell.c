@@ -19,6 +19,8 @@ int	main(int argc, char **argv, char **env)
 			exit_program();
 		free(use_data()->line);
 		free_commands_if_not_empty();
+		if (use_data()->heredoc_flag == YES)
+			unlink(".here_doc");
 	}
 	cleanup();
 	return (0);

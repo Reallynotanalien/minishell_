@@ -63,6 +63,7 @@ typedef struct s_data
 	struct s_command	*cmd;
 	int					error_flag;
 	int					quote_flag;
+	int					heredoc_flag;
 	char				**new_env;
 	char				*line;
 	char				*line_cpy;
@@ -74,6 +75,7 @@ typedef struct s_data
 
 //build_commands_utils.c
 int			open_heredoc(t_token *tokens);
+int			contains_whitespace(char *str);
 
 //init.c
 void		init_data(t_data *data);
