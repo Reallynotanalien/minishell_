@@ -55,23 +55,23 @@ void	build_commands(void)
 	tokens = use_data()->token;
 	if (!tokens->next)
 		add_command(tokens->token, infile, outfile);
-	if (tokens->type == T_HEREDOC)
-	{
-		if (contains_whitespace(tokens->next->token))
-			printf("Heredoc should not work here because there is a space\n");
-		infile = open_heredoc(tokens);
-		if (tokens->next->next)
-			tokens = tokens->next->next;
-		else
-			printf("There is no more tokens\n");
-	}
 	else
 	{
 		while (tokens && tokens->next)
 		{
+			if (tokens->type == T_HEREDOC)
+			{
+				if (contains_whitespace(tokens->next->token))
+					printf("Heredoc should not work here because there is a space\n");
+				infile = open_heredoc(tokens);
+				if (tokens->next->next)
+					tokens = tokens->next->next;
+				else
+					return ;
+			}
 			if (is_redirection(tokens->token[0]) && tokens->next)
 				tokens = tokens->next;
-			// infile = get_infile(tokens);
+			infile = get_infile(tokens);
 			outfile = get_outfile(tokens);
 			add_command(tokens->token, infile, outfile);
 			if (tokens->next)
