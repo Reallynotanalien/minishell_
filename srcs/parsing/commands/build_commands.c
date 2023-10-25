@@ -56,32 +56,41 @@ void	build_commands(void)
 	if (!tokens->next)
 	{
 		if (tokens->type == T_HEREDOC)
-		{
-			// if (contains_whitespace(tokens->next->token))
-			// 	printf("Heredoc should not work here because there is a space\n");
-			infile = open_heredoc(tokens);
-		}
+			open_heredoc(tokens);
 		else
 			add_command(tokens->token, infile, outfile);
 	}
 	else
 	{
-		while (tokens && tokens->next)
+		while (tokens)
 		{
 			if (tokens->type == T_HEREDOC)
 			{
-				// if (contains_whitespace(tokens->next->token))
-				// 	printf("Heredoc should not work here because there is a space\n");
-				infile = open_heredoc(tokens);
-				if (tokens->next)
-					tokens = tokens->next;
-				else
+				if (tokens->next && tokens->next->token[0] == '>')
+				{
+					infile = open_heredoc(tokens);
+					printf("write the result of heredoc in the file\n");
+					if (tokens->next->next->next)
+						tokens = tokens->next->next->next;
+				}
+				else if (tokens->next && tokens->next->token[0] == '|')
+				{
+					printf("Open a pipe\n");
+					infile = open_heredoc(tokens);
+					tokens = tokens->next->next;
+				}
+				else if (!tokens->next)
+				{
+					open_heredoc(tokens);
 					return ;
+				}
+				else
+					printf("Error there is something other than a redir or pipe after heredoc\n");
 			}
 			if (is_redirection(tokens->token[0]) && tokens->next)
 				tokens = tokens->next;
-			infile = get_infile(tokens);
-			outfile = get_outfile(tokens);
+			// infile = get_infile(tokens);
+			// outfile = get_outfile(tokens);
 			add_command(tokens->token, infile, outfile);
 			if (tokens->next)
 				tokens = tokens->next;
