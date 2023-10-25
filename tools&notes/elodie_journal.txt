@@ -1,10 +1,12 @@
 ----Most Recent----
 
 Doing :
-substitution function
+1 : fixing substitution Function (add redirections as delimiters)
 
 To do next :
-Find how to handle last pipeline's exit status ($?)
+fixing substitution Function
+	(implement is_delimiter function) (Handle correctly non-existing variable)
+	(handle variables substituing other variables) (Handle $?) (Make it so it changes use_data()->line_cpy)
 Test how th git works
 Exit and clean functions
 Initiation struct et free
@@ -12,6 +14,9 @@ Ajouter tests
 
 
 Done :
+fixing substitution Function (Fixing variables beside one another ($USER$USER))
+Created elodie-beta branch to safely work on do_substitutions
+Fixing git situation
 Remove whitespaces before and after str function
 Token_parsing function
 Create a line with only the necessary whitespaces, before tokenisation
@@ -22,8 +27,6 @@ Git (malord)
 data->quote_flag : Useful ?
 data->error_flag : Defaults to 0 ? (For init) + Check Init !
 Added test_2 file
-
-
 
 
 
