@@ -7,14 +7,17 @@ with O_APPEND to deal with << >>.*/
 int	open_heredoc(t_token *tokens)
 {
 	char	*str;
+	char	*token;
 	int		temp_file;
 	int		here_doc;
 
 	temp_file = open(".here_doc", O_TRUNC | O_CREAT | O_WRONLY, 0644);
+	token = ft_strtrim_whitespaces(ft_substr(tokens->token, 2, ft_strlen(tokens->token) - 2));
+	printf("here is the copy of the token: %s\n", token);
 	while (get_next_line(0, &str))
 	{
-		if ((ft_strlen(str) == ft_strlen(tokens->next->token) + 1)
-			&& (ft_strncmp(str, tokens->next->token, ft_strlen(tokens->next->token)) == 0))
+		if ((ft_strlen(str) == ft_strlen(token) + 1)
+			&& (ft_strncmp(str, token, ft_strlen(token)) == 0))
 		{
 			free(str);
 			break ;
@@ -26,6 +29,7 @@ int	open_heredoc(t_token *tokens)
 	close(temp_file);
 	here_doc = open(".here_doc", O_RDONLY);
 	use_data()->heredoc_flag = YES;
+	free(token);
 	return (here_doc);
 }
 
