@@ -2,14 +2,13 @@
 #include "../includes/minishell.h"
 //intended to avoid conflicts (to be moved later)
 
-int	len_before_whitespace(char *str)
+//returns 1 if the character is an environment variable name delimiter.
+int	is_delimiter(char c)
 {
-	int	i;
-
-	i = 0;
-	while (str[i] && !ft_iswhitespace(str[i]))
-		i++;
-	return (i);
+	if (!c || ft_iswhitespace(c) || c == '\''
+		|| c == '\"' || c == '$' || c == '<' || c == '>' || c == '|')
+		return (1);
+	return (0);
 }
 
 /*
@@ -51,21 +50,15 @@ int	count_nbblocks(char *line)
 		{
 			nb_blocks++;
 			flag_var = 1;
+			i++;
 		}
-		if ((ft_iswhitespace(line[i]) || line[i] == '\"' || line[i] == '\'')
-			&& flag_var == 1)
+		if (flag_var == 1 && is_delimiter(line[i]))
 		{
 			nb_blocks++;
 			flag_var = 0;
 		}
 	}
 	return (nb_blocks);
-}
-
-//to be modified !
-int	function_exstat(void)
-{
-	return (1);
 }
 
 //Substitutes 1 block (one variable)
@@ -77,12 +70,10 @@ int	substitute_block(char *line, int index, char **blocks, int i_block)
 
 	i = index + 1;
 	if (line[index] == '?')
-		return (function_exstat(), 2);
-	if (!line[index] || ft_iswhitespace(line[index] 
-			|| line[index] == '\'' || line[index] == '\"'))
+		return (ft_strdup(use_data()->exstat));
+	if (is_delimiter(line[i]))
 		return (blocks[i_block] = ft_strdup("$"), 1);
-	while (line[i] && !ft_iswhitespace(line[i])
-		&& line[i] != '\"' && line[i] != '\'' && line[i] != '$')
+	while (!is_delimiter(line[i]))
 		i++;
 	var_name = ft_substr(line, index + 1, i - index - 1);
 	new_block = ft_strdup(getenv(var_name));
@@ -128,7 +119,7 @@ void	create_blocks(char *line, char **blocks)
 }
 
 //takes the line in struct and does all substitutions
-char	*do_substitutions(char *line)
+void	do_substitutions(char *line)
 {
 	int		nb_blocks;
 	char	**blocks;
@@ -149,7 +140,8 @@ char	*do_substitutions(char *line)
 		i++;
 	}
 	free (blocks);
-	return (new_line);
+	free (use_data()->line_cpy);
+	use_data()->line_cpy = new_line;
 }
 
 //This considers "str" was allocated (it frees it).
@@ -168,13 +160,4 @@ char	*ft_strtrim_whitespaces(char *str)
 	str_cpy = ft_substr(str, i_start, i_end - i_start + 1);
 	free (str);
 	return (str_cpy);
-}
-
-//returns 1 if the character is an environment variable delimiter.
-int	is_delimiter(char c)
-{
-	if (!c || ft_iswhitespace(c) || c == '\''
-		|| c == '\"' || c == '$' || c == '<' || c == '>' || c == '|')
-		return (1);
-	return (0);
 }

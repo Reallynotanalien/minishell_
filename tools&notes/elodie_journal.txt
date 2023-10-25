@@ -1,12 +1,10 @@
 ----Most Recent----
 
 Doing :
-1 : fixing substitution Function (add redirections as delimiters)
+1 : fixing substitution Function
 
 To do next :
-fixing substitution Function
-	(implement is_delimiter function) (Handle correctly non-existing variable)
-	(handle variables substituing other variables) (Handle $?) (Make it so it changes use_data()->line_cpy)
+fixing substitution Function (Make it so it changes use_data()->line_cpy) (test everything + write down tests)
 Test how th git works
 Exit and clean functions
 Initiation struct et free
@@ -14,7 +12,10 @@ Ajouter tests
 
 
 Done :
-fixing substitution Function (Fixing variables beside one another ($USER$USER))
+Added int exstat in struct (to be handled at execution)
+fixing substitution Function (Fixing variables beside one another ($USER$USER)), 
+	(add redirections as delimiters), (Handle correctly non-existing variable),
+	(handle variables substituing other variables), (Handle $?)
 Created elodie-beta branch to safely work on do_substitutions
 Fixing git situation
 Remove whitespaces before and after str function
@@ -23,10 +24,10 @@ Create a line with only the necessary whitespaces, before tokenisation
 Verify if all quotes are closed (before tokenisation)
 
 To discuss :
+Added int exstat in struct (to be handled at execution)
 Git (malord)
 data->quote_flag : Useful ?
 data->error_flag : Defaults to 0 ? (For init) + Check Init !
-Added test_2 file
 
 
 
