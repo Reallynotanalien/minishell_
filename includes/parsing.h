@@ -40,7 +40,7 @@ void		restore_attributes(void);
 
 //token_split.c
 void		split_tokens(void);
-void		do_substitutions(char *token);
+void		do_substitutions(char *line);
 int			is_redirection(char c);
 
 #endif

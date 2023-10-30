@@ -1,20 +1,17 @@
 ----Most Recent----
 
 Doing :
-1 : fixing substitution Function
+1 : fixing substitution Function (test everything + write down tests)
 
 To do next :
-fixing substitution Function (Make it so it changes use_data()->line_cpy) (test everything + write down tests)
 Test how th git works
 Exit and clean functions
 Initiation struct et free
-Ajouter tests
-
 
 Done :
 Added int exstat in struct (to be handled at execution)
 fixing substitution Function (Fixing variables beside one another ($USER$USER)), 
-	(add redirections as delimiters), (Handle correctly non-existing variable),
+	(add redirections as delimiters), (Handle correctly non-existing variable), (Make it so it changes use_data()->line_cpy)
 	(handle variables substituing other variables), (Handle $?)
 Created elodie-beta branch to safely work on do_substitutions
 Fixing git situation

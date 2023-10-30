@@ -6,7 +6,8 @@
 int	is_delimiter(char c)
 {
 	if (!c || ft_iswhitespace(c) || c == '\''
-		|| c == '\"' || c == '$' || c == '<' || c == '>' || c == '|')
+		|| c == '\"' || c == '$' || c == '<' || c == '>' || c == '|'
+		|| c == '?')
 		return (1);
 	return (0);
 }
@@ -69,8 +70,8 @@ int	substitute_block(char *line, int index, char **blocks, int i_block)
 	char	*var_name;
 
 	i = index + 1;
-	if (line[index] == '?')
-		return (ft_strdup(use_data()->exstat));
+	if (line[i] == '?')
+		return (blocks[i_block] = ft_itoa(use_data()->exstat), 2);
 	if (is_delimiter(line[i]))
 		return (blocks[i_block] = ft_strdup("$"), 1);
 	while (!is_delimiter(line[i]))
@@ -140,7 +141,7 @@ void	do_substitutions(char *line)
 		i++;
 	}
 	free (blocks);
-	free (use_data()->line_cpy);
+	free (line);
 	use_data()->line_cpy = new_line;
 }
 
