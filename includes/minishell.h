@@ -63,6 +63,7 @@ typedef struct s_data
 	struct s_command	*cmd;
 	int					error_flag;
 	int					quote_flag;
+	int					exstat;
 	char				**new_env;
 	char				*line;
 	char				*line_cpy;
