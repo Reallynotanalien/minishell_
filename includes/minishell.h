@@ -64,6 +64,7 @@ typedef struct s_data
 	int					error_flag;
 	int					quote_flag;
 	int					heredoc_flag;
+	int					exstat;
 	char				**new_env;
 	char				*line;
 	char				*line_cpy;
