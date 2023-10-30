@@ -5,7 +5,7 @@
 
 /*ERROR MESSAGES*/
 # define STRDUP_ERROR "Could not duplicate string.\n"
-# define QUOTES_ERROR "found unclosed quotation marks"
+# define QUOTES_ERROR "found unclosed quotation marks\n"
 
 /*STRUCTS*/
 
@@ -38,9 +38,14 @@ void		signals(void);
 void		disable_ctrlc(void);
 void		restore_attributes(void);
 
+//token_parsing_utils.c
+int			double_quoted(char *str, int index);
+int			single_quoted(char *str, int index);
+
 //token_split.c
 void		split_tokens(void);
 char		*do_substitutions(char *token);
 int			is_redirection(char c);
+int			is_double_quote(char c);
 
 #endif
