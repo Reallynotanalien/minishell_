@@ -44,7 +44,7 @@ int			single_quoted(char *str, int index);
 
 //token_split.c
 void		split_tokens(void);
-char		*do_substitutions(char *token);
+void		do_substitutions(char *line);
 int			is_redirection(char c);
 int			is_double_quote(char c);
 

@@ -1,29 +1,30 @@
 ----Most Recent----
 
 Doing :
-substitution function
+1 : fixing substitution Function (test everything + write down tests)
 
 To do next :
-Find how to handle last pipeline's exit status ($?)
 Test how th git works
 Exit and clean functions
 Initiation struct et free
-Ajouter tests
-
 
 Done :
+Added int exstat in struct (to be handled at execution)
+fixing substitution Function (Fixing variables beside one another ($USER$USER)), 
+	(add redirections as delimiters), (Handle correctly non-existing variable), (Make it so it changes use_data()->line_cpy)
+	(handle variables substituing other variables), (Handle $?)
+Created elodie-beta branch to safely work on do_substitutions
+Fixing git situation
 Remove whitespaces before and after str function
 Token_parsing function
 Create a line with only the necessary whitespaces, before tokenisation
 Verify if all quotes are closed (before tokenisation)
 
 To discuss :
+Added int exstat in struct (to be handled at execution)
 Git (malord)
 data->quote_flag : Useful ?
 data->error_flag : Defaults to 0 ? (For init) + Check Init !
-Added test_2 file
-
-
 
 
 
