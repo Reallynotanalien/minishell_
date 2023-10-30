@@ -53,6 +53,7 @@ typedef struct s_token
 	char			*token;
 	int				type;
 	struct s_token	*next;
+	struct s_token	*prev;
 }	t_token;
 
 //This will be the main static struct, to be modified as we go!
@@ -71,6 +72,9 @@ typedef struct s_data
 
 //FUNCTIONS
 
+//build_commands_utils.c
+int			open_heredoc(t_token *tokens);
+
 //init.c
 void		init_data(t_data *data);
 
@@ -81,10 +85,11 @@ void		view_list(void);
 //linked_list.c
 t_token		*add_token(char *token);
 void		free_tokens_if_not_empty(void);
+t_token		*lstget_prev(t_token *lst, t_token *reference);
 
 //command_list.c
 t_command	*create_command(void);
-t_command	*add_command(char *command);
+t_command	*add_command(char *command, int infile, int outfile);
 void		free_commands_if_not_empty(void);
 void		view_commands(void);
 

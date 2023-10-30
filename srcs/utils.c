@@ -25,6 +25,8 @@ void	view_list(void)
 		printf("----------------\n");
 		printf("token%d:[%s]\n", i++, (char *)tokens->token);
 		printf("type: %d\n", tokens->type);
+		if (i > 2)
+			printf("prev:[%s]\n", (char *)tokens->prev->token);
 		if (!tokens->next)
 			return ;
 		tokens = tokens->next;

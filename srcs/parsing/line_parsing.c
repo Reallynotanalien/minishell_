@@ -42,7 +42,8 @@ int	remove_spaces(char *str)
 	i = -1;
 	str_len = 0;
 	while (str[++i])
-		if (!ft_iswhitespace(str[i])
+		if (!ft_iswhitespace(str[i]) || double_quoted(str, i) 
+			|| single_quoted(str, i)
 			|| (i != 0 && !ft_iswhitespace(str[i - 1])))
 			new_str[str_len++] = str[i];
 	use_data()->line_cpy = new_str;
