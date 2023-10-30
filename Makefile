@@ -21,7 +21,7 @@ SRCS =	./srcs/init.c \
 		./srcs/parsing/term_attributes.c \
 		./srcs/exec/exec.c \
 		./srcs/utils.c \
-		./substitutions.c \
+		./srcs/parsing/substitutions.c \
 				
 
 #colours ------------------------------------------

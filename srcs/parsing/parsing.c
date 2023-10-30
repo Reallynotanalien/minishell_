@@ -25,7 +25,7 @@ void	line_parsing(void)
 		return ;
 	if (remove_spaces(use_data()->line) == ERROR)
 		return (free(use_data()->line_cpy));
-	printf("if (do_substitutions(use_data()->line_cpy) == ERROR)\n");
+	do_substitutions(use_data()->line_cpy);
 	if (split_tokens() == ERROR)
 		return (free_tokens_if_not_empty(), free(use_data()->line_cpy));
 	view_list();
