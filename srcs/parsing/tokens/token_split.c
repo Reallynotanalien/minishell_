@@ -46,11 +46,11 @@ void	new_token(int start, int end)
 }
 
 /*Iterates through the line and splits it into a linked list of tokens.
-Everytime there is a redirection, it gets splitted into it's own token. 
-Everything in between redirections gets put into a single token until the
-next redirection. 
+Everytime there is a redirection, it gets splitted into it's own token
+with all of the words that follows it, until the next redirection. 
 If a redirection is found in between double quotes, it gets treated as part
 of the string and not as a redirection.
+Everytime there is a pipe, the pipe gets put into a token all alone.
 All of the superfluous whitespaces that would be in between tokens are also
 deleted.
 This function works wether the strings and the redirections are separated by
