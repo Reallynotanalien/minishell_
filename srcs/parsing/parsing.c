@@ -31,7 +31,7 @@ void	line_parsing(void)
 	view_list();
 	//check whitespaces function because now the éèà characters won't print 
 	//if they are at the beginning of a sentence
-	build_commands();
-	view_commands();
+	// build_commands();
+	// view_commands();
 	free_tokens_if_not_empty();
 }

@@ -5,8 +5,10 @@ the transfer to the command struct later on.
 1 = T_STR
 2 = T_SUBST
 3 = T_PIPE
-4 = T_REDIR
-5 = T_HEREDOC*/
+4 = T_HEREDOC
+5 = T_INFILE
+6 = T_OUTFILE
+7 = T_APPEND*/
 int	check_type(char *token)
 {
 	int	type;
@@ -18,13 +20,18 @@ int	check_type(char *token)
 			type = T_PIPE;
 		else if (token[0] == '<')
 		{
-			if (token[1] != '\0')
+			if (token[1] == '<')
 				type = T_HEREDOC;
 			else
-				type = T_REDIR;
+				type = T_INFILE;
 		}
 		else if (token[0] == '>')
-			type = T_REDIR;
+		{
+			if (token[1] == '>')
+				type = T_APPEND;
+			else
+				type = T_OUTFILE;
+		}
 	}
 	else
 		type = T_STR;
