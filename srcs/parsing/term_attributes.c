@@ -6,7 +6,6 @@ void	restore_attributes(void)
 	tcsetattr(STDIN_FILENO, TCSANOW, &use_data()->old_attributes);
 }
 
-
 /*Before disabling the Ctrl+C echo from the terminal's attributes, we first
 get the original attributes and make a copy of them so we can restore it 
 before exiting the program.

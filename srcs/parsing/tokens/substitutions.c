@@ -1,5 +1,5 @@
 
-# include "../../includes/minishell.h"
+# include "../../../includes/minishell.h"
 
 //returns 1 if the character is an environment variable name delimiter.
 int	is_delimiter(char c)

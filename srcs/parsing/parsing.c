@@ -15,7 +15,14 @@ int	main_parsing(int argc, char **argv, char **env)
 }
 
 /*First checks if all the quotes are closed, if not, returns ERROR
-and sets the error flag to ERROR. Then, splits the line into tokens.
+and sets the error flag to ERROR.
+Then, removes all of the superfluous spaces in between words (except
+for what's in between quotes), returns ERROR if something goes wrong
+and sets the error flag to ERROR.
+Then substitutes all of the environment variables it finds in the 
+command line and stores it in a copy of the original line.
+After all of that is done, splits the line into tokens. If something
+goes wrong, the tokens are freed as well as the copy of the line.
 Those tokens are then used to create a command list, in which each 
 command will be associated with the right input and output file for
 easy execution.*/
@@ -31,7 +38,7 @@ void	line_parsing(void)
 	view_list();
 	//check whitespaces function because now the éèà characters won't print 
 	//if they are at the beginning of a sentence
-	// build_commands();
-	// view_commands();
+	build_commands();
+	view_commands();
 	free_tokens_if_not_empty();
 }

@@ -8,20 +8,20 @@ SRCS =	./srcs/init.c \
 		./srcs/parsing/commands/build_commands.c \
 		./srcs/parsing/commands/build_commands_utils.c \
 		./srcs/parsing/commands/command_list.c \
+		./srcs/parsing/tokens/line_parsing.c \
 		./srcs/parsing/tokens/linked_list.c \
+		./srcs/parsing/tokens/substitutions.c \
 		./srcs/parsing/tokens/token_parsing.c \
 		./srcs/parsing/tokens/token_parsing_utils.c \
 		./srcs/parsing/tokens/token_split.c \
 		./srcs/parsing/tokens/token_split_utils.c \
 		./srcs/parsing/error.c \
-		./srcs/parsing/line_parsing.c \
 		./srcs/parsing/parsing.c \
 		./srcs/pending.c \
 		./srcs/parsing/signals.c \
 		./srcs/parsing/term_attributes.c \
 		./srcs/exec/exec.c \
 		./srcs/utils.c \
-		./srcs/parsing/substitutions.c \
 				
 
 #colours ------------------------------------------
