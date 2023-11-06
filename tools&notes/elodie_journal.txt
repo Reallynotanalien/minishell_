@@ -1,6 +1,7 @@
 ----Most Recent----
 
 Doing :
+test substitution
 test do_substitutions
 1 : when a redirection token is found, handle it and delete (delete token function, initiate cmd struct, )
 all letters to lower case for command/builtin (+ take everything before pipe)

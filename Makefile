@@ -23,7 +23,6 @@ SRCS =	./srcs/init.c \
 		./srcs/exec/exec.c \
 		./srcs/utils.c \
 		./srcs/parsing/redirections.c \
-				
 
 #colours ------------------------------------------
 B_BLUE='\033[1;34m'
