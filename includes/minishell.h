@@ -43,8 +43,7 @@ typedef struct s_command
 {
 	int					infile;
 	int					outfile;
-	char				*cmd;
-	char				*args;
+	char				**cmd;
 	struct s_command	*next;
 }					t_command;
 

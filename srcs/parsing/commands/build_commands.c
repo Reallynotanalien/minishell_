@@ -36,7 +36,7 @@ void	build_commands(void)
 		tokens = command_loop(tokens);
 		if (tokens->type == T_PIPE)
 			printf("Do pipe thing\n");
-		add_command("tokens->token", use_data()->infile, use_data()->outfile);
+		add_command("tokens->token hello world", use_data()->infile, use_data()->outfile);
 		if (tokens->next)
 			tokens = tokens->next;
 		else
