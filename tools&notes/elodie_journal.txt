@@ -1,14 +1,23 @@
 ----Most Recent----
 
 Doing :
-1 : fixing substitution Function (test everything + write down tests)
+1 : when a redirection token is found, handle it and delete (delete token function, initiate cmd struct, )
+all letters to lower case for command/builtin (+ take everything before pipe)
+How to identify builtins ? (with first array of each command tab)
 
 To do next :
+token handling functions(struc management) (add token, delete and free token)
+command handling functions(struct management) (add cmd, delete and free cmd)
+build command function (take all tokens and place them in a tab)
+action functions (if Infile redirection/outfile redirection/append redirection/pipe/end of line)
+
 Test how th git works
 Exit and clean functions
 Initiation struct et free
 
 Done :
+add is_builtin flag to struct
+1 : fixing substitution Function (test everything + write down tests)
 Added int exstat in struct (to be handled at execution)
 fixing substitution Function (Fixing variables beside one another ($USER$USER)), 
 	(add redirections as delimiters), (Handle correctly non-existing variable), (Make it so it changes use_data()->line_cpy)
@@ -21,8 +30,7 @@ Create a line with only the necessary whitespaces, before tokenisation
 Verify if all quotes are closed (before tokenisation)
 
 To discuss :
-Added int exstat in struct (to be handled at execution)
-Git (malord)
+Is "previous" in token struct useful ?
 data->quote_flag : Useful ?
 data->error_flag : Defaults to 0 ? (For init) + Check Init !
 

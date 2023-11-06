@@ -41,10 +41,10 @@
 
 typedef struct s_command
 {
+	char				**cmd;
 	int					infile;
 	int					outfile;
-	char				*cmd;
-	char				*args;
+	int					builtin_flag;
 	struct s_command	*next;
 }					t_command;
 
