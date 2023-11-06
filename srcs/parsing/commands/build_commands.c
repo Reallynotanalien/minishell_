@@ -1,6 +1,25 @@
 # include "../../../includes/minishell.h"
 
-t_token	*command_loop(t_token *tokens)
+// char	*join_and_free(char *command, const char *token)
+// {
+// 	char			*temp;
+// 	unsigned int	len1;
+// 	unsigned int	len2;
+
+// 	len1 = find_len_until(command, '\0');
+// 	len2 = find_len_until(token, '\0');
+// 	if (!null_calloc(&temp, sizeof (char), (len1 + len2 + 1)))
+// 	{
+// 		free_if_not_empty(&command);
+// 		return (NULL);
+// 	}
+// 	copy_from_src(temp, command, len1);
+// 	copy_from_src(temp + len1, token, len2);
+// 	free_if_not_empty(&command);
+// 	return (temp);
+// }
+
+t_token	*command_loop(t_token *tokens, char **command)
 {
 	while (tokens)
 	{
@@ -13,7 +32,7 @@ t_token	*command_loop(t_token *tokens)
 		else if (tokens->type == T_OUTFILE || tokens->type == T_APPEND)
 			printf("outfile = open_outfile();\n");
 		else if (tokens->type == T_STR)
-			printf("add the str to command\n");
+			*command = join_free(*command, tokens->token);
 		if (tokens->next)
 			tokens = tokens->next;
 		else
@@ -25,18 +44,20 @@ t_token	*command_loop(t_token *tokens)
 void	build_commands(void)
 {
 	t_token	*tokens;
+	char	*command;
 	int		i;
 
 	i = 1;
 	tokens = use_data()->token;
 	while (tokens)
 	{
+		command = NULL;
 		use_data()->infile = STDIN_FILENO;
 		use_data()->outfile = STDOUT_FILENO;
-		tokens = command_loop(tokens);
+		tokens = command_loop(tokens, &command);
 		if (tokens->type == T_PIPE)
 			printf("Do pipe thing\n");
-		add_command("tokens->token hello world", use_data()->infile, use_data()->outfile);
+		add_command(command, use_data()->infile, use_data()->outfile);
 		if (tokens->next)
 			tokens = tokens->next;
 		else

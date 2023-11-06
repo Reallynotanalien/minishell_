@@ -17,6 +17,5 @@
 /*FUNCTIONS*/
 
 //exec.c
-void	exec(void);
 
 #endif

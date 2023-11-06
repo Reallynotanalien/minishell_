@@ -99,4 +99,6 @@ t_command	*add_command(char *command, int infile, int outfile);
 void		free_commands_if_not_empty(void);
 void		view_commands(void);
 
+void		exec(t_command *cmd);
+
 #endif
