@@ -1,6 +1,11 @@
 ----Most Recent----
 
 Doing :
+Gérer les str vides (1ère chose à faire après remove_spaces/au début de remove_spaces)
+Study printf/gnl
+How to merge only one file
+Working on remove_spaces (atm, it removes all spaces. Also, leave only spaces, no tabs etc.)
+test syntax parsing
 test substitution
 test do_substitutions
 1 : when a redirection token is found, handle it and delete (delete token function, initiate cmd struct, )

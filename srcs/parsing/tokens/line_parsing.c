@@ -34,7 +34,8 @@ int	remove_spaces(char *str)
 	while (str[++i])
 		if (!ft_iswhitespace(str[i]) || double_quoted(str, i) 
 			|| single_quoted(str, i)
-			|| (i != 0 && !ft_iswhitespace(str[i - 1])))
+			|| (i != 0 && !ft_iswhitespace(str[i - 1])
+				&& !ft_iswhitespace(str[i])))
 			str_len++;
 	new_str = ft_calloc(str_len + 1, sizeof(char));
 	if (!new_str)
@@ -44,7 +45,8 @@ int	remove_spaces(char *str)
 	while (str[++i])
 		if (!ft_iswhitespace(str[i]) || double_quoted(str, i) 
 			|| single_quoted(str, i)
-			|| (i != 0 && !ft_iswhitespace(str[i - 1])))
+			|| (i != 0 && !ft_iswhitespace(str[i - 1])
+				&& !ft_iswhitespace(str[i])))
 			new_str[str_len++] = str[i];
 	use_data()->line_cpy = new_str;
 	return (EXIT_SUCCESS);
