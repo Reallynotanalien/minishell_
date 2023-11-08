@@ -82,46 +82,48 @@ void	pipex(char **cmd, int nb_cmds)
 	child_two(cmd);
 }
 
-void	child_one(t_command *cmd)
+void	child_test(t_command *cmd)
 {
-	// int	pid;
+	//needs to solve the cat problem with the prompt
+	int	pid;
 
-	// pid = fork();
-	// if (pid == -1)
-	// 	printf("FORK DID NOT WORK\n");
-	// else if (pid == 0)
+	pid = fork();
+	if (pid == -1)
+		printf("FORK DID NOT WORK\n");
+	else if (pid == 0)
 		execve(cmd->path, (char *const *)cmd->cmd, use_data()->new_env);
+	waitpid(pid, NULL, 0);
+}
+
+void	get_path(t_command *cmd)
+{
+	if (access(cmd->cmd[0], F_OK) == 0)
+	{
+		cmd->path = cmd->cmd[0];
+		printf("is an absolute path\n");
+	}
+	else if (cmd->builtin_flag == YES)
+		printf("is a builtin)\n");
+	else
+		find_cmd(&cmd);
 }
 
 void	exec(t_command *cmd)
 {
 	int	nb_cmds;
 
-	nb_cmds = count_commands(cmd);
-	while (cmd)
+	while (cmd && nb_cmds > 1)
 	{
 		printf("%s\n", cmd->cmd[0]);
-		if (access(cmd->cmd[0], F_OK) == 0)
-		{
-			cmd->path = cmd->cmd[0];
-			printf("is an absolute path\n");
-		}
-		else if (cmd->builtin_flag == YES)
-			printf("is a builtin)\n");
-		if (nb_cmds == 1)
-		{
-			find_cmd(&cmd);
-			printf("%s\n", cmd->path);
-			child_one(cmd);
-		}
-		else
-		{
-			find_cmd(&cmd);
-			pipex(cmd->cmd, nb_cmds);
-		}
+		get_path(cmd);
+		pipex(cmd->cmd, nb_cmds);
+		nb_cmds--;
 		if (cmd->next)
 			cmd = cmd->next;
 		else
 			break ;
 	}
+	get_path(cmd);
+	if (nb_cmds == 1)
+		child_test(cmd);
 }
