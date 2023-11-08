@@ -32,7 +32,10 @@ t_token	*command_loop(t_token *tokens, char **command)
 		else if (tokens->type == T_OUTFILE || tokens->type == T_APPEND)
 			printf("outfile = open_outfile();\n");
 		else if (tokens->type == T_STR)
+		{
+			*command = join_free(*command, " ");
 			*command = join_free(*command, tokens->token);
+		}
 		if (tokens->next)
 			tokens = tokens->next;
 		else
