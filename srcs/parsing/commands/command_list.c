@@ -21,7 +21,7 @@ t_command	*add_command(char *command, int infile, int outfile)
 	new = create_command();
 	if (!new)
 		return (NULL);
-	new->cmd = ft_strdup(command);
+	// new->cmd = ft_strdup(command);
 	new->infile = infile;
 	new->outfile = outfile;
 	if (use_data()->cmd == NULL)
