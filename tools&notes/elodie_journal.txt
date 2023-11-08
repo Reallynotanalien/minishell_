@@ -1,10 +1,8 @@
 ----Most Recent----
 
 Doing :
-fixing remove_spaces -> doesnt keep 1 character words, doesnt keep quotes nor quoted spaces.
 test syntax parsing
 test substitution
-Working on remove_spaces (atm, it removes all spaces. Also, leave only spaces, no tabs etc.)
 Functions for redirection tokens
 
 To do next :
@@ -20,6 +18,7 @@ Exit and clean functions
 Initiation struct et free
 
 Done :
+fixing remove_spaces
 
 
 To discuss :

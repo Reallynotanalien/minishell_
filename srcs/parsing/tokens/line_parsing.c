@@ -47,7 +47,6 @@ int	find_lenght(char *str, int end)
 	return (len);
 }
 
-//Work on this v
 char	*skip_consecutivews(int i, int end, char *str)
 {
 	int		i_new;
@@ -62,7 +61,7 @@ char	*skip_consecutivews(int i, int end, char *str)
 			new_str[i_new++] = str[i++];
 		if (i < end)
 			new_str[i_new++] = ' ';
-		while (ft_iswhitespace(str[i]))
+		while (ft_iswhitespace(str[i])  && !double_quoted(str, i) && !single_quoted(str, i))
 			i++;
 	}
 	return (new_str);
@@ -76,10 +75,10 @@ int	remove_spaces(char *str)
 	int		end;
 
 	i = 0;
-	while (str[i] && ft_iswhitespace(str[i]))
+	while (str[i] && ft_iswhitespace(str[i]) && !double_quoted(str, i) && !single_quoted(str, i))
 		i++;
 	end = ft_strlen(str) - 1;
-	while (ft_iswhitespace(str[end]))
+	while (ft_iswhitespace(str[end]) && !double_quoted(str, end) && !single_quoted(str, end))
 		end--;
 	if (end != i)
 		end++;
