@@ -34,7 +34,7 @@ char	*find_path(t_command **cmd, char **env)
 			break ;
 		i++;
 		if (env[i] == NULL || env[i + 1] == NULL)
-			return (ENV_ERROR);
+			return (FIND_PATH_ERROR);
 	}
 	path_env = (char **)ft_split(env[i] + 5, ':');
 	i = 0;
@@ -46,8 +46,7 @@ t_command	*find_cmd(t_command **cmd)
 {
 	(*cmd)->path = find_path(cmd, use_data()->new_env);
 	if ((*cmd)->path == NULL
-		// || ft_strncmp(ENV_ERROR, cmd->path, 43) == 0
-		)
+		|| ft_strncmp(FIND_PATH_ERROR, (*cmd)->path, 43) == 0)
 	{
 		printf("COULD NOT FIND PATH\n");
 	}
@@ -83,6 +82,17 @@ void	pipex(char **cmd, int nb_cmds)
 	child_two(cmd);
 }
 
+void	child_one(t_command *cmd)
+{
+	// int	pid;
+
+	// pid = fork();
+	// if (pid == -1)
+	// 	printf("FORK DID NOT WORK\n");
+	// else if (pid == 0)
+		execve(cmd->path, (char *const *)cmd->cmd, use_data()->new_env);
+}
+
 void	exec(t_command *cmd)
 {
 	int	nb_cmds;
@@ -102,9 +112,13 @@ void	exec(t_command *cmd)
 		{
 			find_cmd(&cmd);
 			printf("%s\n", cmd->path);
+			child_one(cmd);
 		}
 		else
+		{
+			find_cmd(&cmd);
 			pipex(cmd->cmd, nb_cmds);
+		}
 		if (cmd->next)
 			cmd = cmd->next;
 		else

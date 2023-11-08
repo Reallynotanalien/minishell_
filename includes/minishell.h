@@ -36,6 +36,7 @@
 # define ARGC_ERROR "No argument should be sent appart from the program's name\n"
 # define ENV_ERROR "The environment could not be copied\n"
 # define ARGV_ERROR "There is no argv\n"
+# define FIND_PATH_ERROR "Path was not found\n"
 
 /*STRUCTS*/
 
