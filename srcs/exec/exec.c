@@ -142,25 +142,25 @@ void	exec(t_command *cmd)
 	int	nb_cmds;
 
 	nb_cmds = count_commands(cmd);
-	dup2(cmd->infile, STDIN_FILENO);
-	if (nb_cmds == 1)
-	{
-		get_path(cmd);
-		child_test(cmd);
-	}
-	else
-	{
-		while (cmd && nb_cmds > 1)
-		{
-			get_path(cmd);
-			pipex(cmd);
-			nb_cmds--;
-			if (cmd->next)
-				cmd = cmd->next;
-			else
-				break ;
-		}
-		get_path(cmd);
-	child_two(cmd, use_data()->new_env);
-	}
+	// dup2(cmd->infile, STDIN_FILENO);
+	// if (nb_cmds == 1)
+	// {
+	// 	get_path(cmd);
+	// 	child_test(cmd);
+	// }
+	// else
+	// {
+	// 	while (cmd && nb_cmds > 1)
+	// 	{
+	// 		get_path(cmd);
+	// 		pipex(cmd);
+	// 		nb_cmds--;
+	// 		if (cmd->next)
+	// 			cmd = cmd->next;
+	// 		else
+	// 			break ;
+	// 	}
+	// 	get_path(cmd);
+	// child_two(cmd, use_data()->new_env);
+	// }
 }
