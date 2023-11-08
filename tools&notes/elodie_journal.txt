@@ -1,6 +1,7 @@
 ----Most Recent----
 
 Doing :
+fixing remove_spaces -> doesnt keep 1 character words, doesnt keep quotes nor quoted spaces.
 test syntax parsing
 test substitution
 Working on remove_spaces (atm, it removes all spaces. Also, leave only spaces, no tabs etc.)
@@ -23,7 +24,7 @@ Done :
 
 To discuss :
 all to lower case (cmds and files) -> check bash
-
+remove_spaces assume que la ligne à traiter n'est pas null et contient au moins un charactère valide (str[i])
 
 
 

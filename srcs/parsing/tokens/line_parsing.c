@@ -33,7 +33,8 @@ int	find_lenght(char *str, int end)
 		i++;
 	while (i < end)
 	{
-		while (i < end && !ft_iswhitespace(str[i]))
+		while (i < end && (!ft_iswhitespace(str[i])
+				|| double_quoted(str, i) || single_quoted(str, i)))
 		{
 			i++;
 			len++;
@@ -46,14 +47,33 @@ int	find_lenght(char *str, int end)
 	return (len);
 }
 
+//Work on this v
+char	*skip_consecutivews(int i, int end, char *str)
+{
+	int		i_new;
+	char	*new_str;
+
+	new_str = ft_calloc(find_lenght(str, end), sizeof(char));
+	i_new = 0;
+	while (i < end)
+	{
+		while (!ft_iswhitespace(str[i]) 
+			|| double_quoted(str, i) || single_quoted(str, i))
+			new_str[i_new++] = str[i++];
+		if (i < end)
+			new_str[i_new++] = ' ';
+		while (ft_iswhitespace(str[i]))
+			i++;
+	}
+	return (new_str);
+}
+
 /*removes the unnecessary spaces from readline's return,
 frees use_data()->line and saves the result in use_data()->line_cpy.*/
 int	remove_spaces(char *str)
 {
 	int		i;
 	int		end;
-	int		i_new;
-	char	*new_str;
 
 	i = 0;
 	while (str[i] && ft_iswhitespace(str[i]))
@@ -61,17 +81,12 @@ int	remove_spaces(char *str)
 	end = ft_strlen(str) - 1;
 	while (ft_iswhitespace(str[end]))
 		end--;
-	new_str = ft_calloc(find_lenght(str, end + 1), sizeof(char));
-	i_new = 0;
-	while (i < end)
-	{
-		while (!ft_iswhitespace(str[i]))
-			new_str[i_new++] = str[i++];
-		if (i < end)
-			new_str[i_new++] = ' ';
-		while (ft_iswhitespace(str[i]))
-			i++;
-	}
-	use_data()->line_cpy = new_str;
+	if (end != i)
+		end++;
+	if (end == i)
+		use_data()->line_cpy = ft_substr(str, i, 1);
+	else
+		use_data()->line_cpy = skip_consecutivews(i, end, str);
+	free (str);
 	return (EXIT_SUCCESS);
 }
