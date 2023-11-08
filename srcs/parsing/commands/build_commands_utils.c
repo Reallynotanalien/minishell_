@@ -13,7 +13,7 @@ int	open_heredoc(t_token *tokens)
 
 	temp_file = open(".here_doc", O_TRUNC | O_CREAT | O_WRONLY, 0644);
 	token = ft_strtrim_whitespaces(ft_substr(tokens->token, 2, ft_strlen(tokens->token) - 2));
-	if (contains_whitespace(token))
+	if (tokens->next && tokens->next->type == T_STR)
 		printf("Heredoc should not work here because there is something else than a redirection after the EOF\n");
 	while (get_next_line(0, &str))
 	{
