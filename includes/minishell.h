@@ -88,6 +88,10 @@ void		init_data(t_data *data);
 //utils.c
 t_data		*use_data(void);
 void		view_list(void);
+char		*ft_strlower(char *str);
+
+//redirections
+int			token_redirout(t_token *token, t_command *cmd);
 
 //linked_list.c
 t_token		*add_token(char *token);

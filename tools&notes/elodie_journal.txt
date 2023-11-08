@@ -1,11 +1,12 @@
 ----Most Recent----
 
 Doing :
-test syntax parsing
-test substitution
 Functions for redirection tokens
+test substitution
+test syntax parsing
 
 To do next :
+test token functions (add, remove etc)
 How to identify builtins ? (with first array of each command tab)
 Tester les str vides (1ère chose à faire après remove_spaces/au début de remove_spaces)
 How to merge only one file
@@ -18,13 +19,12 @@ Exit and clean functions
 Initiation struct et free
 
 Done :
-fixing remove_spaces
+fixed remove_spaces
+char	*ft_strlower(char *str);
 
 
 To discuss :
-all to lower case (cmds and files) -> check bash
-remove_spaces assume que la ligne à traiter n'est pas null et contient au moins un charactère valide (str[i])
-
+check les structs pour voir si on a des variables inutiles
 
 
 
