@@ -71,6 +71,7 @@ typedef struct s_data
 	int					exstat;
 	int					infile;
 	int					outfile;
+	int					fd[2];
 	char				**new_env;
 	char				*line;
 	char				*line_cpy;

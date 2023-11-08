@@ -66,20 +66,34 @@ int	count_commands(t_command *cmd)
 	return (i);
 }
 
-void	child_two(char **cmd)
+void	child_one(t_command *cmd, char **env)
 {
-	printf("child two: %s\n", cmd[0]);
+	dup2(cmd->outfile, STDOUT_FILENO);
+	// close(cmd->fd[1]);
+	execve(cmd->path, (char *const *)cmd->cmd[0], env);
 }
 
-void	pipex(char **cmd, int nb_cmds)
+void	pipex(t_command *cmd)
 {
-	while (nb_cmds > 1)
+	int	pid;
+
+	printf("I am in pipex\n");
+	pid = fork();
+	if (pid == -1)
+		printf("FORK DID NOT WORK\n");
+	else if (pid == 0)
 	{
-		printf("%i\n", nb_cmds);
-		printf("%s\n", cmd[0]);
-		nb_cmds--;
+		child_one(cmd, use_data()->new_env);
+		printf("Hi I got here\n");
 	}
-	child_two(cmd);
+	else
+	{
+		printf("PID is not 0??\n");
+		// close(cmd->fd[1]);
+		// dup2(cmd->next->fd[0], STDIN_FILENO);
+		// close(cmd->fd[0]);
+	}
+	// waitpid(pid, NULL, 0);
 }
 
 void	child_test(t_command *cmd)
@@ -108,22 +122,45 @@ void	get_path(t_command *cmd)
 		find_cmd(&cmd);
 }
 
+void	child_two(t_command *cmd, char **env)
+{
+	int	pid;
+
+	pid = fork();
+	if (pid == -1)
+		printf("PIPE DID NOT WORK\n");
+	else if (pid == 0)
+	{
+		dup2(cmd->outfile, STDOUT_FILENO);
+		execve(cmd->path, (char *const *)cmd->cmd[0], env);
+	}
+	waitpid(pid, NULL, 0);
+}
+
 void	exec(t_command *cmd)
 {
 	int	nb_cmds;
 
-	while (cmd && nb_cmds > 1)
-	{
-		printf("%s\n", cmd->cmd[0]);
-		get_path(cmd);
-		pipex(cmd->cmd, nb_cmds);
-		nb_cmds--;
-		if (cmd->next)
-			cmd = cmd->next;
-		else
-			break ;
-	}
-	get_path(cmd);
+	nb_cmds = count_commands(cmd);
+	dup2(cmd->infile, STDIN_FILENO);
 	if (nb_cmds == 1)
+	{
+		get_path(cmd);
 		child_test(cmd);
+	}
+	else
+	{
+		while (cmd && nb_cmds > 1)
+		{
+			get_path(cmd);
+			pipex(cmd);
+			nb_cmds--;
+			if (cmd->next)
+				cmd = cmd->next;
+			else
+				break ;
+		}
+		get_path(cmd);
+	child_two(cmd, use_data()->new_env);
+	}
 }
