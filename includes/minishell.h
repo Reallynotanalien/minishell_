@@ -36,6 +36,7 @@
 # define ARGC_ERROR "No argument should be sent appart from the program's name\n"
 # define ENV_ERROR "The environment could not be copied\n"
 # define ARGV_ERROR "There is no argv\n"
+# define FIND_PATH_ERROR "Path was not found\n"
 
 /*STRUCTS*/
 
@@ -45,6 +46,7 @@ typedef struct s_command
 	int					infile;
 	int					outfile;
 	int					builtin_flag;
+	char				*path;
 	struct s_command	*next;
 }					t_command;
 
@@ -69,6 +71,7 @@ typedef struct s_data
 	int					exstat;
 	int					infile;
 	int					outfile;
+	int					fd[2];
 	char				**new_env;
 	char				*line;
 	char				*line_cpy;
@@ -99,5 +102,13 @@ t_command	*create_command(void);
 t_command	*add_command(char *command, int infile, int outfile);
 void		free_commands_if_not_empty(void);
 void		view_commands(void);
+
+void		exec(t_command *cmd);
+
+//path.c
+char		*access_path(t_command *cmd, char **path_env);
+char		*find_path(t_command **cmd, char **env);
+t_command	*find_cmd(t_command **cmd);
+void		get_path(t_command *cmd);
 
 #endif

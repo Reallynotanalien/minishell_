@@ -12,7 +12,7 @@ int	main(int argc, char **argv, char **env)
 		{
 			line_parsing();
 			if (use_data()->error_flag != ERROR)
-				exec();
+				exec(use_data()->cmd);
 			add_history(use_data()->line);
 		}
 		if (use_data()->line == NULL)

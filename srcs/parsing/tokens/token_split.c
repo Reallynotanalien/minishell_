@@ -31,6 +31,18 @@ int	iterate_until_redir(char *line, int end, int start)
 	return (end);
 }
 
+int	iterate_until_space(char *line, int end)
+{
+	while (line[end] && line[end + 1]
+		&& !ft_iswhitespace(line[end + 1]))
+	{
+		if (line[end + 1] == '"')
+			end = iterate_until_quotes_are_closed(line, end + 1);
+		end++;
+	}
+	return (end);
+}
+
 /*Copies the part of the command line that we want as a token and
 deletes all of the superfluous whitespaces that would be before or
 after the string. 
@@ -74,7 +86,7 @@ int	split_tokens(void)
 			end++;
 			if (use_data()->line_cpy[start] == '<'
 				|| use_data()->line_cpy[start] == '>')
-				end = iterate_until_redir(use_data()->line_cpy, end, start);
+				end = iterate_until_space(use_data()->line_cpy, end);
 		}
 		new_token(start, end);
 		start = end + 1;
