@@ -1,30 +1,29 @@
 ----Most Recent----
 
 Doing :
-1 : fixing substitution Function (test everything + write down tests)
+test syntax parsing
+test substitution
+Functions for redirection tokens
 
 To do next :
-Test how th git works
+How to identify builtins ? (with first array of each command tab)
+Tester les str vides (1ère chose à faire après remove_spaces/au début de remove_spaces)
+How to merge only one file
+Study printf/gnl
+token handling functions(struc management) (add token, delete and free token)
+command handling functions(struct management) (add cmd, delete and free cmd)
+build command function (take all tokens and place them in a tab)
+action functions (if Infile redirection/outfile redirection/append redirection/pipe/end of line)
 Exit and clean functions
 Initiation struct et free
 
 Done :
-Added int exstat in struct (to be handled at execution)
-fixing substitution Function (Fixing variables beside one another ($USER$USER)), 
-	(add redirections as delimiters), (Handle correctly non-existing variable), (Make it so it changes use_data()->line_cpy)
-	(handle variables substituing other variables), (Handle $?)
-Created elodie-beta branch to safely work on do_substitutions
-Fixing git situation
-Remove whitespaces before and after str function
-Token_parsing function
-Create a line with only the necessary whitespaces, before tokenisation
-Verify if all quotes are closed (before tokenisation)
+fixing remove_spaces
+
 
 To discuss :
-Added int exstat in struct (to be handled at execution)
-Git (malord)
-data->quote_flag : Useful ?
-data->error_flag : Defaults to 0 ? (For init) + Check Init !
+all to lower case (cmds and files) -> check bash
+remove_spaces assume que la ligne à traiter n'est pas null et contient au moins un charactère valide (str[i])
 
 
 

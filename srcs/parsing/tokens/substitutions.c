@@ -72,23 +72,24 @@ int	count_nbblocks(char *line)
 	int	flag_var;
 
 	i = -1;
-	if (line[0] == '$')
-		nb_blocks = 0;
-	else
-		nb_blocks = 1;
 	flag_var = 0;
+	nb_blocks = 1;
 	while (line[++i])
 	{
 		if (line[i] == '$' && !single_quoted(line, i) && line[i + 1])
 		{
-			nb_blocks++;
+			if (i != 0)
+				nb_blocks++;
 			flag_var = 1;
 			i++;
 		}
 		if (flag_var == 1 && is_delimiter(line[i]))
 		{
-			nb_blocks++;
-			flag_var = 0;
+			if (line[i] != '?' || (line[i + 1] && line[i + 1] != '$'))
+			{
+				flag_var = 0;
+				nb_blocks++;
+			}
 		}
 	}
 	return (nb_blocks);
