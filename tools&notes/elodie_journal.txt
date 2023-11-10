@@ -14,7 +14,6 @@ Study printf/gnl
 token handling functions(struc management) (add token, delete and free token)
 command handling functions(struct management) (add cmd, delete and free cmd)
 build command function (take all tokens and place them in a tab)
-action functions (if Infile redirection/outfile redirection/append redirection/pipe/end of line)
 Exit and clean functions
 Initiation struct et free
 
