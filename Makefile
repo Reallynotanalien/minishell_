@@ -21,7 +21,6 @@ SRCS =	./srcs/init.c \
 		./srcs/parsing/signals.c \
 		./srcs/parsing/term_attributes.c \
 		./srcs/exec/exec.c \
-		./srcs/exec/path.c \
 		./srcs/utils.c \
 		./srcs/parsing/redirections.c \
 
